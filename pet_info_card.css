@@ -1,16 +1,21 @@
 :root {
   --white-space: 20px;
+  --primary-color: #007bff;
+  --title-font: "Chalkduster", sans-serif;
+  --border-radius: 16px;
 }
 
 h2 {
+  /* Other Options:
   font-family: "Papyrus", fantasy;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-family: "Chalkduster", sans-serif;
+    font-family: "Chalkduster", sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", cursive; */
+  font-family: var(--title-font);
 }
 
 .pet-card {
   border: 1px solid #ccc;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   padding: var(--white-space);
   margin: var(--white-space);
   width: 200px; /* or whatever width you prefer */
@@ -29,7 +34,7 @@ h2 {
 }
 
 .pet-name {
-  color: #007bff;
+  color: var(--primary-color);
   font-size: 1.75em;
   margin: 0;
 }
@@ -37,7 +42,7 @@ h2 {
 .pet-photo {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   margin-top: var(--white-space);
   margin-bottom: var(--white-space);
 }

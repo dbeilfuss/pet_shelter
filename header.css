@@ -1,0 +1,128 @@
+:root {
+  --header-height: 100px;
+  --icon-height: calc(var(--header-height) - 50px);
+  --button-height: calc(var(--icon-height) + 10px);
+  --header-icon-padding: 10px;
+  --border-radius: 16px;
+
+  /* Small Screens */
+  --small-header-height: 75px;
+  --small-icon-height: calc(var(--small-header-height) - 40px);
+  --small-button-height: calc(var(--small-icon-height) + 5px);
+
+  /* Title */
+  --primary-color: #007bff;
+  --title-font: "Chalkduster", sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Make sure the header is always on top of other elements */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: var(--header-height);
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: stretch;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+}
+
+.identity-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
+
+.logo {
+  max-height: calc(var(--button-height));
+  padding: var(--header-icon-padding);
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05); /* Scales the button */
+}
+
+.company-name {
+  color: var(--primary-color);
+  font-family: var(--title-font);
+  padding: var(--header-icon-padding);
+}
+
+.nav-icon {
+  max-height: var(--icon-height);
+  padding: var(--header-icon-padding);
+}
+
+.nav-icon-container {
+  background: none;
+  border: 3px solid transparent;
+  border-radius: var(--border-radius);
+  font-size: 1.5em; /* adjust size as needed */
+  cursor: pointer;
+  padding: 0.2em; /* space around the icon */
+  display: inline-flex; /* centers the icon */
+  justify-content: center;
+  align-items: center;
+  height: var(--button-height); /* ensure a square shape */
+  width: var(--button-height); /* ensure a square shape */
+  overflow: hidden; /* prevents the content from spilling out */
+  margin-left: auto;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-icon-container:hover {
+  border-color: var(--primary-color);
+  transform: scale(1.05); /* Scales the button */
+}
+
+@media (max-width: 675px) {
+  /* Shrink font size for small screen sizes */
+  header {
+    max-height: var(--small-header-height);
+  }
+  .company-name {
+    font-size: 16px;
+  }
+  .logo {
+    max-height: calc(--small-button-height);
+  }
+  .nav-icon {
+    max-height: var(--small-icon-height);
+    .nav-icon-container {
+      height: var(--small-button-height); /* ensure a square shape */
+      width: var(--small-button-height); /* ensure a square shape */
+    }
+  }
+  .nav-icon-container {
+    height: var(--small-button-height); /* ensure a square shape */
+    width: var(--small-button-height); /* ensure a square shape */
+  }
+}
