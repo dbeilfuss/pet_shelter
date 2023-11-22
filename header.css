@@ -12,7 +12,7 @@
 
   /* Title */
   --primary-color: #007bff;
-  --title-font: "Chalkduster", sans-serif;
+  --title-font: Verdana, sans-serif;
 }
 
 header {
@@ -67,7 +67,7 @@ header {
   transition: transform 0.3s ease;
 }
 .logo:hover {
-  transform: scale(1.05); /* Scales the button */
+  transform: scale(1.1); /* Scales the button */
 }
 
 .company-name {
@@ -83,7 +83,6 @@ header {
 
 .nav-icon-container {
   background: none;
-  border: 3px solid transparent;
   border-radius: var(--border-radius);
   font-size: 1.5em; /* adjust size as needed */
   cursor: pointer;
@@ -100,7 +99,7 @@ header {
 
 .nav-icon-container:hover {
   border-color: var(--primary-color);
-  transform: scale(1.05); /* Scales the button */
+  transform: scale(1.1); /* Scales the button */
 }
 
 @media (max-width: 675px) {
