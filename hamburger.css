@@ -1,0 +1,79 @@
+:root {
+  --header-height: 100px;
+  --icon-height: calc(var(--header-height) - 50px);
+  --button-height: calc(var(--icon-height) + 10px);
+  --border-radius: 16px;
+  --primary-font: Verdana, sans-serif;
+  --primary-color: #007bff;
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  max-height: var(--icon-height);
+  max-width: var(--icon-height);
+  padding: 20px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
+
+.selected-item-container {
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  padding: 10px 20px 10px 20px;
+}
+
+.selected-item {
+  color: #ffffff;
+  font-family: var(--primary-font);
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  overflow: hidden;
+  max-height: 0; /* Start with max-height 0 */
+  transition: max-height 0.5s ease-out;
+}
+
+/* Styles for each dropdown item */
+.dropdown-menu a {
+  color: black;
+  font-family: var(--primary-font);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-menu {
+  display: block;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+}
+
+.dropdown-menu.show {
+  display: block; /* show the menu */
+  max-height: 300px;
+}

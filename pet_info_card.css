@@ -3,14 +3,7 @@
   --primary-color: #007bff;
   --title-font: "Chalkduster", sans-serif;
   --border-radius: 16px;
-}
-
-h2 {
-  /* Other Options:
-  font-family: "Papyrus", fantasy;
-    font-family: "Chalkduster", sans-serif;
-  font-family: "Comic Sans MS", "Comic Sans", cursive; */
-  font-family: var(--title-font);
+  --primary-font: Verdana, sans-serif;
 }
 
 .pet-card {
@@ -35,6 +28,7 @@ h2 {
 
 .pet-name {
   color: var(--primary-color);
+  font-family: var(--title-font);
   font-size: 1.75em;
   margin: 0;
 }
@@ -50,6 +44,7 @@ h2 {
 .pet-breed,
 .pet-info {
   color: #252531;
+  font-family: var(--primary-font);
   font-size: 1em;
   margin: 5px 0;
   text-align: center;
