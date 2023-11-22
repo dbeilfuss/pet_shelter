@@ -116,10 +116,6 @@ header {
   }
   .nav-icon {
     max-height: var(--small-icon-height);
-    .nav-icon-container {
-      height: var(--small-button-height); /* ensure a square shape */
-      width: var(--small-button-height); /* ensure a square shape */
-    }
   }
   .nav-icon-container {
     height: var(--small-button-height); /* ensure a square shape */
