@@ -7,11 +7,9 @@ function toggleMenu() {
 // Event handler for dropdown menu items
 document.querySelectorAll(".dropdown-menu a").forEach((item) => {
   item.addEventListener("click", function () {
-    // Get the element where you want to display the selected item text
+    // Display Selection
     var selectedItemText = document.getElementById("selectedItem");
-
-    // Set the text content of that element to the clicked item's text
-    selectedItemText.textContent = this.textContent;
+    selectedItemText.textContent = `${this.textContent} Pets`;
 
     // Hide the dropdown menu after a selection
     var dropdown = document.getElementById("dropdownMenu");
