@@ -4,13 +4,15 @@ function toggleMenu() {
   dropdown.classList.toggle("show");
 }
 
+function displaySelection() {
+  let selectedItemText = document.getElementById("selectedItem");
+  selectedItemText.textContent = `${this.textContent} Pets`;
+}
+
 // Event handler for dropdown menu items
 document.querySelectorAll(".dropdown-menu a").forEach((item) => {
   item.addEventListener("click", function () {
-    // Display Selection
-    let selectedItemText = document.getElementById("selectedItem");
-    selectedItemText.textContent = `${this.textContent} Pets`;
-
+    displaySelection();
     // Hide the dropdown menu after a selection
     let dropdown = document.getElementById("dropdownMenu");
     dropdown.classList.remove("show");
