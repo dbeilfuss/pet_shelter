@@ -288,6 +288,17 @@
   justify-content: center;
 }
 
+.edit-button,
+.save-button,
+.reserve-button,
+.cancel-button,
+.delete-button,
+.confirm-adoption-button,
+.cancel-reservation-button,
+.returned-button {
+  cursor: pointer;
+}
+
 input {
   text-align: center;
   font-size: 15px;
