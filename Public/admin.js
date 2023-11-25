@@ -1,14 +1,32 @@
 import {
   createNewPetCard,
   createEditablePetCard,
+  createAvailablePetCard,
 } from "/Elements/pet-info-card/create-pet-card.js";
+
+import { makeHeartsClickable } from "/Elements/pet-info-card/pet_info_card.js";
 
 function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   listOfPets.innerHTML = "";
 }
 
-function displayPets(filter) {}
+function displayPets(filter) {
+  console.log(filter);
+  const listOfPets = document.getElementById("list-of-pets");
+  let petCard = "";
+
+  if (filter === "Available") {
+    petCard = createAvailablePetCard();
+  } else if (filter === "Reserved") {
+    petCard = createReservedPetCard();
+  } else if (filter === "Adopted") {
+    petCard = createAdoptedPetCard();
+  }
+
+  listOfPets.innerHTML = petCard;
+  makeHeartsClickable();
+}
 
 function displayAddPetCard() {
   const listOfPets = document.getElementById("list-of-pets");
@@ -39,17 +57,19 @@ function resetDatabase() {
 document
   .querySelector(".dropdown-menu")
   .addEventListener("click", function (event) {
-    // Check if the clicked element is a link
+    const selectedClassList = event.target.classList;
+    const selectedText = event.target.textContent;
+
     if (event.target.tagName === "A") {
-      if (event.target.classList.contains("lookup-pets")) {
+      if (selectedClassList.contains("lookup-pets")) {
         clearListOfPets();
-        displayPets(event.target.textContent);
-      } else if (event.target.classList.contains("command")) {
-        console.log("command confirmed");
-        if (event.target.textContent === "+ Add") {
+        displayPets(selectedText);
+      } else if (selectedClassList.contains("command")) {
+        if (selectedText === "+ Add") {
+          console.log("command confirmed");
           clearListOfPets();
           displayAddPetCard();
-        } else if (event.target.textContent === "! Reset Database") {
+        } else if (selectedText === "! Reset Database") {
           resetDatabase();
         }
       }
