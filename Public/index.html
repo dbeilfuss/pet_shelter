@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home: Keenesburg Animal Shelter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header class="main-header">
+      <div class="identity-container">
+        <a href="index.html" title="Admin Settings" class="nav-icon-link">
+          <img
+            src="Images/Pet_Shelter_Logo.png"
+            alt="Keenesburg Animal Shelter Logo"
+            class="logo"
+          />
+        </a>
+        <h1 class="company-name">Keenesburg Animal Shelter</h1>
+      </div>
+      <nav class="navbar">
+        <div class="nav-icon-container" title="View All Pets">
+          <img
+            src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39024/preview.png"
+            alt="View all Pets"
+            class="nav-icon"
+          />
+        </div>
+        <div class="nav-icon-container" title="User Profiles">
+          <img
+            src="https://static.thenounproject.com/png/665436-200.png"
+            alt="User Profile"
+            class="nav-icon"
+          />
+        </div>
+        <a href="admin.html" title="Admin Settings" class="nav-icon-link">
+          <div class="nav-icon-container" title="Admin Settings">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/0/128.png"
+              alt="Admin Settings"
+              class="nav-icon"
+            />
+          </div>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Celebration Section -->
+    <!-- Celebration Info and Image -->
+    <div class="narrow-contents">
+      <section id="celebration-section">
+        <!-- Celebration Image 
+    -->
+
+        <div id="celebration-image-container">
+          <img
+            src="https://media.newyorker.com/photos/606b51c2313f23423168acbe/master/pass/Brewer-CompanionDogApplication.jpg"
+            alt="Happy Adoption Moment"
+            id="celebration-image"
+          />
+        </div>
+
+        <!-- Celebration Text -->
+        <div class="celebration-text">
+          <h2>Bringing People and Pets Together</h2>
+
+          <!--TODO Adoption Counter-->
+          <p id="adoption-counter">17 adoptions and counting!</p>
+
+          <!--TODO browse Pets Button-->
+          <button id="browsePetsButton" class="browse-button">
+            Browse Pets
+          </button>
+          <p id="scrolling-text">
+            We pride ourselves on maintaining the highest standards of care, so
+            you can find a companion who's as healthy as they are happy.
+          </p>
+        </div>
+      </section>
+      <section id="short-list-of-pets"></section>
+    </div>
+    <script
+      type="module"
+      src="Elements/pet-info-card/pet_info_card.js"
+    ></script>
+    <script
+      type="module"
+      src="Elements/pet-info-card/create-pet-card.js"
+    ></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
