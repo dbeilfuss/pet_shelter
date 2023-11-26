@@ -86,3 +86,8 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
     }
   }
 });
+
+// Initial Load of Screen
+document.addEventListener("DOMContentLoaded", () => {
+  displayPets("Available");
+});

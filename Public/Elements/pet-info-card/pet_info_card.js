@@ -88,5 +88,5 @@ export function makeButtonsClickable() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", makeHeartsClickable());
-document.addEventListener("DOMContentLoaded", makeButtonsClickable());
+document.addEventListener("DOMContentLoaded", () => makeHeartsClickable());
+document.addEventListener("DOMContentLoaded", () => makeButtonsClickable());
