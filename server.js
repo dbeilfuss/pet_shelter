@@ -4,7 +4,7 @@ const axios = require("axios");
 const app = express();
 
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static("Public"));
 
 /// Run Server ///
 app.listen(8000, "0.0.0.0", () => {
