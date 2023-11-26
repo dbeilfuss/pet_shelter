@@ -347,14 +347,21 @@ input:focus {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.celebration-image-container {
+#celebration-image-container {
   max-width: 50%;
   height: auto;
 }
 
-.celebration-image {
+#celebration-image {
   width: 100%;
   height: auto;
+}
+
+#celebration-image-container,
+#scrolling-text {
+  position: relative;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
 }
 
 .celebration-text {
