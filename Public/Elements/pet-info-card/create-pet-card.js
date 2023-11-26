@@ -164,3 +164,73 @@ export function createAvailablePetCard() {
 `;
   return availablePetCard;
 }
+
+export function createReservedPetCard() {
+  const reservedPetCard = `
+  <article class="pet-card">
+            <header class="pet-header">
+                <h2 class="pet-name">Bella</h2>
+                <button class="favorite-button" aria-label="Favorite Bella">
+                    <span class="heart">❤</span>
+                </button>
+            </header>
+            <img
+            src="https://www.hartz.com/wp-content/uploads/2022/01/volunteer-at-animal-shelter-1.jpg"
+            alt="Photo of Bella"
+            class="pet-photo"
+            />
+            <p class="pet-breed">Mix: Pit Bull Terrier</p>
+            <p class="pet-info">1 Yrs · Female · 30 Lbs</p>
+            <div class="admin-pet-buttons">
+                <input
+                type="submit"
+                name="confirm"
+                value="Confirm Adoption"
+                class="confirm-adoption-button"
+                />
+                <input
+                type="submit"
+                name="cancel"
+                value="Cancel Reservation"
+                class="cancel-reservation-button"
+                />
+            </div>
+        </article>
+`;
+  return reservedPetCard;
+}
+
+export function createAdoptedPetCard() {
+  const adoptedPetCard = `
+  <article class="pet-card">
+  <header class="pet-header">
+      <h2 class="pet-name">Bella</h2>
+      <button class="favorite-button" aria-label="Favorite Bella">
+          <span class="heart">❤</span>
+      </button>
+  </header>
+  <img
+  src="https://www.hartz.com/wp-content/uploads/2022/01/volunteer-at-animal-shelter-1.jpg"
+  alt="Photo of Bella"
+  class="pet-photo"
+  />
+  <p class="pet-breed">Mix: Pit Bull Terrier</p>
+  <p class="pet-info">1 Yrs · Female · 30 Lbs</p>
+  <div class="admin-pet-buttons">
+      <input
+      type="submit"
+      name="returned"
+      value="Returned to Shelter"
+      class="returned-button"
+      />
+      <input
+      type="submit"
+      name="delete"
+      value="Delete"
+      class="delete-button"
+      />
+  </div>
+</article>
+`;
+  return adoptedPetCard;
+}

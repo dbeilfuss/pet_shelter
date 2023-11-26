@@ -2,9 +2,14 @@ import {
   createNewPetCard,
   createEditablePetCard,
   createAvailablePetCard,
+  createReservedPetCard,
+  createAdoptedPetCard,
 } from "/Elements/pet-info-card/create-pet-card.js";
 
-import { makeHeartsClickable } from "/Elements/pet-info-card/pet_info_card.js";
+import {
+  makeHeartsClickable,
+  makeButtonsClickable,
+} from "/Elements/pet-info-card/pet_info_card.js";
 
 function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
@@ -14,17 +19,22 @@ function clearListOfPets() {
 function displayPets(filter) {
   console.log(filter);
   const listOfPets = document.getElementById("list-of-pets");
-  let petCard = "";
+  let petCards = "";
 
-  if (filter === "Available") {
-    petCard = createAvailablePetCard();
-  } else if (filter === "Reserved") {
-    petCard = createReservedPetCard();
-  } else if (filter === "Adopted") {
-    petCard = createAdoptedPetCard();
+  for (let i = 0; i < 5; i++) {
+    if (filter === "Available") {
+      console.log(filter, i);
+      petCards += createAvailablePetCard();
+    } else if (filter === "Reserved") {
+      console.log(filter, i);
+      petCards += createReservedPetCard();
+    } else if (filter === "Adopted") {
+      console.log(filter, i);
+      petCards += createAdoptedPetCard();
+    }
   }
 
-  listOfPets.innerHTML = petCard;
+  listOfPets.innerHTML = petCards;
   makeHeartsClickable();
 }
 
