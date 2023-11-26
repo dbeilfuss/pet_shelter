@@ -11,13 +11,16 @@ import {
   makeButtonsClickable,
 } from "/Elements/pet-info-card/pet_info_card.js";
 
-function clearListOfPets() {
+export function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   listOfPets.innerHTML = "";
 }
 
 function displayPets(filter) {
   console.log(filter);
+
+  clearListOfPets();
+
   const listOfPets = document.getElementById("list-of-pets");
   let petCards = "";
 
@@ -36,6 +39,7 @@ function displayPets(filter) {
 
   listOfPets.innerHTML = petCards;
   makeHeartsClickable();
+  makeButtonsClickable();
 }
 
 function displayAddPetCard() {
@@ -64,24 +68,21 @@ function resetDatabase() {
 }
 
 // Event handler for dropdown menu items
-document
-  .querySelector(".dropdown-menu")
-  .addEventListener("click", function (event) {
-    const selectedClassList = event.target.classList;
-    const selectedText = event.target.textContent;
+document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
+  const selectedClassList = event.target.classList;
+  const selectedText = event.target.textContent;
 
-    if (event.target.tagName === "A") {
-      if (selectedClassList.contains("lookup-pets")) {
+  if (event.target.tagName === "A") {
+    if (selectedClassList.contains("lookup-pets")) {
+      displayPets(selectedText);
+    } else if (selectedClassList.contains("command")) {
+      if (selectedText === "+ Add") {
+        console.log("command confirmed");
         clearListOfPets();
-        displayPets(selectedText);
-      } else if (selectedClassList.contains("command")) {
-        if (selectedText === "+ Add") {
-          console.log("command confirmed");
-          clearListOfPets();
-          displayAddPetCard();
-        } else if (selectedText === "! Reset Database") {
-          resetDatabase();
-        }
+        displayAddPetCard();
+      } else if (selectedText === "! Reset Database") {
+        resetDatabase();
       }
     }
-  });
+  }
+});
