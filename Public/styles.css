@@ -271,6 +271,15 @@
   align-content: center;
 }
 
+#short-list-of-pets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
 /****** Admin Functions ******/
 
 .pet-form-details {
@@ -315,7 +324,86 @@ input:focus {
   box-shadow: 0 0 5px rgba(108, 166, 205, 0.5);
 }
 
+/****** Home Page ******/
+
+.narrow-contents {
+  top: var(--header-height);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+#celebration-section {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.celebration-image-container {
+  max-width: 50%;
+  height: auto;
+}
+
+.celebration-image {
+  width: 100%;
+  height: auto;
+}
+
+.celebration-text {
+  text-align: center;
+}
+
+.celebration-text h2 {
+  font-size: 24px;
+  font-family: var(--primary-font);
+  margin-bottom: 10px;
+}
+
+.celebration-text p {
+  font-size: 18px;
+  padding: 20px 100px;
+}
+
+.browse-button {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: var(--primary-font);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.browse-button:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+}
+
 /*******  Different Size Screens ******/
+@media (max-width: 1500px) {
+  #celebration-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #celebration-section {
+    flex-direction: column;
+  }
+  .celebration-image-container {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 675px) {
   /* Shrink font size for small screen sizes */
   .main-header {
@@ -347,5 +435,9 @@ input:focus {
 
   .dropdown-menu {
     top: calc(var(--small-header-height) + var(--small-button-height) + 20px);
+  }
+
+  .celebration-text p {
+    padding: 20px;
   }
 }
