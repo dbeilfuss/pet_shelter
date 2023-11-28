@@ -215,7 +215,9 @@
 
 .pet-photo {
   width: 100%;
-  height: auto;
+  height: 175px;
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--border-radius);
   margin-top: var(--white-space);
   margin-bottom: var(--white-space);

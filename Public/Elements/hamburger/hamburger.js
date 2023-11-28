@@ -10,7 +10,11 @@ document.querySelectorAll(".dropdown-menu a").forEach((item) => {
     // Display Selection
     let selectedItemText = document.getElementById("selectedItem");
 
-    selectedItemText.textContent = `${this.textContent} Pets`;
+    if (this.classList.contains("sort-pets")) {
+      selectedItemText.textContent = `Sort by ${this.textContent}`;
+    } else {
+      selectedItemText.textContent = `${this.textContent} Pets`;
+    }
 
     // Hide the dropdown menu after a selection
     let dropdown = document.getElementById("dropdownMenu");

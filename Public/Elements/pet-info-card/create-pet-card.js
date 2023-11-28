@@ -234,3 +234,39 @@ export function createAdoptedPetCard() {
 `;
   return adoptedPetCard;
 }
+
+export function createReservablePetCard(
+  imageURL,
+  name,
+  breed,
+  maleFemale,
+  age,
+  weight
+) {
+  const reservablePetCard = `
+  <article class="pet-card">
+  <header class="pet-header">
+      <h2 class="pet-name">${name}</h2>
+      <button class="favorite-button" aria-label="Favorite ${name}">
+          <span class="heart">❤</span>
+      </button>
+  </header>
+  <img
+  src="${imageURL}"
+  alt="Photo of ${name}"
+  class="pet-photo"
+  />
+  <p class="pet-breed">${breed}</p>
+  <p class="pet-info">${age} Yrs · ${maleFemale} · ${weight} Lbs</p>
+  <div class="admin-pet-buttons">
+      <input
+      type="submit"
+      name="reserve"
+      value="Reserve Pet"
+      class="reserve-button"
+      />
+  </div>
+</article>
+`;
+  return reservablePetCard;
+}

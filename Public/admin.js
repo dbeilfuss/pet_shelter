@@ -1,6 +1,5 @@
 import {
   createNewPetCard,
-  createEditablePetCard,
   createAvailablePetCard,
   createReservedPetCard,
   createAdoptedPetCard,
