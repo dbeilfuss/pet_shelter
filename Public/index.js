@@ -1,6 +1,6 @@
-import { createAvailablePetCard } from "/Elements/pet-info-card/create-pet-card.js";
+import { createAvailablePetCard } from "/Elements/pet_info_card/create_pet_card.js";
 
-import { makeHeartsClickable } from "/Elements/pet-info-card/pet_info_card.js";
+import { makeHeartsClickable } from "/Elements/pet_info_card/advanced_pet_info_card.js";
 
 function displaySamplePets() {
   const listOfPets = document.getElementById("short-list-of-pets");

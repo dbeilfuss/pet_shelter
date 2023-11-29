@@ -1,11 +1,11 @@
 import { getAllPets } from "/database.js";
 
-import { createReservablePetCard } from "/Elements/pet-info-card/create-pet-card.js";
+import { createReservablePetCard } from "/Elements/pet_info_card/create_pet_card.js";
 
 import {
   makeHeartsClickable,
   makeButtonsClickable,
-} from "/Elements/pet-info-card/pet_info_card.js";
+} from "/Elements/pet_info_card/pet_info_card.js";
 
 export function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
