@@ -12,8 +12,8 @@ export function makeHeartsClickable() {
 }
 
 function editButtonClicked() {
-  console.log("Edit button");
   clearListOfPets();
+
   const listOfPets = document.getElementById("list-of-pets");
   let petCards = createEditablePetCard();
 
@@ -53,34 +53,42 @@ export function makeButtonsClickable() {
   editButtons.forEach((button) => {
     button.addEventListener("click", () => editButtonClicked());
   });
+
   const reserveButtons = document.querySelectorAll(".reserve-button");
   reserveButtons.forEach((button) => {
     button.addEventListener("click", () => reserveButtonClicked());
   });
+
   const saveButtons = document.querySelectorAll(".save-button");
   saveButtons.forEach((button) => {
     button.addEventListener("click", () => saveButtonClicked());
   });
+
   const cancelButtons = document.querySelectorAll(".cancel-button");
   cancelButtons.forEach((button) => {
     button.addEventListener("click", () => cancelButtonClicked());
   });
+
   const deleteButtons = document.querySelectorAll(".delete-button");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", () => deleteButtonClicked());
   });
+
   const confirmAdoptionButtons = document.querySelectorAll(
     ".confirm-adoption-button"
   );
   confirmAdoptionButtons.forEach((button) => {
     button.addEventListener("click", () => confirmAdoptionButtonClicked());
   });
+
   const cancelReservationButtons = document.querySelectorAll(
     ".cancel-reservation-button"
   );
+
   cancelReservationButtons.forEach((button) => {
     button.addEventListener("click", () => cancelReservationButtonClicked());
   });
+
   const returnedToShelterButtons =
     document.querySelectorAll(".returned-button");
   returnedToShelterButtons.forEach((button) => {
@@ -89,4 +97,5 @@ export function makeButtonsClickable() {
 }
 
 document.addEventListener("DOMContentLoaded", () => makeHeartsClickable());
+
 document.addEventListener("DOMContentLoaded", () => makeButtonsClickable());
