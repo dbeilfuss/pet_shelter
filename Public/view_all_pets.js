@@ -30,20 +30,15 @@ function displayAllPets(sortBy) {
   // create and sort list of pets
   let allPetsList = getAllPets();
 
-  console.log("all pets list is an array? " + Array.isArray(allPetsList));
-
   if (sortBy === "Name" || sortBy === "Breed" || sortBy === "MaleFemale") {
     allPetsList = sortByStringProperty(allPetsList, sortBy);
   } else if (sortBy === "Age" || sortBy === "Weight") {
     allPetsList = sortByNumberProperty(allPetsList, sortBy);
   }
 
-  console.log(allPetsList);
-
   // create pet cards
   let petCards = "";
   for (const pet of allPetsList) {
-    console.log(pet.Name);
     let card = createReservablePetCard(
       pet.imageURL,
       pet.Name,
@@ -57,7 +52,6 @@ function displayAllPets(sortBy) {
 
   // add pet cards to DOM
   const petsSection = document.getElementById("list-of-pets");
-  console.log(allPetsList);
 
   petsSection.innerHTML = petCards;
 
