@@ -26,12 +26,12 @@
 }
 
 input {
-  -webkit-appearance: none;
   text-align: center;
   font-size: 15px;
   padding: 5px;
   margin: 5px;
   border-radius: 8px;
+  background-color: #ccc;
   border: 1px solid #ccc;
   outline: none;
 }

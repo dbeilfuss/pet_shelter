@@ -36,7 +36,7 @@ export function createPetCard(
       break;
 
     case "reservable":
-      petCard += `<div class="admin-card-button-section">
+      petCard += `<div class="card-button-section">
               <input
               type="submit"
               name="reserve"
