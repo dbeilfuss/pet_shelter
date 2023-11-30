@@ -11,9 +11,15 @@ export function createPetCard(
   <article class="pet-card">
   <header class="pet-header">
       <h2 class="pet-name">${name}</h2>
-      <button class="favorite-button" aria-label="Favorite ${name}">
-          <span class="heart">❤</span>
-      </button>
+      `;
+  if (cardType === "basic" || cardType === "reservable") {
+    petCard += `
+        <button class="favorite-button" aria-label="Favorite ${name}">
+        <span class="heart">❤</span>
+        </button>
+`;
+  }
+  petCard += `
   </header>
   <img
   src="${imageURL}"
