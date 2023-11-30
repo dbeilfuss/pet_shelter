@@ -32,8 +32,11 @@ function displaySamplePets() {
     petCards += card;
   }
 
-  const petsSection = document.getElementById("short-list-of-pets");
-  petsSection.innerHTML = petCards;
+  const adminSection = document.getElementById("admin-list");
+  adminSection.innerHTML = petCards;
+
+  const standardUsersSection = document.getElementById("standard-users-list");
+  standardUsersSection.innerHTML = petCards;
 
   // add event listeners
   makeHeartsClickable();
