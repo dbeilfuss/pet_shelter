@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.admin-pet-buttons {
+.card-button-section {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -26,6 +26,7 @@
 }
 
 input {
+  -webkit-appearance: none;
   text-align: center;
   font-size: 15px;
   padding: 5px;

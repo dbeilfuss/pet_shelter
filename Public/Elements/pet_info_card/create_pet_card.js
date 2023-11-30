@@ -36,7 +36,7 @@ export function createPetCard(
       break;
 
     case "reservable":
-      petCard += `<div class="admin-pet-buttons">
+      petCard += `<div class="admin-card-button-section">
               <input
               type="submit"
               name="reserve"
@@ -48,7 +48,7 @@ export function createPetCard(
       break;
 
     case "Available":
-      petCard += `<div class="admin-pet-buttons">
+      petCard += `<div class="card-button-section">
             <input
             type="submit"
             name="edit"
@@ -66,7 +66,7 @@ export function createPetCard(
       break;
 
     case "Reserved":
-      petCard += `<div class="admin-pet-buttons">
+      petCard += `<div class="card-button-section">
             <input
             type="submit"
             name="confirm"
@@ -84,7 +84,7 @@ export function createPetCard(
       break;
 
     case "Adopted":
-      petCard += `<div class="admin-pet-buttons">
+      petCard += `<div class="card-button-section">
             <input
             type="submit"
             name="returned"
@@ -163,7 +163,7 @@ export function createNewPetCard() {
         class="pet-weight-input"
       />
     </div>
-    <div class="admin-pet-buttons">
+    <div class="card-button-section">
       <input type="submit" name="save" value="Save" class="save-button" />
       <input type="submit" name="undo" value="Undo" class="reserve-button" />
       <input type="submit" name="delete" value="Delete" class="delete-button" />
@@ -229,7 +229,7 @@ export function createEditablePetCard() {
         class="pet-weight-input"
       />
     </div>
-    <div class="admin-pet-buttons">
+    <div class="card-button-section">
       <input type="submit" name="save" value="Save" class="save-button" />
       <input type="submit" name="undo" value="Undo" class="reserve-button" />
       <input type="submit" name="delete" value="Delete" class="delete-button" />
