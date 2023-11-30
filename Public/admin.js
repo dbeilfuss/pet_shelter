@@ -1,6 +1,9 @@
 import { getAllPets } from "/database.js";
 
-import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
+import {
+  createPetCard,
+  createNewPetCard,
+} from "/Elements/pet_info_card/create_pet_card.js";
 
 import {
   makeHeartsClickable,
@@ -12,6 +15,7 @@ export function clearListOfPets() {
   listOfPets.innerHTML = "";
 }
 
+// TODO Have admin cards retain a business feel, basic font, no favorite button
 function displayPets(filter) {
   console.log(filter);
   clearListOfPets();
@@ -33,21 +37,6 @@ function displayPets(filter) {
     );
     petCards += card;
   }
-
-  // let petCards = "";
-
-  // for (let i = 0; i < 5; i++) {
-  //   if (filter === "Available") {
-  //     console.log(filter, i);
-  //     petCards += createAvailablePetCard();
-  //   } else if (filter === "Reserved") {
-  //     console.log(filter, i);
-  //     petCards += createReservedPetCard();
-  //   } else if (filter === "Adopted") {
-  //     console.log(filter, i);
-  //     petCards += createAdoptedPetCard();
-  //   }
-  // }
 
   const listOfPets = document.getElementById("list-of-pets");
 
