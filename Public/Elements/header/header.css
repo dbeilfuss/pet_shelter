@@ -1,26 +1,9 @@
-:root {
-  --header-height: 100px;
-  --icon-height: calc(var(--header-height) - 50px);
-  --button-height: calc(var(--icon-height) + 10px);
-  --header-icon-padding: 10px;
-  --border-radius: 16px;
-
-  /* Small Screens */
-  --small-header-height: 75px;
-  --small-icon-height: calc(var(--small-header-height) - 40px);
-  --small-button-height: calc(var(--small-icon-height) + 5px);
-
-  /* Title */
-  --primary-color: #007bff;
-  --title-font: Verdana, sans-serif;
-}
-
-header {
+.main-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1; /* Make sure the header is always on top of other elements */
+  z-index: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -99,12 +82,12 @@ header {
 
 .nav-icon-container:hover {
   border-color: var(--primary-color);
-  transform: scale(1.1); /* Scales the button */
+  transform: scale(1.15); /* Scales the button */
 }
 
+/* Shrink font size for small screen sizes */
 @media (max-width: 675px) {
-  /* Shrink font size for small screen sizes */
-  header {
+  .main-header {
     max-height: var(--small-header-height);
   }
   .company-name {
