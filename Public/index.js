@@ -1,5 +1,5 @@
 import { getAllPets } from "/database.js";
-import { createBasicPetCard } from "/Elements/pet_info_card/create_pet_card.js";
+import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
 import {
   makeHeartsClickable,
   makeButtonsClickable,
@@ -20,13 +20,14 @@ function displaySamplePets() {
   // create pet cards
   // TODO limit cards to the variable selected directly above
   for (const pet of allPetsList) {
-    let card = createBasicPetCard(
+    let card = createPetCard(
       pet.imageURL,
       pet.Name,
       pet.Breed,
       pet.MaleFemale,
       pet.Age,
-      pet.Weight
+      pet.Weight,
+      "basic"
     );
     petCards += card;
   }

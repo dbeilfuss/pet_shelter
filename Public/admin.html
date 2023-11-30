@@ -6,29 +6,34 @@
     <title>Admin: Keenesburg Animal Shelter</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    
     <!--Header-->
     <header class="main-header">
       <div class="identity-container">
         <a href="index.html" title="Admin Settings" class="nav-icon-link">
-        <img
-          src="Images/Pet_Shelter_Logo.png"
-          alt="Keenesburg Animal Shelter Logo"
-          class="logo"
-        />
+          <img
+            src="Images/Pet_Shelter_Logo.png"
+            alt="Keenesburg Animal Shelter Logo"
+            class="logo"
+          />
         </a>
         <h1 class="company-name">Keenesburg Animal Shelter</h1>
       </div>
+
       <nav class="navbar">
-        <a href="view_all_pets.html" title="View All Pets" class="nav-icon-link">
-        <div class="nav-icon-container" title="View All Pets">
-          <img
-            src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39024/preview.png"
-            alt="View all Pets"
-            class="nav-icon"
-          />
-        </div>
+        <a
+          href="view_all_pets.html"
+          title="View All Pets"
+          class="nav-icon-link"
+        >
+          <div class="nav-icon-container" title="View All Pets">
+            <img
+              src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39024/preview.png"
+              alt="View all Pets"
+              class="nav-icon"
+            />
+          </div>
         </a>
         <div class="nav-icon-container" title="User Profiles">
           <img
@@ -38,14 +43,14 @@
           />
         </div>
         <a href="admin.html" title="Admin Settings" class="nav-icon-link">
-            <div class="nav-icon-container" title="Admin Settings">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/0/128.png"
-            alt="Admin Settings"
-            class="nav-icon"
-          />
-        </div>
-    </a>
+          <div class="nav-icon-container" title="Admin Settings">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/0/128.png"
+              alt="Admin Settings"
+              class="nav-icon"
+            />
+          </div>
+        </a>
       </nav>
     </header>
 
@@ -58,10 +63,14 @@
         alt="Menu"
         role="button"
       />
+
       <div class="selected-item-container">
-        <span id="selectedItem" class="selected-item">Available Pets</span>
+        <span id="selectedItem" class="selected-item"
+          >Available Pets: Admin Section</span
+        >
       </div>
     </div>
+
     <div class="dropdown-menu" id="dropdownMenu">
       <a class="lookup-pets" href="#">Available</a>
       <a class="lookup-pets" href="#">Reserved</a>
@@ -72,14 +81,18 @@
 
     <!-- List of Pets -->
     <div id="list-of-pets"></div>
-        
-        <script type="module" src="Elements/pet_info_card/pet_info_card.js"></script>
-        <script type="module" src="Elements/pet_info_card/create_pet_card.js"></script>
-        <script type="module" src="admin.js"></script>
-    </body>
-    </html>
-    
-    <script src="Elements/hamburger/hamburger.js"></script>
-</body>
-</html>
 
+    <!-- Script Imports -->
+    <script type="module" src="database.js"></script>
+    <script
+      type="module"
+      src="Elements/pet_info_card/advanced_pet_info_card.js"
+    ></script>
+    <script
+      type="module"
+      src="Elements/pet_info_card/create_pet_card.js"
+    ></script>
+    <script type="module" src="admin.js"></script>
+    <script src="Elements/hamburger/hamburger.js"></script>
+  </body>
+</html>

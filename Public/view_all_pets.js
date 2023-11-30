@@ -1,6 +1,6 @@
 import { getAllPets } from "/database.js";
 
-import { createReservablePetCard } from "/Elements/pet_info_card/create_pet_card.js";
+import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
 
 import {
   makeHeartsClickable,
@@ -40,13 +40,14 @@ function displayAllPets(sortBy) {
   let petCards = "";
 
   for (const pet of allPetsList) {
-    let card = createReservablePetCard(
+    let card = createPetCard(
       pet.imageURL,
       pet.Name,
       pet.Breed,
       pet.MaleFemale,
       pet.Age,
-      pet.Weight
+      pet.Weight,
+      "reservable"
     );
     petCards += card;
   }

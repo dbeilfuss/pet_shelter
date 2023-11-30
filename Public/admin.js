@@ -1,9 +1,6 @@
-import {
-  createNewPetCard,
-  createAvailablePetCard,
-  createReservedPetCard,
-  createAdoptedPetCard,
-} from "/Elements/pet_info_card/create_pet_card.js";
+import { getAllPets } from "/database.js";
+
+import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
 
 import {
   makeHeartsClickable,
@@ -17,24 +14,42 @@ export function clearListOfPets() {
 
 function displayPets(filter) {
   console.log(filter);
-
   clearListOfPets();
 
-  const listOfPets = document.getElementById("list-of-pets");
+  const allPetsList = getAllPets();
+
+  // create pet cards
   let petCards = "";
 
-  for (let i = 0; i < 5; i++) {
-    if (filter === "Available") {
-      console.log(filter, i);
-      petCards += createAvailablePetCard();
-    } else if (filter === "Reserved") {
-      console.log(filter, i);
-      petCards += createReservedPetCard();
-    } else if (filter === "Adopted") {
-      console.log(filter, i);
-      petCards += createAdoptedPetCard();
-    }
+  for (const pet of allPetsList) {
+    let card = createPetCard(
+      pet.imageURL,
+      pet.Name,
+      pet.Breed,
+      pet.MaleFemale,
+      pet.Age,
+      pet.Weight,
+      filter
+    );
+    petCards += card;
   }
+
+  // let petCards = "";
+
+  // for (let i = 0; i < 5; i++) {
+  //   if (filter === "Available") {
+  //     console.log(filter, i);
+  //     petCards += createAvailablePetCard();
+  //   } else if (filter === "Reserved") {
+  //     console.log(filter, i);
+  //     petCards += createReservedPetCard();
+  //   } else if (filter === "Adopted") {
+  //     console.log(filter, i);
+  //     petCards += createAdoptedPetCard();
+  //   }
+  // }
+
+  const listOfPets = document.getElementById("list-of-pets");
 
   listOfPets.innerHTML = petCards;
   makeHeartsClickable();
