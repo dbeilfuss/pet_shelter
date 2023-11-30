@@ -103,3 +103,40 @@ let petsList = [
 export function getAllPets() {
   return petsList;
 }
+
+let usersList = [
+  {
+    Name: "Nitin",
+    UserType: "Admin",
+    FavoritePets: [""],
+  },
+  {
+    Name: "Dan",
+    UserType: "Admin",
+    FavoritePets: [""],
+  },
+  {
+    Name: "Ginger",
+    UserType: "Admin",
+    FavoritePets: [""],
+  },
+  {
+    Name: "Noah",
+    UserType: "User",
+    FavoritePets: [""],
+  },
+  {
+    Name: "Micah",
+    UserType: "User",
+    FavoritePets: [""],
+  },
+  {
+    Name: "Becca",
+    UserType: "User",
+    FavoritePets: [""],
+  },
+];
+
+export function getAllUsers() {
+  return usersList;
+}
