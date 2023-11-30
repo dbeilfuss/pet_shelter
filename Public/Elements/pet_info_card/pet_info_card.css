@@ -1,0 +1,96 @@
+/****** Pet Card Styles ******/
+.pet-card {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  padding: var(--white-space);
+  margin: var(--white-space);
+  width: 200px; /* or whatever width you prefer */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
+  transition: box-shadow 0.3s ease;
+}
+
+.pet-card:hover {
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+}
+
+.pet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pet-name {
+  color: var(--primary-color);
+  font-family: var(--pet-name-font);
+  font-size: 1.75em;
+  margin: 0;
+}
+
+.pet-photo {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--border-radius);
+  margin-top: var(--white-space);
+  margin-bottom: var(--white-space);
+}
+
+.pet-breed,
+.pet-info {
+  color: #252531;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.favorite-button {
+  background: none;
+  border: 2px solid #ccc; /* gray border */
+  border-radius: 50%; /* makes the border a circle */
+  font-size: 1.5em; /* adjust size as needed */
+  cursor: pointer;
+  padding: 0.5em; /* space around the heart */
+  display: inline-flex; /* centers the heart icon */
+  justify-content: center;
+  align-items: center;
+  height: 1em; /* ensure a circular shape */
+  width: 1em; /* ensure a circular shape */
+  overflow: hidden; /* prevents the content from spilling out */
+  margin-left: auto;
+}
+
+.favorite-button.favorited {
+  border: 2px solid red;
+}
+
+.heart {
+  color: gray;
+}
+
+.heart.favorited {
+  color: red;
+}
+
+/****** List of Pets ******/
+
+#list-of-pets {
+  top: calc(var(--header-height) + var(--button-height) + 30px);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#short-list-of-pets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
