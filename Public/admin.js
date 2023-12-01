@@ -15,7 +15,6 @@ export function clearListOfPets() {
   listOfPets.innerHTML = "";
 }
 
-// TODO Have admin cards retain a business feel, basic font, no favorite button
 function displayPets(filter) {
   console.log(filter);
   clearListOfPets();

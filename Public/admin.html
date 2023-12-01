@@ -13,52 +13,7 @@
 
   <body>
     <!--Header-->
-    <header class="main-header">
-      <div class="identity-container">
-        <a href="index.html" title="Admin Settings" class="nav-icon-link">
-          <img
-            src="Images/Pet_Shelter_Logo.png"
-            alt="Keenesburg Animal Shelter Logo"
-            class="logo"
-          />
-        </a>
-        <h1 class="company-name">Keenesburg Animal Shelter</h1>
-      </div>
-
-      <nav class="navbar">
-        <a
-          href="view_all_pets.html"
-          title="View All Pets"
-          class="nav-icon-link"
-        >
-          <div class="nav-icon-container" title="View All Pets">
-            <img
-              src="https://d29fhpw069ctt2.cloudfront.net/icon/image/39024/preview.png"
-              alt="View all Pets"
-              class="nav-icon"
-            />
-          </div>
-        </a>
-        <a href="login.html" title="View All Pets" class="nav-icon-link">
-          <div class="nav-icon-container" title="User Profiles">
-            <img
-              src="https://static.thenounproject.com/png/665436-200.png"
-              alt="User Profile"
-              class="nav-icon"
-            />
-          </div>
-        </a>
-        <a href="admin.html" title="Admin Settings" class="nav-icon-link">
-          <div class="nav-icon-container" title="Admin Settings">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/0/128.png"
-              alt="Admin Settings"
-              class="nav-icon"
-            />
-          </div>
-        </a>
-      </nav>
-    </header>
+    <header class="main-header"></header>
 
     <!-- Hamburger -->
     <div class="menu-container">
@@ -78,11 +33,11 @@
     </div>
 
     <div class="dropdown-menu" id="dropdownMenu">
-      <a class="lookup-pets" href="#">Available</a>
-      <a class="lookup-pets" href="#">Reserved</a>
-      <a class="lookup-pets" href="#">Adopted</a>
-      <a class="command" href="#">+ Add</a>
-      <a class="command" href="#" id="resetDatabase">! Reset Database</a>
+      <a class="lookup-pets">Available</a>
+      <a class="lookup-pets">Reserved</a>
+      <a class="lookup-pets">Adopted</a>
+      <a class="command">+ Add</a>
+      <a class="command" id="resetDatabase">! Reset Database</a>
     </div>
 
     <!-- List of Pets -->
@@ -100,5 +55,6 @@
     ></script>
     <script type="module" src="admin.js"></script>
     <script src="Elements/hamburger/hamburger.js"></script>
+    <script src="Elements/header/header.js"></script>
   </body>
 </html>

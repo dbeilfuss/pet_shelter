@@ -1,59 +1,31 @@
-/****** Admin Functions ******/
-.pet-form-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-button-section {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.edit-button,
-.save-button,
-.reserve-button,
-.cancel-button,
-.delete-button,
-.confirm-adoption-button,
-.cancel-reservation-button,
-.returned-button {
-  cursor: pointer;
-}
-
+/* Override pet cards to make them a bit more business-like */
 input {
-  text-align: center;
-  font-size: 15px;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 8px;
+  border-radius: 0px;
   background-color: #ccc;
-  border: 1px solid #ccc;
-  outline: none;
 }
 
-/* Style the input when it receives focus */
-input:focus {
-  border-color: #6ca6cd;
-  box-shadow: 0 0 5px rgba(108, 166, 205, 0.5);
-}
-
-/* Make the pet cards a bit more business-like */
 .pet-name {
-  color: dimgray;
+  color: var(--admin-primary-color);
   font-family: var(--title-font);
   font-size: 1.75em;
   margin: 0;
 }
 
 .pet-card {
-  border-radius: calc(var(--border-radius) - 10px);
+  border-radius: 0px;
 }
 
 .pet-photo {
-  border-radius: calc(var(--border-radius) - 10px);
+  border-radius: 0px;
+}
+
+/* Override Header */
+.company-name {
+  color: var(--admin-primary-color);
+}
+
+/* Override Hamburger */
+.selected-item-container {
+  background-color: var(--admin-primary-color);
+  border-radius: 0px;
 }

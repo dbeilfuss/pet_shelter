@@ -4,13 +4,15 @@
   border-radius: var(--border-radius);
   padding: var(--white-space);
   margin: var(--white-space);
-  width: 200px; /* or whatever width you prefer */
+  width: 200px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Horizontal offset, vertical offset, blur radius, color */
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, opacity 0.3s ease;
+  opacity: 98%;
 }
 
 .pet-card:hover {
-  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
+  opacity: 100%;
 }
 
 .pet-header {
@@ -45,6 +47,7 @@
   text-align: center;
 }
 
+/****** Favorite Button ******/
 .favorite-button {
   background: none;
   border: 2px solid #ccc; /* gray border */
@@ -73,7 +76,51 @@
   color: red;
 }
 
-/****** List of Pets ******/
+/****** Buttons ******/
+input {
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* Style the input when it receives focus */
+input:focus {
+  border-color: #6ca6cd;
+  box-shadow: 0 0 5px rgba(108, 166, 205, 0.5);
+}
+
+.pet-form-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-button-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-button,
+.save-button,
+.reserve-button,
+.cancel-button,
+.delete-button,
+.confirm-adoption-button,
+.cancel-reservation-button,
+.returned-button {
+  cursor: pointer;
+}
+
+/****** List of Pets Section on Web Page ******/
 
 #list-of-pets {
   top: calc(var(--header-height) + var(--button-height) + 30px);
