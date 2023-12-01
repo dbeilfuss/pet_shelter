@@ -22,7 +22,7 @@ function sortByNumberProperty(arr, property) {
   return arr.slice().sort((a, b) => a[property] - b[property]);
 }
 
-function displayAllPets(sortBy) {
+function sortPets(sortBy) {
   console.log(sortBy);
 
   clearListOfPets();
@@ -66,10 +66,5 @@ function displayAllPets(sortBy) {
 document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
   const selectedText = event.target.textContent;
 
-  displayAllPets(selectedText);
-});
-
-// Initial Load of Screen
-document.addEventListener("DOMContentLoaded", () => {
-  displayAllPets("Available");
+  sortPets(selectedText);
 });

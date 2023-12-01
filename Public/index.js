@@ -5,41 +5,6 @@ import {
   makeButtonsClickable,
 } from "/Elements/pet_info_card/basic_pet_info_card.js";
 
-function displaySamplePets() {
-  let allPetsList = getAllPets();
-  let petCards = "";
-
-  // set the number of cards based on the width of the screen
-  const screenWidth = window.innerWidth;
-  const cardWidth = 290;
-  let numberOfCards = Math.floor(screenWidth / cardWidth);
-  if (numberOfCards > 5) {
-    numberOfCards = 5;
-  }
-
-  // create pet cards
-  // TODO limit cards to the variable selected directly above
-  for (const pet of allPetsList) {
-    let card = createPetCard(
-      pet.imageURL,
-      pet.Name,
-      pet.Breed,
-      pet.MaleFemale,
-      pet.Age,
-      pet.Weight,
-      "basic"
-    );
-    petCards += card;
-  }
-
-  const petsSection = document.getElementById("short-list-of-pets");
-  petsSection.innerHTML = petCards;
-
-  // add event listeners
-  makeHeartsClickable();
-  makeButtonsClickable();
-}
-
 // Scrolling Images & Text
 let i = 0; // images index
 let m = 0; // messages index
@@ -95,8 +60,3 @@ function changeMessage() {
 // Change content every few seconds
 setInterval(changeImage, 8000);
 setInterval(changeMessage, 12000);
-
-// Initial Load of Screen
-document.addEventListener("DOMContentLoaded", () => {
-  displaySamplePets();
-});

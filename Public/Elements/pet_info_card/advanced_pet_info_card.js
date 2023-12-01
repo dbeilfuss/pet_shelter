@@ -1,5 +1,4 @@
-import { createEditablePetCard } from "./create_pet_card.js";
-import { clearListOfPets } from "../../admin.js";
+import { createEditablePetCard, clearListOfPets } from "./create_pet_card.js";
 
 export function makeHeartsClickable() {
   const favoriteButtons = document.querySelectorAll(".favorite-button");

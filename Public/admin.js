@@ -1,56 +1,11 @@
-import { getAllPets } from "/database.js";
-
 import {
-  createPetCard,
-  createNewPetCard,
+  clearListOfPets,
+  displayPets,
+  displayAddPetCard,
 } from "/Elements/pet_info_card/create_pet_card.js";
 
-import {
-  makeHeartsClickable,
-  makeButtonsClickable,
-} from "/Elements/pet_info_card/advanced_pet_info_card.js";
-
-export function clearListOfPets() {
-  const listOfPets = document.getElementById("list-of-pets");
-  listOfPets.innerHTML = "";
-}
-
-function displayPets(filter) {
-  console.log(filter);
-  clearListOfPets();
-
-  const allPetsList = getAllPets();
-
-  // create pet cards
-  let petCards = "";
-
-  for (const pet of allPetsList) {
-    let card = createPetCard(
-      pet.imageURL,
-      pet.Name,
-      pet.Breed,
-      pet.MaleFemale,
-      pet.Age,
-      pet.Weight,
-      filter
-    );
-    petCards += card;
-  }
-
-  const listOfPets = document.getElementById("list-of-pets");
-
-  listOfPets.innerHTML = petCards;
-  makeHeartsClickable();
-  makeButtonsClickable();
-}
-
-function displayAddPetCard() {
-  const listOfPets = document.getElementById("list-of-pets");
-  const newPetCard = createNewPetCard();
-  listOfPets.innerHTML = newPetCard;
-}
-
-function confirmDatabaseReset() {
+// Database Reset
+export function confirmDatabaseReset() {
   var confirmMessage =
     "Are you sure you want to do this? This will run the seed file - which will remove any changes you have made and reset the database to its default state.  This CANNOT BE UNDONE!";
   if (confirm(confirmMessage)) {
@@ -69,7 +24,7 @@ function resetDatabase() {
   }
 }
 
-// Event handler for dropdown menu items
+// Event handler for Hamburger menu items
 document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
   const selectedClassList = event.target.classList;
   const selectedText = event.target.textContent;
@@ -87,9 +42,4 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
       }
     }
   }
-});
-
-// Initial Load of Screen
-document.addEventListener("DOMContentLoaded", () => {
-  displayPets("Available");
 });

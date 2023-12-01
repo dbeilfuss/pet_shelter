@@ -104,6 +104,11 @@ export function getAllPets() {
   return petsList;
 }
 
+export function getSamplePets(numberOfPets) {
+  const shuffledPets = petsList.sort(() => 0.5 - Math.random());
+  return shuffledPets.slice(0, numberOfPets);
+}
+
 let usersList = [
   {
     Name: "Nitin",

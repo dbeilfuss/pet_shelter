@@ -1,3 +1,10 @@
+import { getAllPets, getSamplePets } from "/database.js";
+
+import {
+  makeHeartsClickable,
+  makeButtonsClickable,
+} from "/Elements/pet_info_card/advanced_pet_info_card.js";
+
 export function createPetCard(
   imageURL,
   name,
@@ -239,3 +246,68 @@ export function createEditablePetCard() {
 `;
   return editablePetCard;
 }
+
+export function clearListOfPets() {
+  const listOfPets = document.getElementById("list-of-pets");
+  if (listOfPets) {
+    listOfPets.innerHTML = "";
+  }
+}
+
+function availableSpace() {
+  // set the number of cards based on the width of the screen
+  const screenWidth = window.innerWidth;
+  const cardWidth = 290;
+
+  let numberOfCards = Math.floor(screenWidth / cardWidth);
+
+  return numberOfCards;
+}
+
+function displayPets(filter) {
+  clearListOfPets();
+
+  let listOfPetsSection = document.getElementById("list-of-pets");
+  const isShortSection = listOfPetsSection.classList.contains("short");
+
+  // adjust variables for a short section
+  let petsList = isShortSection
+    ? getSamplePets(availableSpace())
+    : getAllPets();
+  console.log(petsList);
+
+  if (isShortSection) {
+    filter = "basic";
+  }
+
+  // create pet cards
+  let petCards = "";
+
+  for (const pet of petsList) {
+    let card = createPetCard(
+      pet.imageURL,
+      pet.Name,
+      pet.Breed,
+      pet.MaleFemale,
+      pet.Age,
+      pet.Weight,
+      filter
+    );
+    petCards += card;
+  }
+
+  listOfPetsSection.innerHTML = petCards;
+  makeHeartsClickable();
+  makeButtonsClickable();
+}
+
+export function displayAddPetCard() {
+  const listOfPets = document.getElementById("list-of-pets");
+  const newPetCard = createNewPetCard();
+  listOfPets.innerHTML = newPetCard;
+}
+
+// Initial Load of Screen
+document.addEventListener("DOMContentLoaded", () => {
+  displayPets("Available");
+});
