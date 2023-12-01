@@ -58,7 +58,6 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  
 }
 
 .dropdown-menu a:hover {
@@ -70,6 +69,7 @@
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s ease-out;
+  cursor: pointer;
 }
 
 .dropdown-menu.show {
@@ -79,7 +79,6 @@
 
 @media (max-width: 675px) {
   .hamburger-menu {
-    cursor: pointer;
     max-height: var(--small-icon-height);
     max-width: var(--small-icon-height);
   }

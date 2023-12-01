@@ -264,7 +264,7 @@ function availableSpace() {
   return numberOfCards;
 }
 
-function displayPets(filter) {
+export function displayPets(filter) {
   clearListOfPets();
 
   let listOfPetsSection = document.getElementById("list-of-pets");

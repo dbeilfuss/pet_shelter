@@ -21,7 +21,7 @@ let petsList = [
     imageURL:
       "https://savehomelessanimals.org/wp-content/uploads/Home-Adopt-a-Dog-image-1024x1024.jpg.webp",
     Name: "Domino",
-    Breed: "Pit Bull Terrier",
+    Breed: "Terrier Mix",
     MaleFemale: "Male",
     Age: 2,
     Weight: 35,
