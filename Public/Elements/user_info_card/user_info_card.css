@@ -56,3 +56,20 @@
   align-content: center;
   width: 100%;
 }
+
+@media (max-width: 650px) {
+  .user-card {
+    width: 50px;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .user-photo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .user-name {
+    font-size: 0.8em;
+  }
+}
