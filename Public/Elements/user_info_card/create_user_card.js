@@ -16,29 +16,6 @@ export function createUserCard(imageURL, name, userType) {
   return userCard;
 }
 
-export function createNewUserCard(userType) {
-  const newUserCard = `
-<form id="new-${userType}-user-form">
-  <article class="user-card" class="${userType}-user-card">
-    <header class="${userType}-user-header">
-      <input
-        type="text"
-        name="name"
-        value=""
-        placeholder="User Name"
-        class="user-name-input"
-      />
-    </header>
-    <div class="card-button-section">
-      <input type="submit" name="save" value="Save" class="save-button" />
-      <input type="submit" name="delete" value="Delete" class="delete-button" />
-    </div>
-  </article>
-</form>
-`;
-  return newUserCard;
-}
-
 function clearListOfUsers() {
   const listOfAdminsSection = document.getElementById("admin-section");
   const listOfStandardUsersSection = document.getElementById("admin-section");
@@ -49,9 +26,6 @@ function clearListOfUsers() {
 function displayUsers() {
   const adminList = getAdminUsers();
   const standardUserList = getStandardUsers();
-
-  console.log(adminList, standardUserList);
-
   clearListOfUsers();
 
   // create user cards

@@ -15,6 +15,10 @@
   opacity: 100%;
 }
 
+.selected {
+  outline: 4px solid green;
+}
+
 .user-name {
   color: var(--primary-color);
   font-family: var(--user-name-font);
