@@ -4,7 +4,7 @@
   border-radius: var(--border-radius);
   padding: var(--white-space);
   margin: var(--white-space);
-  width: 200px;
+  width: 100px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
   opacity: 98%;
@@ -15,22 +15,17 @@
   opacity: 100%;
 }
 
-.user-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .user-name {
   color: var(--primary-color);
-  font-family: var(--pet-name-font);
+  font-family: var(--user-name-font);
   font-size: 1.75em;
   margin: 0;
+  text-align: center;
 }
 
 .user-photo {
   width: 100%;
-  height: 175px;
+  aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
   border-radius: var(--border-radius);
@@ -47,13 +42,13 @@
 
 /****** List of Users Section on Web Page ******/
 
-#list-of-admins,
-#list-of-users {
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
+#admin-section,
+#standard-users-section {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
 }

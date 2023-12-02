@@ -1,16 +1,20 @@
 .narrow-contents {
-  top: var(--header-height);
   position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  margin: auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: stretch;
   align-content: stretch;
+  max-width: 1500px;
+  width: 100%;
 }
 
 #celebration-section {
-  width: 75%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -19,7 +23,8 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-#celebration-image-container {
+#celebration-image-container,
+.celebration-text {
   width: 50%;
   height: auto;
 }

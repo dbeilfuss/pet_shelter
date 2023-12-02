@@ -112,36 +112,47 @@ export function getSamplePets(numberOfPets) {
 let usersList = [
   {
     Name: "Nitin",
-    UserType: "Admin",
+    UserType: "admin",
     FavoritePets: [""],
   },
   {
     Name: "Dan",
-    UserType: "Admin",
+    UserType: "admin",
     FavoritePets: [""],
   },
   {
     Name: "Ginger",
-    UserType: "Admin",
+    UserType: "admin",
     FavoritePets: [""],
   },
   {
     Name: "Noah",
-    UserType: "User",
+    UserType: "standard",
     FavoritePets: [""],
   },
   {
     Name: "Micah",
-    UserType: "User",
+    UserType: "standard",
     FavoritePets: [""],
   },
   {
     Name: "Becca",
-    UserType: "User",
+    UserType: "standard",
     FavoritePets: [""],
   },
 ];
 
 export function getAllUsers() {
   return usersList;
+}
+
+export function getAdminUsers() {
+  const adminUsers = usersList.filter((user) => user.UserType === "admin");
+  return adminUsers;
+}
+export function getStandardUsers() {
+  const standardUsers = usersList.filter(
+    (user) => user.UserType === "standard"
+  );
+  return standardUsers;
 }
