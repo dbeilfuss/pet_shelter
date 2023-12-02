@@ -4,7 +4,7 @@
   border-radius: var(--border-radius);
   padding: var(--white-space);
   margin: var(--white-space);
-  width: 100px;
+  width: 75px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
   opacity: 98%;
@@ -22,7 +22,7 @@
 .user-name {
   color: var(--primary-color);
   font-family: var(--user-name-font);
-  font-size: 1.75em;
+  font-size: 1.4em;
   margin: 0;
   text-align: center;
 }
@@ -33,8 +33,8 @@
   object-fit: cover;
   object-position: center;
   border-radius: var(--border-radius);
-  margin-top: var(--white-space);
-  margin-bottom: var(--white-space);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .user-form-details {
