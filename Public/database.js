@@ -142,7 +142,7 @@ let usersList = [
   },
 ];
 
-let currentlyLoggedIn = "Dan";
+let currentUser = "Becca";
 
 export function getAllUsers() {
   return usersList;
@@ -152,6 +152,7 @@ export function getAdminUsers() {
   const adminUsers = usersList.filter((user) => user.UserType === "admin");
   return adminUsers;
 }
+
 export function getStandardUsers() {
   const standardUsers = usersList.filter(
     (user) => user.UserType === "standard"
@@ -160,12 +161,17 @@ export function getStandardUsers() {
 }
 
 export function recordLoginToDatabase(userName) {
-  currentlyLoggedIn = userName;
+  currentUser = userName;
+  console.log(currentUser);
 }
 
-export function isLoggedInAsAdmin() {
-  const thisUser = usersList.find((user) => user.Name === currentlyLoggedIn);
+export function isAdmin() {
+  const thisUser = usersList.find((user) => user.Name === currentUser);
   const isAdmin = thisUser.UserType === "admin";
   console.log(`is admin: ${isAdmin}`);
   return isAdmin;
+}
+
+export function getCurrentUser() {
+  return currentUser;
 }

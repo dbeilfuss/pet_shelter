@@ -1,3 +1,5 @@
+import { isAdmin } from "../../database.js";
+
 const mainHeader = `
 <div class="identity-container">
   <a href="index.html" title="Admin Settings" class="nav-icon-link">
@@ -53,15 +55,12 @@ function getHeaderHTML(includeAdminLink) {
 }
 
 function displayHeader() {
-  let isAdmin = checkIfAdmin();
-  let headerHTML = getHeaderHTML(isAdmin);
+  let userIsAdmin = isAdmin();
+  let headerHTML = getHeaderHTML(userIsAdmin);
 
   const headerSection = document.querySelector(".main-header");
   headerSection.innerHTML = headerHTML;
 }
-
-/* TODO write code to check if the currently logged in user is an admin */
-const checkIfAdmin = () => true;
 
 // Initial Load of Screen
 document.addEventListener("DOMContentLoaded", () => {
