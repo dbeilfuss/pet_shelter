@@ -144,7 +144,7 @@ let usersList = [
   },
 ];
 
-let currentUser = "Becca";
+let currentUser = "Dan";
 
 function getAllUsers() {
   return usersList;
