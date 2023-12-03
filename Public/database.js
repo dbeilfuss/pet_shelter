@@ -1,5 +1,5 @@
 // const baseURL = `http://localhost:8000/api`;
-const baseURL = "http://3.17.157.157:8000/api/seedDatabase";
+const baseURL = "http://3.17.157.157:8000/api";
 // const baseURL = `:8000/api`;
 
 let petsList = [
