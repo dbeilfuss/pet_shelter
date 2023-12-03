@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 let petsList = [
   {
     imageURL:
@@ -100,6 +102,8 @@ let petsList = [
   },
 ];
 
+const baseURL = `http://localhost:8000/api`;
+
 export function getAllPets() {
   return petsList;
 }
@@ -142,7 +146,7 @@ let usersList = [
   },
 ];
 
-let currentUser = "Becca";
+let currentUser = "Dan";
 
 export function getAllUsers() {
   return usersList;
@@ -174,4 +178,18 @@ export function isAdmin() {
 
 export function getCurrentUser() {
   return currentUser;
+}
+
+export function seedDatabase() {
+  const requestURL = `${baseURL}/seedDatabase`;
+
+  axios
+    .post(requestURL)
+    .then((res) => {
+      return true;
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
 }

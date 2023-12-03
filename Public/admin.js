@@ -4,8 +4,10 @@ import {
   displayAddPetCard,
 } from "/Elements/pet_info_card/create_pet_card.js";
 
+import { seedDatabase } from "/database.js";
+
 // Database Reset
-export function confirmDatabaseReset() {
+function confirmDatabaseReset() {
   var confirmMessage =
     "Are you sure you want to do this? This will run the seed file - which will remove any changes you have made and reset the database to its default state.  This CANNOT BE UNDONE!";
   if (confirm(confirmMessage)) {
@@ -18,7 +20,12 @@ export function confirmDatabaseReset() {
 function resetDatabase() {
   if (confirmDatabaseReset()) {
     console.log("Resetting Database");
-    // TODO Run Seed File
+    if (seedDatabase()) {
+      location.reload();
+    } else {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Ressetting Database";
+    }
   } else {
     location.reload();
   }
