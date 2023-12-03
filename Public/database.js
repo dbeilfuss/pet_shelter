@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 let petsList = [
   {
     imageURL:
@@ -104,11 +102,11 @@ let petsList = [
 
 const baseURL = `http://localhost:8000/api`;
 
-export function getAllPets() {
+function getAllPets() {
   return petsList;
 }
 
-export function getSamplePets(numberOfPets) {
+function getSamplePets(numberOfPets) {
   const shuffledPets = petsList.sort(() => 0.5 - Math.random());
   return shuffledPets.slice(0, numberOfPets);
 }
@@ -146,41 +144,41 @@ let usersList = [
   },
 ];
 
-let currentUser = "Dan";
+let currentUser = "Becca";
 
-export function getAllUsers() {
+function getAllUsers() {
   return usersList;
 }
 
-export function getAdminUsers() {
+function getAdminUsers() {
   const adminUsers = usersList.filter((user) => user.UserType === "admin");
   return adminUsers;
 }
 
-export function getStandardUsers() {
+function getStandardUsers() {
   const standardUsers = usersList.filter(
     (user) => user.UserType === "standard"
   );
   return standardUsers;
 }
 
-export function recordLoginToDatabase(userName) {
+function recordLoginToDatabase(userName) {
   currentUser = userName;
   console.log(currentUser);
 }
 
-export function isAdmin() {
+function isAdmin() {
   const thisUser = usersList.find((user) => user.Name === currentUser);
   const isAdmin = thisUser.UserType === "admin";
   console.log(`is admin: ${isAdmin}`);
   return isAdmin;
 }
 
-export function getCurrentUser() {
+function getCurrentUser() {
   return currentUser;
 }
 
-export function seedDatabase() {
+function seedDatabase() {
   const requestURL = `${baseURL}/seedDatabase`;
 
   axios

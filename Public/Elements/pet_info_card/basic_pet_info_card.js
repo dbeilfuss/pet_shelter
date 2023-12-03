@@ -1,4 +1,4 @@
-export function makeHeartsClickable() {
+function makeHeartsClickable() {
   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
@@ -13,7 +13,7 @@ function reserveButtonClicked() {
   console.log("Reserve button");
 }
 
-export function makeButtonsClickable() {
+function makeButtonsClickable() {
   const reserveButtons = document.querySelectorAll(".reserve-button");
   reserveButtons.forEach((button) => {
     button.addEventListener("click", () => reserveButtonClicked());

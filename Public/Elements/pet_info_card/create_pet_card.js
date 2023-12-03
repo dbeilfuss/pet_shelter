@@ -1,11 +1,11 @@
-import { getAllPets, getSamplePets } from "/database.js";
+// import { getAllPets, getSamplePets } from "/database.js";
 
-import {
-  makeHeartsClickable,
-  makeButtonsClickable,
-} from "/Elements/pet_info_card/advanced_pet_info_card.js";
+// import {
+//   makeHeartsClickable,
+//   makeButtonsClickable,
+// } from "/Elements/pet_info_card/advanced_pet_info_card.js";
 
-export function createPetCard(
+function createPetCard(
   imageURL,
   name,
   breed,
@@ -115,7 +115,7 @@ export function createPetCard(
   return petCard;
 }
 
-export function createNewPetCard() {
+function createNewPetCard() {
   const newPetCard = `
 <form id="editPetForm" class="edit-pet-form">
   <article class="pet-card">
@@ -181,7 +181,7 @@ export function createNewPetCard() {
   return newPetCard;
 }
 
-export function createEditablePetCard() {
+function createEditablePetCard() {
   const editablePetCard = `
 <form id="editPetForm" class="edit-pet-form">
   <article class="pet-card">
@@ -247,7 +247,7 @@ export function createEditablePetCard() {
   return editablePetCard;
 }
 
-export function clearListOfPets() {
+function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   if (listOfPets) {
     listOfPets.innerHTML = "";
@@ -264,7 +264,7 @@ function availableSpace() {
   return numberOfCards;
 }
 
-export function displayPets(filter) {
+function displayPets(filter) {
   clearListOfPets();
 
   let listOfPetsSection = document.getElementById("list-of-pets");
@@ -301,7 +301,7 @@ export function displayPets(filter) {
   makeButtonsClickable();
 }
 
-export function displayAddPetCard() {
+function displayAddPetCard() {
   const listOfPets = document.getElementById("list-of-pets");
   const newPetCard = createNewPetCard();
   listOfPets.innerHTML = newPetCard;

@@ -1,8 +1,8 @@
-import { getAdminUsers, getStandardUsers, getCurrentUser } from "/database.js";
+// import { getAdminUsers, getStandardUsers, getCurrentUser } from "/database.js";
 
-const currentUser = getCurrentUser();
+// const currentUser = getCurrentUser();
 
-export function createUserCard(imageURL, name, userType) {
+function createUserCard(imageURL, name, userType) {
   let userCard = `<article class="user-card ${userType}-user-card `;
 
   if (name === currentUser) {

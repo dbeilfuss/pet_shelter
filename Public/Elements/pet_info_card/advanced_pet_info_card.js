@@ -1,6 +1,6 @@
-import { createEditablePetCard, clearListOfPets } from "./create_pet_card.js";
+// import { createEditablePetCard, clearListOfPets } from "./create_pet_card.js";
 
-export function makeHeartsClickable() {
+function makeHeartsClickable() {
   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
@@ -48,7 +48,7 @@ function returnedToShelterButtonClicked() {
   console.log("Returned to Shelter button");
 }
 
-export function makeButtonsClickable() {
+function makeButtonsClickable() {
   const editButtons = document.querySelectorAll(".edit-button");
   editButtons.forEach((button) => {
     button.addEventListener("click", () => editButtonClicked());

@@ -1,13 +1,13 @@
-import { getAllPets } from "/database.js";
+// import { getAllPets } from "/database.js";
 
-import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
+// import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
 
-import {
-  makeHeartsClickable,
-  makeButtonsClickable,
-} from "/Elements/pet_info_card/basic_pet_info_card.js";
+// import {
+//   makeHeartsClickable,
+//   makeButtonsClickable,
+// } from "/Elements/pet_info_card/basic_pet_info_card.js";
 
-export function clearListOfPets() {
+function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   listOfPets.innerHTML = "";
 }

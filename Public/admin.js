@@ -1,10 +1,10 @@
-import {
-  clearListOfPets,
-  displayPets,
-  displayAddPetCard,
-} from "/Elements/pet_info_card/create_pet_card.js";
+// import {
+//   clearListOfPets,
+//   displayPets,
+//   displayAddPetCard,
+// } from "/Elements/pet_info_card/create_pet_card.js";
 
-import { seedDatabase } from "/database.js";
+// import { seedDatabase } from "/database.js";
 
 // Database Reset
 function confirmDatabaseReset() {

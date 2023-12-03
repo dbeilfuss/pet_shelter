@@ -1,4 +1,4 @@
-import { isAdmin } from "../../database.js";
+// import { isAdmin } from "../../database.js";
 
 const mainHeader = `
 <div class="identity-container">

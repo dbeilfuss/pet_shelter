@@ -1,9 +1,9 @@
-import { getAllPets } from "/database.js";
-import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
-import {
-  makeHeartsClickable,
-  makeButtonsClickable,
-} from "/Elements/pet_info_card/basic_pet_info_card.js";
+// import { getAllPets } from "/database.js";
+// import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
+// import {
+//   makeHeartsClickable,
+//   makeButtonsClickable,
+// } from "/Elements/pet_info_card/basic_pet_info_card.js";
 
 // Scrolling Images & Text
 let i = 0; // images index

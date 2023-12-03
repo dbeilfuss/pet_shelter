@@ -1,4 +1,4 @@
-import { recordLoginToDatabase } from "/database.js";
+// import { recordLoginToDatabase } from "/database.js";
 
 function loginUser(card) {
   card.classList.add("selected");
