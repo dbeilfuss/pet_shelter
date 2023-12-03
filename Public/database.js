@@ -1,3 +1,6 @@
+// const baseURL = `http://localhost:8000/api`;
+const baseURL = `./api`;
+
 let petsList = [
   {
     imageURL:
@@ -99,8 +102,6 @@ let petsList = [
     Weight: 3,
   },
 ];
-
-const baseURL = `http://localhost:8000/api`;
 
 function getAllPets() {
   return petsList;
