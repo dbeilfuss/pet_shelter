@@ -1,5 +1,5 @@
 // const baseURL = `http://localhost:8000/api`;
-const baseURL = `./api`;
+const baseURL = `/api`;
 
 let petsList = [
   {
