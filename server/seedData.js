@@ -36,7 +36,10 @@ module.exports = {
             ('Cutie', 'Shepher Mix', 'Male', 7, 20, 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64838608/1/?bust=1685810642&width=720'),
             ('Piggie', 'Bulldog', 'Female', 3, 27, 'https://www.laanimalservices.com/sites/default/files/styles/hero_image_mobile/public/2022-08/09_Outdoor_2398.jpg.webp?itok=Ayffpim4'),
             ('Sierra', 'Hound Mix', 'Male', 4, 45, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ61zb1XkG6P6dIXYp_D7UxTO_mYZbBB9I5zq7Yi40pt77d49FGwXmagWoxl6-pTNuoaAg&usqp=CAU'),
-            ('Monty', 'Bernese Mix', 'Male', 4, 55, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oregonhumane.org%2F&psig=AOvVaw2GP8ZgXWT7pReI8QeNz3JD&ust=1701729246207000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjtycup9IIDFQAAAAAdAAAAABAq');
+            ('Monty', 'Bernese Mix', 'Male', 4, 55, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oregonhumane.org%2F&psig=AOvVaw2GP8ZgXWT7pReI8QeNz3JD&ust=1701729246207000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjtycup9IIDFQAAAAAdAAAAABAq'),
+            ('Scruffy', 'Terrier Mix', 'Female', 2, 21, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shelteranimalscount.org%2Fjuly-is-national-lost-pet-prevention-month&psig=AOvVaw2GP8ZgXWT7pReI8QeNz3JD&ust=1701729246207000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjtycup9IIDFQAAAAAdAAAAABBD'),
+            ('Rocky', 'German Shepherd Mix', 'Female', 0, 17, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fdog-shelter&psig=AOvVaw2GP8ZgXWT7pReI8QeNz3JD&ust=1701729246207000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjtycup9IIDFQAAAAAdAAAAABBL');
+            
             
 
       
