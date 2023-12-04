@@ -34,7 +34,10 @@ module.exports = {
             ('Pirate', 'Tabby Cat', 'Male', 0, 3, 'https://static.wixstatic.com/media/207720_3b6275b554ba4148a1983f29fd97becb~mv2.jpg/v1/fill/w_284,h_292,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Picture1.jpg'),
             ('Wolfer', 'Alaskan Malamut', 'Female', 2, 50, 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/61919290/2/?bust=1680284854&width=720'),
             ('Cutie', 'Shepher Mix', 'Male', 7, 20, 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64838608/1/?bust=1685810642&width=720'),
-            ('Piggie', 'Bulldog', 'Female', 3, 27, 'https://www.laanimalservices.com/sites/default/files/styles/hero_image_mobile/public/2022-08/09_Outdoor_2398.jpg.webp?itok=Ayffpim4');
+            ('Piggie', 'Bulldog', 'Female', 3, 27, 'https://www.laanimalservices.com/sites/default/files/styles/hero_image_mobile/public/2022-08/09_Outdoor_2398.jpg.webp?itok=Ayffpim4'),
+            ('Sierra', 'Hound Mix', 'Male', 4, 45, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ61zb1XkG6P6dIXYp_D7UxTO_mYZbBB9I5zq7Yi40pt77d49FGwXmagWoxl6-pTNuoaAg&usqp=CAU'),
+            ('Monty', 'Bernese Mix', 'Male', 4, 55, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.oregonhumane.org%2F&psig=AOvVaw2GP8ZgXWT7pReI8QeNz3JD&ust=1701729246207000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNjtycup9IIDFQAAAAAdAAAAABAq');
+            
 
       
        CREATE TABLE

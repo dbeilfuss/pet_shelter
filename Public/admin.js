@@ -1,11 +1,3 @@
-// import {
-//   clearListOfPets,
-//   displayPets,
-//   displayAddPetCard,
-// } from "/Elements/pet_info_card/create_pet_card.js";
-
-// import { seedDatabase } from "/database.js";
-
 // Database Reset
 function confirmDatabaseReset() {
   var confirmMessage =
@@ -20,14 +12,7 @@ function confirmDatabaseReset() {
 function resetDatabase() {
   if (confirmDatabaseReset()) {
     console.log("Resetting Database");
-    if (seedDatabase()) {
-      location.reload();
-    } else {
-      const messageSection = document.querySelector(".selected-item");
-      messageSection.innerHTML = "Error Ressetting Database";
-    }
-  } else {
-    location.reload();
+    seedDatabase();
   }
 }
 

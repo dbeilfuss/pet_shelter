@@ -185,8 +185,12 @@ function seedDatabase() {
 
   axios
     .post(requestURL)
-    .then((res) => {})
+    .then((res) => {
+      location.reload();
+    })
     .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Ressetting Database";
       console.log(err);
     });
 }
