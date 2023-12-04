@@ -87,7 +87,8 @@
     flex-direction: column;
   }
 
-  #celebration-image-container {
+  #celebration-image-container,
+  .celebration-text {
     max-width: 100%;
     width: 100%;
   }

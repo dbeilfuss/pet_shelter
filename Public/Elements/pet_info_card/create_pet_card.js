@@ -21,10 +21,16 @@ function createPetCard(
       `;
   if (cardType === "basic" || cardType === "reservable") {
     petCard += `
-        <button class="favorite-button" aria-label="Favorite ${name}">
-        <span class="heart">❤</span>
-        </button>
+      <button class="favorite-button" aria-label="Favorite ${name}">
+        <span class="heart"></span>
+      </button>
+
 `;
+    // petCard += `
+    // <button class="favorite-button" aria-label="Favorite ${name}">
+    // <span class="heart">❤</span>
+    // </button>
+    // `;
   }
   petCard += `
   </header>
@@ -86,6 +92,7 @@ function createPetCard(
             value="Cancel Reservation"
             class="cancel-reservation-button"
             />
+            <p class="pet-info">Reserved by Nitin Misra</p>
           </div>
         </article>`;
       break;
@@ -105,6 +112,8 @@ function createPetCard(
             class="delete-button"
             />
           </div>
+          <p class="pet-info">Adopted by Noah</p>
+
         </article>`;
       break;
 

@@ -69,12 +69,51 @@
 }
 
 .heart {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  transform: scale(0.75); /* Adjust size as needed */
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  top: 0.15em;
+  left: -0.02em;
+  width: 0.5em;
+  height: 0.8em;
+  background: gray;
+  border-radius: 0.25em 0.25em 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  content: "";
+  position: absolute;
+  top: 0.05em;
+  left: 0.22em; /* Adjust this if necessary */
+  width: 0.5em;
+  height: 0.8em;
+  background: gray;
+  border-radius: 0.25em 0.25em 0 0;
+  transform: rotate(45deg);
+  transform-origin: 0 0; /* Adjust if needed to ensure proper rotation */
+}
+
+.heart.favorited::before,
+.heart.favorited::after {
+  background: red;
+}
+
+/* .heart {
   color: gray;
 }
 
 .heart.favorited {
   color: red;
-}
+} */
 
 /****** Buttons ******/
 input {
