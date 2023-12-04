@@ -8,7 +8,6 @@ const { seedData } = require("./seedData.js");
 
 function seedFromFile(req, res) {
   console.log("Seeding DB");
-  console.log(seedData());
 
   sequelize
     .query(seedData())

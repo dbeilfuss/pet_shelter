@@ -1,6 +1,6 @@
 // const baseURL = `http://localhost:8000/api`;
-const baseURL = "http://3.17.157.157:8000/api";
-// const baseURL = `:8000/api`;
+// const baseURL = "http://3.17.157.157:8000/api";
+const baseURL = `./api`;
 
 let petsList = [
   {
@@ -185,11 +185,8 @@ function seedDatabase() {
 
   axios
     .post(requestURL)
-    .then((res) => {
-      return true;
-    })
+    .then((res) => {})
     .catch((err) => {
       console.log(err);
-      return false;
     });
 }

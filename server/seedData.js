@@ -31,7 +31,10 @@ module.exports = {
             ('Lucy', 'Beagle Mix', 'Female', 2, 25, 'https://static.wixstatic.com/media/f75568_709d46acdd664ed59b4ef66110d3260d~mv2.jpg/v1/fill/w_560,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f75568_709d46acdd664ed59b4ef66110d3260d~mv2.jpg'),
             ('Spot', 'Terrier Mix', 'Male', 0, 7, 'https://www.wkrg.com/wp-content/uploads/sites/49/2023/07/Shelter1.jpg?w=1440&h=2048&crop=1'),
             ('Charlie', 'Jack Russell Terrier', 'Male', 0, 4, 'https://humanebroward.com/wp-content/uploads/2021/09/Mask-Group-19-1.png'),
-            ('Pirate', 'Tabby Cat', 'Male', 0, 3, 'https://static.wixstatic.com/media/207720_3b6275b554ba4148a1983f29fd97becb~mv2.jpg/v1/fill/w_284,h_292,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Picture1.jpg');
+            ('Pirate', 'Tabby Cat', 'Male', 0, 3, 'https://static.wixstatic.com/media/207720_3b6275b554ba4148a1983f29fd97becb~mv2.jpg/v1/fill/w_284,h_292,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Picture1.jpg'),
+            ('Wolfer', 'Alaskan Malamut', 'Female', 2, 50, 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/61919290/2/?bust=1680284854&width=720'),
+            ('Cutie', 'Shepher Mix', 'Male', 7, 20, 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64838608/1/?bust=1685810642&width=720'),
+            ('Piggie', 'Bulldog', 'Female', 3, 27, 'https://www.laanimalservices.com/sites/default/files/styles/hero_image_mobile/public/2022-08/09_Outdoor_2398.jpg.webp?itok=Ayffpim4');
 
       
        CREATE TABLE
@@ -57,6 +60,13 @@ module.exports = {
             user_id integer references Users (id),
             pets_id integer references Pets (id)
           );
+
+          INSERT INTO User_Pets_Favorites (user_id, pets_id)
+          VALUES 
+            (6, 12),
+            (6, 13),
+            (6, 14);
+
         `;
     return seedData;
   },
