@@ -34,12 +34,7 @@ function sortByNumberProperty(arr, property) {
 }
 
 function sortPets(sortBy) {
-  console.log(sortBy);
-
   clearListOfPets();
-
-  // create and sort list of pets
-  let allPetsList = getAllPets();
 
   if (sortBy === "Name" || sortBy === "Breed" || sortBy === "MaleFemale") {
     getAllPets((petsList) => sortByStringProperty(petsList, sortBy));

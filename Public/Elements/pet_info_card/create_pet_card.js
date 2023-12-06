@@ -114,6 +114,7 @@ function createPetCard(
 
     default:
       petCard = "<p>Error Loading Pets</p>";
+      console.log("error thrown here");
   }
 
   return petCard;
