@@ -8,10 +8,15 @@ app.use(express.static("Public"));
 
 /// Imports ///
 
-const { seedDatabase, getAllPets } = require("./server/server_controller.js");
+const {
+  seedDatabase,
+  getAllPets,
+  getFilteredPets,
+} = require("./server/server_controller.js");
 
 /// End Points ///
-app.get("/api/allPets", getAllPets);
+app.get("/api/getAllPets", getAllPets);
+app.get("/api/getFilteredPets", getFilteredPets);
 app.post("/api/seedDatabase", seedDatabase);
 
 /// Run Server ///

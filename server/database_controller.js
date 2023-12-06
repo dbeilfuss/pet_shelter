@@ -13,25 +13,21 @@ const sequelize = new Sequelize(SUPABASE_URI, {
 
 const { seedData } = require("./seedData.js");
 
-function dbGetAllPets(req, res) {
-  console.log("Getting all Pets");
-
-  const request = "SELECT * FROM Pets";
-
+function getData(req, res) {
   sequelize
-    .query(request)
+    .query(req)
     .then((dbResponse) => {
-      // console.log("Pets Received, " + dbResponse[0]);
+      // console.log(dbResponse[0]);
       res.status(200).send(dbResponse[0]);
     })
     .catch((err) => {
-      const errorMessage = `Error Getting Pets, ${err}`;
+      const errorMessage = `Error Getting Data - Request: ${req}, Error: ${err}`;
       console.log(errorMessage);
       res.status(500).send(errorMessage);
     });
 }
 
-function seedFromFile(req, res) {
+function dbSeedDatabase(req, res) {
   console.log("Seeding DB");
 
   sequelize
@@ -44,6 +40,6 @@ function seedFromFile(req, res) {
 }
 
 module.exports = {
-  seedFromFile,
-  dbGetAllPets,
+  dbSeedDatabase,
+  getData,
 };

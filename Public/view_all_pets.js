@@ -37,9 +37,13 @@ function sortPets(sortBy) {
   clearListOfPets();
 
   if (sortBy === "Name" || sortBy === "Breed" || sortBy === "MaleFemale") {
-    getAllPets((petsList) => sortByStringProperty(petsList, sortBy));
+    getFilteredPets("Available", (petsList) =>
+      sortByStringProperty(petsList, sortBy)
+    );
   } else if (sortBy === "Age" || sortBy === "Weight") {
-    getAllPets((petsList) => sortByNumberProperty(petsList, sortBy));
+    getFilteredPets("Available", (petsList) =>
+      sortByNumberProperty(petsList, sortBy)
+    );
   }
 }
 

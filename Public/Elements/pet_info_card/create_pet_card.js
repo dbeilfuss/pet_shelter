@@ -7,6 +7,7 @@ function createPetCard(
   maleFemale,
   age,
   weight,
+  human,
   cardType
 ) {
   let petCard = `
@@ -87,7 +88,7 @@ function createPetCard(
             value="Cancel Reservation"
             class="cancel-reservation-button"
             />
-            <p class="pet-info">Reserved by Nitin Misra</p>
+            <p class="pet-info">Reserved by ${human}</p>
           </div>
         </article>`;
       break;
@@ -107,7 +108,7 @@ function createPetCard(
             class="delete-button"
             />
           </div>
-          <p class="pet-info">Adopted by Noah</p>
+          <p class="pet-info">Adopted by ${human}</p>
 
         </article>`;
       break;
@@ -288,6 +289,7 @@ function displayPetsCallback(petsList, isShortSection, filter) {
       pet.sex,
       pet.age,
       pet.weight,
+      pet.adopted_by,
       filter
     );
     petCards += card;
@@ -309,7 +311,7 @@ function displayPets(filter) {
     const numberOfCards = availableSpace();
     getSamplePets(numberOfCards);
   } else {
-    getAllPets((petsList) => {
+    getFilteredPets("Available", (petsList) => {
       displayPetsCallback(petsList, false, filter);
     });
   }

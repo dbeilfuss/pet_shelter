@@ -105,8 +105,7 @@ let petsList = [
 ];
 
 function getAllPets(callback) {
-  // return petsList;
-  const requestURL = `${baseURL}/allPets`;
+  const requestURL = `${baseURL}/getAllPets`;
   console.log(requestURL);
 
   axios
@@ -118,6 +117,23 @@ function getAllPets(callback) {
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Loading Pets";
+      console.log(err);
+    });
+}
+
+function getFilteredPets(filter, callback) {
+  const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;
+  console.log(requestURL);
+
+  axios
+    .get(requestURL)
+    .then((res) => {
+      console.log(res.data);
+      callback(res.data);
+    })
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Loading Filtered Pets";
       console.log(err);
     });
 }

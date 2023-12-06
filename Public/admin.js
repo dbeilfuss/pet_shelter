@@ -23,7 +23,9 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
 
   if (event.target.tagName === "A") {
     if (selectedClassList.contains("lookup-pets")) {
-      displayPets(selectedText);
+      getFilteredPets(selectedText, (petsList) => {
+        displayPetsCallback(petsList, false, selectedText);
+      });
     } else if (selectedClassList.contains("command")) {
       if (selectedText === "+ Add") {
         console.log("command confirmed");
