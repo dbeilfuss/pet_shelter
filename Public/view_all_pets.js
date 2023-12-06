@@ -1,25 +1,36 @@
-// import { getAllPets } from "/database.js";
-
-// import { createPetCard } from "/Elements/pet_info_card/create_pet_card.js";
-
-// import {
-//   makeHeartsClickable,
-//   makeButtonsClickable,
-// } from "/Elements/pet_info_card/basic_pet_info_card.js";
-
 function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   listOfPets.innerHTML = "";
 }
 
 function sortByStringProperty(arr, property) {
-  console.log(`sorting by String: ${property}`);
-  return arr.slice().sort((a, b) => a[property].localeCompare(b[property]));
+  const dbKey = {
+    Name: "name",
+    Breed: "breed",
+    MaleFemale: "sex",
+  };
+  const dbProperty = dbKey[property];
+  console.log(dbProperty);
+  console.log(`sorting by String: ${dbProperty}`);
+  const sortedPetCards = arr
+    .slice()
+    .sort((a, b) => a[dbProperty].localeCompare(b[dbProperty]));
+
+  displayPetsCallback(sortedPetCards, false, "reservable");
 }
 
 function sortByNumberProperty(arr, property) {
-  console.log(`sorting by number: ${property}`);
-  return arr.slice().sort((a, b) => a[property] - b[property]);
+  const dbKey = {
+    Age: "age",
+    Weight: "weight",
+  };
+  const dbProperty = dbKey[property];
+  console.log(`sorting by number: ${dbProperty}`);
+  const sortedPetCards = arr
+    .slice()
+    .sort((a, b) => a[dbProperty] - b[dbProperty]);
+
+  displayPetsCallback(sortedPetCards, false, "reservable");
 }
 
 function sortPets(sortBy) {
@@ -31,35 +42,10 @@ function sortPets(sortBy) {
   let allPetsList = getAllPets();
 
   if (sortBy === "Name" || sortBy === "Breed" || sortBy === "MaleFemale") {
-    allPetsList = sortByStringProperty(allPetsList, sortBy);
+    getAllPets((petsList) => sortByStringProperty(petsList, sortBy));
   } else if (sortBy === "Age" || sortBy === "Weight") {
-    allPetsList = sortByNumberProperty(allPetsList, sortBy);
+    getAllPets((petsList) => sortByNumberProperty(petsList, sortBy));
   }
-
-  // create pet cards
-  let petCards = "";
-
-  for (const pet of allPetsList) {
-    let card = createPetCard(
-      pet.imageURL,
-      pet.Name,
-      pet.Breed,
-      pet.MaleFemale,
-      pet.Age,
-      pet.Weight,
-      "reservable"
-    );
-    petCards += card;
-  }
-
-  // add pet cards to DOM
-  const petsSection = document.getElementById("list-of-pets");
-
-  petsSection.innerHTML = petCards;
-
-  // add event listeners
-  makeHeartsClickable();
-  makeButtonsClickable();
 }
 
 // Event handler for dropdown menu items

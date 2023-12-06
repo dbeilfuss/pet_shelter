@@ -104,8 +104,22 @@ let petsList = [
   },
 ];
 
-function getAllPets() {
-  return petsList;
+function getAllPets(callback) {
+  // return petsList;
+  const requestURL = `${baseURL}/allPets`;
+  console.log(requestURL);
+
+  axios
+    .get(requestURL)
+    .then((res) => {
+      console.log(res.data);
+      callback(res.data);
+    })
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Loading Pets";
+      console.log(err);
+    });
 }
 
 function getSamplePets(numberOfPets) {

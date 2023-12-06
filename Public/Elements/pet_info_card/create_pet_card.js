@@ -1,11 +1,6 @@
-// import { getAllPets, getSamplePets } from "/database.js";
-
-// import {
-//   makeHeartsClickable,
-//   makeButtonsClickable,
-// } from "/Elements/pet_info_card/advanced_pet_info_card.js";
-
+// Card Templates //
 function createPetCard(
+  petID,
   imageURL,
   name,
   breed,
@@ -15,7 +10,7 @@ function createPetCard(
   cardType
 ) {
   let petCard = `
-  <article class="pet-card">
+  <article class="pet-card petID-${petID}">
   <header class="pet-header">
       <h2 class="pet-name">${name}</h2>
       `;
@@ -273,17 +268,8 @@ function availableSpace() {
   return numberOfCards;
 }
 
-function displayPets(filter) {
-  clearListOfPets();
-
+function displayPetsCallback(petsList, isShortSection, filter) {
   let listOfPetsSection = document.getElementById("list-of-pets");
-  const isShortSection = listOfPetsSection.classList.contains("short");
-
-  // adjust variables for a short section
-  let petsList = isShortSection
-    ? getSamplePets(availableSpace())
-    : getAllPets();
-  console.log(petsList);
 
   if (isShortSection) {
     filter = "basic";
@@ -294,12 +280,13 @@ function displayPets(filter) {
 
   for (const pet of petsList) {
     let card = createPetCard(
-      pet.imageURL,
-      pet.Name,
-      pet.Breed,
-      pet.MaleFemale,
-      pet.Age,
-      pet.Weight,
+      pet.id,
+      pet.image_url,
+      pet.name,
+      pet.breed,
+      pet.sex,
+      pet.age,
+      pet.weight,
       filter
     );
     petCards += card;
@@ -310,6 +297,23 @@ function displayPets(filter) {
   makeButtonsClickable();
 }
 
+function displayPets(filter) {
+  clearListOfPets();
+
+  let listOfPetsSection = document.getElementById("list-of-pets");
+  const isShortSection = listOfPetsSection.classList.contains("short");
+
+  // adjust variables for a short section
+  if (isShortSection) {
+    const numberOfCards = availableSpace();
+    getSamplePets(numberOfCards);
+  } else {
+    getAllPets((petsList) => {
+      displayPetsCallback(petsList, false, filter);
+    });
+  }
+}
+
 function displayAddPetCard() {
   const listOfPets = document.getElementById("list-of-pets");
   const newPetCard = createNewPetCard();
@@ -318,5 +322,10 @@ function displayAddPetCard() {
 
 // Initial Load of Screen
 document.addEventListener("DOMContentLoaded", () => {
-  displayPets("Available");
+  const listOfPets = document.getElementById("list-of-pets");
+  if (listOfPets.classList.contains("admin")) {
+    displayPets("Available");
+  } else {
+    displayPets("reservable");
+  }
 });
