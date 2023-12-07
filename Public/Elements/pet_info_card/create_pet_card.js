@@ -1,4 +1,3 @@
-// Card Templates //
 function createPetCard(
   petID,
   imageURL,
@@ -11,23 +10,19 @@ function createPetCard(
   cardType
 ) {
   let petCard = `
-  <article class="pet-card petID-${petID}">
+  <article class="pet-card" data-petid="${petID}">
   <header class="pet-header">
       <h2 class="pet-name">${name}</h2>
       `;
+
   if (cardType === "basic" || cardType === "reservable") {
     petCard += `
       <button class="favorite-button" aria-label="Favorite ${name}">
         <span class="heart"></span>
       </button>
-
-`;
-    // petCard += `
-    // <button class="favorite-button" aria-label="Favorite ${name}">
-    // <span class="heart">❤</span>
-    // </button>
-    // `;
+      `;
   }
+
   petCard += `
   </header>
   <img
@@ -121,87 +116,22 @@ function createPetCard(
   return petCard;
 }
 
-function createNewPetCard() {
-  const newPetCard = `
-<form id="editPetForm" class="edit-pet-form">
-  <article class="pet-card">
-    <header class="pet-header">
-      <input
-        type="text"
-        name="name"
-        value=""
-        placeholder="Pet Name"
-        class="pet-name-input"
-      />
-    </header>
-    <img
-      src=""
-      alt=""
-      class="pet-photo"
-    />
-    <div class="pet-form-details">
-      <input
-        type="text"
-        name="imageURL"
-        value=""
-        placeholder="Image URL"
-        class="pet-image-url-input"
-      />
-      <input
-        type="text"
-        name="breed"
-        value=""
-        placeholder="Breed"
-        class="pet-breed-input"
-      />
-      <input
-        type="text"
-        name="age"
-        value=""
-        placeholder="Age in Years"
-        class="pet-age-input"
-      />
-      <input
-        type="text"
-        name="sex"
-        value=""
-        placeholder="Male / Female"
-        class="pet-sex-input"
-      />
-      <input
-        type="text"
-        name="weight"
-        value=""
-        placeholder="Weight in Lbs"
-        class="pet-weight-input"
-      />
-    </div>
-    <div class="card-button-section">
-      <input type="submit" name="save" value="Save" class="save-button" />
-      <input type="submit" name="undo" value="Undo" class="reserve-button" />
-      <input type="submit" name="delete" value="Delete" class="delete-button" />
-    </div>
-  </article>
-</form>
-`;
-  return newPetCard;
-}
-
-function createEditablePetCard() {
+function createEditablePetCard(petData) {
   const editablePetCard = `
 <form id="editPetForm" class="edit-pet-form">
   <article class="pet-card">
+    <input type="hidden" name="id" value="${petData.petID}">
     <header class="pet-header">
       <input
         type="text"
         name="name"
-        value="Bella"
+        value="${petData.name}"
         placeholder="Pet Name"
         class="pet-name-input"
       />
     </header>
     <img
-      src="https://www.hartz.com/wp-content/uploads/2022/01/volunteer-at-animal-shelter-1.jpg"
+      src="${petData.imageURL}"
       alt=""
       class="pet-photo"
     />
@@ -209,48 +139,52 @@ function createEditablePetCard() {
       <input
         type="text"
         name="imageURL"
-        value="https://www.hartz.com/wp-content/uploads/2022/01/volunteer-at-animal-shelter-1.jpg"
+        value="${petData.imageURL}"
         placeholder="Image URL"
         class="pet-image-url-input"
       />
       <input
         type="text"
         name="breed"
-        value="Mix: Pit Bull Terrier"
-        placeholder="Breed: ie Mix: Pit Bull Terrier"
+        value="${petData.breed}"
+        placeholder="Breed: i.e. German Shepher Mix"
         class="pet-breed-input"
       />
       <input
         type="text"
         name="age"
-        value="1"
+        value="${petData.age}"
         placeholder="Age in Years"
         class="pet-age-input"
       />
       <input
         type="text"
         name="sex"
-        value="Female"
+        value="${petData.maleFemale}"
         placeholder="Male / Female"
         class="pet-sex-input"
       />
       <input
         type="text"
         name="weight"
-        value="35"
+        value="${petData.weight}"
         placeholder="Weight in Lbs"
         class="pet-weight-input"
       />
     </div>
     <div class="card-button-section">
       <input type="submit" name="save" value="Save" class="save-button" />
-      <input type="submit" name="undo" value="Undo" class="reserve-button" />
+      <input type="submit" name="cancel" value="Cancel" class="cancel-button" />
       <input type="submit" name="delete" value="Delete" class="delete-button" />
     </div>
   </article>
 </form>
 `;
-  return editablePetCard;
+
+  const petsSection = document.getElementById("list-of-pets");
+  petsSection.innerHTML = editablePetCard;
+
+  makeButtonsClickable();
 }
 
 function clearListOfPets() {
@@ -315,12 +249,6 @@ function displayPets(filter) {
       displayPetsCallback(petsList, false, filter);
     });
   }
-}
-
-function displayAddPetCard() {
-  const listOfPets = document.getElementById("list-of-pets");
-  const newPetCard = createNewPetCard();
-  listOfPets.innerHTML = newPetCard;
 }
 
 // Initial Load of Screen

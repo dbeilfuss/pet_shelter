@@ -11,13 +11,28 @@ function makeHeartsClickable() {
   });
 }
 
-function editButtonClicked() {
+function editButtonClicked(event) {
+  // Identify the PetID
+  const clickedButton = event.target;
+  const articleElement = clickedButton.closest(".pet-card");
+  let petID = articleElement.dataset.petid;
+  console.log(`PetID: ${petID}`);
+
   clearListOfPets();
 
-  const listOfPets = document.getElementById("list-of-pets");
-  let petCards = createEditablePetCard();
+  getPetInfo(petID, (petInfo) => {
+    const petData = {
+      petID: petInfo[0].id,
+      imageURL: petInfo[0].image_url,
+      name: petInfo[0].name,
+      breed: petInfo[0].breed,
+      maleFemale: petInfo[0].sex,
+      age: petInfo[0].age,
+      weight: petInfo[0].weight,
+    };
 
-  listOfPets.innerHTML = petCards;
+    createEditablePetCard(petData);
+  });
 }
 
 function reserveButtonClicked() {
@@ -26,6 +41,16 @@ function reserveButtonClicked() {
 
 function saveButtonClicked() {
   console.log("Save button");
+  document
+    .getElementById("editPetForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      const petData = Object.fromEntries(formData.entries());
+
+      updatePet(petData, (response) => {});
+    });
 }
 
 function cancelButtonClicked() {
@@ -51,7 +76,7 @@ function returnedToShelterButtonClicked() {
 function makeButtonsClickable() {
   const editButtons = document.querySelectorAll(".edit-button");
   editButtons.forEach((button) => {
-    button.addEventListener("click", () => editButtonClicked());
+    button.addEventListener("click", (event) => editButtonClicked(event));
   });
 
   const reserveButtons = document.querySelectorAll(".reserve-button");

@@ -30,10 +30,20 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
       if (selectedText === "+ Add") {
         console.log("command confirmed");
         clearListOfPets();
-        displayAddPetCard();
-      } else if (selectedText === "! Reset Database") {
-        resetDatabase();
+        const petData = {
+          petID: "",
+          imageURL: "",
+          name: "",
+          breed: "",
+          maleFemale: "",
+          age: "",
+          weight: "",
+        };
+
+        createEditablePetCard(petData);
       }
+    } else if (selectedText === "! Reset Database") {
+      resetDatabase();
     }
   }
 });

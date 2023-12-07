@@ -27,6 +27,19 @@ function getData(req, res) {
     });
 }
 
+function upsertData(query, replacements, res) {
+  sequelize
+    .query(query, { replacements, type: sequelize.QueryTypes.UPSERT })
+    .then(() => {
+      console.log("Pet data saved successfully");
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error("Error in upserting pet data", err);
+      res.status(500).send("Error saving pet data");
+    });
+}
+
 function dbSeedDatabase(req, res) {
   console.log("Seeding DB");
 
@@ -42,4 +55,5 @@ function dbSeedDatabase(req, res) {
 module.exports = {
   dbSeedDatabase,
   getData,
+  upsertData,
 };
