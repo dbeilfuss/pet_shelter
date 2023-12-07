@@ -41,9 +41,9 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
         };
 
         createEditablePetCard(petData);
+      } else if (selectedText === "! Reset Database") {
+        resetDatabase();
       }
-    } else if (selectedText === "! Reset Database") {
-      resetDatabase();
     }
   }
 });

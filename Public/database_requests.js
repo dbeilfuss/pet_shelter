@@ -76,6 +76,7 @@ function getSamplePets(numberOfPets) {
 }
 
 function seedDatabase() {
+  console.log("seeding database");
   const requestURL = `${baseURL}/seedDatabase`;
 
   axios
