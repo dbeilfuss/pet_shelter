@@ -40,6 +40,25 @@ function upsertData(query, replacements, res) {
     });
 }
 
+function deleteData(query1, query2, replacements, res) {
+  sequelize
+    .query(query1, { replacements, type: sequelize.QueryTypes.DELETE })
+    .then(() => {
+      return sequelize.query(query2, {
+        replacements,
+        type: sequelize.QueryTypes.DELETE,
+      });
+    })
+    .then(() => {
+      console.log("Pet deleted successfully");
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error("Error in deleting pet data", err);
+      res.status(500).send("Error deleting pet data");
+    });
+}
+
 function dbSeedDatabase(req, res) {
   console.log("Seeding DB");
 
@@ -53,7 +72,9 @@ function dbSeedDatabase(req, res) {
 }
 
 module.exports = {
+  sequelize,
   dbSeedDatabase,
   getData,
   upsertData,
+  deleteData,
 };

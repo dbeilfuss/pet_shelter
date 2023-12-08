@@ -12,7 +12,7 @@ function confirmDatabaseReset() {
 function resetDatabase() {
   if (confirmDatabaseReset()) {
     console.log("Resetting Database");
-    seedDatabase();
+    seedDatabase(() => location.reload());
   }
 }
 

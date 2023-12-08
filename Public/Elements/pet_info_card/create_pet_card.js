@@ -42,7 +42,7 @@ function createPetCard(
     case "reservable":
       petCard += `<div class="card-button-section">
               <input
-              type="submit"
+              type="button"
               name="reserve"
               value="Reserve Pet"
               class="reserve-button"
@@ -54,13 +54,13 @@ function createPetCard(
     case "Available":
       petCard += `<div class="card-button-section">
             <input
-            type="submit"
+            type="button"
             name="edit"
             value="Edit"
             class="edit-button"
             />
             <input
-            type="submit"
+            type="button"
             name="reserve"
             value="Reserve"
             class="reserve-button"
@@ -72,13 +72,13 @@ function createPetCard(
     case "Reserved":
       petCard += `<div class="card-button-section">
             <input
-            type="submit"
+            type="button"
             name="confirm"
             value="Confirm Adoption"
             class="confirm-adoption-button"
             />
             <input
-            type="submit"
+            type="button"
             name="cancel"
             value="Cancel Reservation"
             class="cancel-reservation-button"
@@ -91,16 +91,17 @@ function createPetCard(
     case "Adopted":
       petCard += `<div class="card-button-section">
             <input
-            type="submit"
+            type="button"
             name="returned"
             value="Returned to Shelter"
             class="returned-button"
             />
             <input
-            type="submit"
+            type="button"
             name="delete"
             value="Delete"
             class="delete-button"
+            onclick="deleteButtonClicked(event)"
             />
           </div>
           <p class="pet-info">Adopted by ${human}</p>
@@ -174,8 +175,8 @@ function createEditablePetCard(petData) {
     </div>
     <div class="card-button-section">
       <input type="submit" name="save" value="Save" class="save-button" />
-      <input type="submit" name="cancel" value="Cancel" class="cancel-button" />
-      <input type="submit" name="delete" value="Delete" class="delete-button" />
+      <input type="button" name="cancel" value="Cancel" class="cancel-button" />
+      <input type="button" name="delete" value="Delete" class="delete-button" onclick="deleteButtonClicked()" />
     </div>
   </article>
 </form>

@@ -25,6 +25,7 @@ const {
   getFilteredPets,
   getPetInfo,
   updatePet,
+  deletePet,
 } = require("./server/server_controller.js");
 
 /// End Points ///
@@ -33,6 +34,7 @@ app.get("/api/getFilteredPets", getFilteredPets);
 app.get("/api/getPetInfo", getPetInfo);
 app.put("/api/updatePet", updatePet);
 app.post("/api/seedDatabase", seedDatabase);
+app.delete("/api/deletePet/:id", deletePet);
 
 /// Run Server ///
 app.listen(8000, "0.0.0.0", () => {

@@ -49,16 +49,40 @@ function saveButtonClicked() {
       const formData = new FormData(this);
       const petData = Object.fromEntries(formData.entries());
 
-      updatePet(petData, (response) => {});
+      updatePet(petData, () => location.reload());
     });
+}
+
+function deleteButtonClicked(event) {
+  var confirmMessage =
+    "Are you sure you want to delete this pet? This CANNOT BE UNDONE!";
+
+  if (confirm(confirmMessage)) {
+    let petID;
+
+    // Check if the editPetForm exists
+    const form = document.getElementById("editPetForm");
+    if (form) {
+      petID = form.querySelector("input[name='id']").value;
+    } else {
+      // If the form doesn't exist, use the closest pet-card element
+      const clickedButton = event.target;
+      const articleElement = clickedButton.closest(".pet-card");
+      petID = articleElement.dataset.petid;
+    }
+
+    console.log("Delete button clicked for pet id:", petID);
+
+    deletePet(petID, () => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Pet deleted successfully";
+      clearListOfPets();
+    });
+  }
 }
 
 function cancelButtonClicked() {
   console.log("Cancel button");
-}
-
-function deleteButtonClicked() {
-  console.log("Delete button");
 }
 
 function confirmAdoptionButtonClicked() {
@@ -94,10 +118,10 @@ function makeButtonsClickable() {
     button.addEventListener("click", () => cancelButtonClicked());
   });
 
-  const deleteButtons = document.querySelectorAll(".delete-button");
-  deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => deleteButtonClicked());
-  });
+  // const deleteButtons = document.querySelectorAll(".delete-button");
+  // deleteButtons.forEach((button) => {
+  //   button.addEventListener("click", () => deleteButtonClicked());
+  // });
 
   const confirmAdoptionButtons = document.querySelectorAll(
     ".confirm-adoption-button"

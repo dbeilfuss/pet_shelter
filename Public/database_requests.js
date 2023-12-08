@@ -61,11 +61,28 @@ function updatePet(petData, callback) {
     .put(requestURL, { id, name, imageURL, breed, age, sex, weight })
     .then((res) => {
       console.log(res.data);
-      if (callback) callback(res.data);
+      callback(res.data);
     })
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Loading Pet";
+      console.log(err);
+    });
+}
+
+function deletePet(petID, callback) {
+  const requestURL = `${baseURL}/deletePet/${petID}`;
+  console.log(requestURL);
+
+  axios
+    .delete(requestURL)
+    .then((res) => {
+      console.log(res.data);
+      callback(res.data);
+    })
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Deleting Pet";
       console.log(err);
     });
 }
@@ -75,15 +92,13 @@ function getSamplePets(numberOfPets) {
   return shuffledPets.slice(0, numberOfPets);
 }
 
-function seedDatabase() {
+function seedDatabase(callback) {
   console.log("seeding database");
   const requestURL = `${baseURL}/seedDatabase`;
 
   axios
     .post(requestURL)
-    .then(() => {
-      location.reload();
-    })
+    .then(callback())
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Ressetting Database";

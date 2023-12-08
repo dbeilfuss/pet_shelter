@@ -1,10 +1,10 @@
 const axios = require("axios");
-const Sequelize = require("sequelize");
 
 const {
   dbSeedDatabase,
   getData,
   upsertData,
+  deleteData,
 } = require("./database_controller.js");
 
 function seedDatabase(req, res) {
@@ -80,10 +80,22 @@ function updatePet(req, res) {
   );
 }
 
+function deletePet(req, res) {
+  const petId = parseInt(req.params.id, 10);
+  console.log(petId);
+
+  const deleteFavoritePetsQuery =
+    "DELETE FROM user_pets_favorites WHERE pet_id = :id";
+  const deletePetQuery = "DELETE FROM Pets WHERE id = :id";
+
+  deleteData(deleteFavoritePetsQuery, deletePetQuery, { id: petId }, res);
+}
+
 module.exports = {
   seedDatabase,
   getAllPets,
   getFilteredPets,
   getPetInfo,
   updatePet,
+  deletePet,
 };
