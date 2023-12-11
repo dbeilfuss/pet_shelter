@@ -2,7 +2,7 @@
 
 // const currentUser = getCurrentUser();
 
-function createUserCard(imageURL, name, userType) {
+function createUserCard(imageURL, name, userType, currentUser) {
   let userCard = `<article class="user-card ${userType}-user-card `;
 
   if (name === currentUser) {
@@ -23,9 +23,19 @@ function createUserCard(imageURL, name, userType) {
   return userCard;
 }
 
-function displayUsers() {
-  const adminList = getAdminUsers();
-  const standardUserList = getStandardUsers();
+async function displayUsers() {
+  let adminList = "";
+  let standardUserList = "";
+  let currentUser = "";
+
+  async function setup() {
+    adminList = await getAdminUsers();
+    standardUserList = await getStandardUsers();
+    await getCurrentUser((res) => (currentUser = res[0].name));
+  }
+
+  await setup();
+  console.log(currentUser);
 
   // create user cards
   let adminUserCards = "";
@@ -36,7 +46,7 @@ function displayUsers() {
       "https://icons.iconarchive.com/icons/fa-team/fontawesome/512/FontAwesome-User-Gear-icon.png";
     let name = user.Name;
     let userType = user.UserType;
-    let card = createUserCard(imageURL, name, userType);
+    let card = createUserCard(imageURL, name, userType, currentUser);
     adminUserCards += card;
   }
 

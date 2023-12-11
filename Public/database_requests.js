@@ -145,12 +145,12 @@ function getAllUsers() {
   return usersList;
 }
 
-function getAdminUsers() {
+async function getAdminUsers() {
   const adminUsers = usersList.filter((user) => user.UserType === "admin");
   return adminUsers;
 }
 
-function getStandardUsers() {
+async function getStandardUsers() {
   const standardUsers = usersList.filter(
     (user) => user.UserType === "standard"
   );
@@ -169,6 +169,18 @@ function isAdmin() {
   return isAdmin;
 }
 
-function getCurrentUser() {
-  return currentUser;
+async function getCurrentUser(callback) {
+  const requestURL = `${baseURL}/getCurrentUser`;
+  console.log(requestURL);
+
+  try {
+    const response = await axios.get(requestURL);
+    console.log(response.data);
+    callback(response.data);
+  } catch (err) {
+    const messageSection = document.querySelector(".selected-item");
+    messageSection.innerHTML = "Error Loading Current User";
+    console.error(err);
+    throw err;
+  }
 }

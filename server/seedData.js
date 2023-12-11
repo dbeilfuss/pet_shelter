@@ -4,6 +4,7 @@ module.exports = {
         DROP TABLE IF EXISTS User_Pets_Favorites;
          DROP TABLE IF EXISTS Users;
          DROP TABLE IF EXISTS Pets;
+         DROP TABLE IF EXISTS User_Login;
 
         CREATE TABLE
           Pets (
@@ -51,7 +52,7 @@ module.exports = {
             ('Casper', 'Umbrella Cockatoo', 'Male', 34, 2, 'https://cdn.rescuegroups.org/6685/pictures/animals/18437/18437053/89853213.jpg', false, true, 'Christina Ricci'),
             ('Bluebell', 'Parakeet', 'Male', 1, 0, 'https://cdn.rescuegroups.org/6685/pictures/animals/19477/19477024/95000178.jpg', false, false, null),
             ('Apollo', 'Cockatiel', 'Male', 1, 0, 'https://scontent-fml20-1.xx.fbcdn.net/v/t1.6435-9/43579746_10156281666573591_5399845292138823680_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=c2f564&_nc_ohc=-HRWC51f48QAX87dSe6&_nc_ht=scontent-fml20-1.xx&oh=00_AfBBo0jIM92hfFpNn4eBl-3FakZTNklxNBoXBhsrMOsEXQ&oe=6594AC7A', false, true, 'Pearl'),
-            ('Pearl', 'Cockatiel', 'Female', 1, 0, 'https://cdn.rescuegroups.org/6685/pictures/animals/19477/19477024/95000178.jpg', false, true, 'Apollo'),
+            ('Pearl', 'Cockatiel', 'Female', 1, 0, 'https://cdn.shopify.com/s/files/1/1111/3280/files/Getty_1310774601_600x600.jpg?v=1628904619', false, true, 'Apollo'),
             ('Marbles', 'Rabbit: Harlequin Mix', 'Male', 2, 5, 'https://animalfoundation.com/application/files/4615/4896/7768/Rabbits-as-Pets-2.jpg', false, true, 'Jack Oswald White'),
             ('Domino', 'Rabbit: Dutch', 'Female', 1, 4, 'https://images.squarespace-cdn.com/content/v1/5f09fc56bb3d81154fbf8172/1648073604534-5VZNMXNJMJ713OQQ4EO1/image-asset.jpeg?format=1000w', false, false, null),
             ('Silver', 'Chinchilla', 'Female', 4, 1, 'https://thegabber.com/wp-content/uploads/2022/08/Cassie_Pet-Pal-Animal-Shelter_08182022-e1660234898535.jpeg', false, false, null);
@@ -93,8 +94,17 @@ module.exports = {
             (6, 14),
             (4, 17),
             (3, 18);
-
-        `;
+            
+        CREATE TABLE
+          User_Login (
+            id bigint primary key generated always as identity,
+            user_id integer references Users (id)
+          );
+        
+          INSERT INTO User_Login (user_id)
+          VALUES
+            (4);
+            `;
     return seedData;
   },
 };

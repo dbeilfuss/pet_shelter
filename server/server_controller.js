@@ -47,6 +47,16 @@ function getPetInfo(req, res) {
   getData(request, res);
 }
 
+function getCurrentUser(req, res) {
+  const request = `
+  SELECT u.name
+  FROM Users u
+  INNER JOIN User_Login ul ON u.id = ul.user_id;
+  `;
+
+  getData(request, res);
+}
+
 function updatePet(req, res) {
   console.log(req.body);
   let { id, name, imageURL, breed, age, sex, weight } = req.body;
@@ -96,6 +106,7 @@ module.exports = {
   getAllPets,
   getFilteredPets,
   getPetInfo,
+  getCurrentUser,
   updatePet,
   deletePet,
 };
