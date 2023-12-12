@@ -57,6 +57,39 @@ function getCurrentUser(req, res) {
   getData(request, res);
 }
 
+function getFilteredUsers(req, res) {
+  const filter = req.query.userType;
+  console.log(`Getting Users Filtered by ${filter}`);
+
+  let request = "";
+
+  switch (filter) {
+    case "admin":
+      request = "SELECT * FROM Users WHERE is_admin = true";
+      break;
+    case "standard":
+      request = "SELECT * FROM Users WHERE is_admin = false";
+      break;
+    default:
+      res.status(400).send("user type not recognized");
+  }
+
+  getData(request, res);
+}
+
+function loginUser(req, res) {
+  console.log(req.body);
+  let { userID } = req.body;
+
+  const upsertQuery = `
+    UPDATE User_Login
+    SET user_id = :userID
+    WHERE id = 1;
+  `;
+
+  upsertData(upsertQuery, { userID: userID }, res);
+}
+
 function updatePet(req, res) {
   console.log(req.body);
   let { id, name, imageURL, breed, age, sex, weight } = req.body;
@@ -107,6 +140,8 @@ module.exports = {
   getFilteredPets,
   getPetInfo,
   getCurrentUser,
+  getFilteredUsers,
+  loginUser,
   updatePet,
   deletePet,
 };

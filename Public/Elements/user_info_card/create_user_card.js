@@ -1,15 +1,12 @@
-// import { getAdminUsers, getStandardUsers, getCurrentUser } from "/database.js";
-
-// const currentUser = getCurrentUser();
-
-function createUserCard(imageURL, name, userType, currentUser) {
+function createUserCard(userID, imageURL, name, is_admin, currentUser) {
+  const userType = is_admin ? "admin" : "standard";
   let userCard = `<article class="user-card ${userType}-user-card `;
 
   if (name === currentUser) {
     userCard += ` selected`;
   }
 
-  userCard += `">
+  userCard += `" data-userid="${userID}">
   <header class="${userType}-user-header">
         <h2 class="user-name">${name}</h2>
     </header>
@@ -24,37 +21,35 @@ function createUserCard(imageURL, name, userType, currentUser) {
 }
 
 async function displayUsers() {
-  let adminList = "";
-  let standardUserList = "";
+  let adminUsersList = "";
+  let standardUsersList = "";
   let currentUser = "";
 
-  async function setup() {
-    adminList = await getAdminUsers();
-    standardUserList = await getStandardUsers();
-    await getCurrentUser((res) => (currentUser = res[0].name));
+  async function getUserInfo() {
+    await getUserList("admin", (userList) => (adminUsersList = userList));
+    await getUserList("standard", (userList) => (standardUsersList = userList));
+    await getCurrentUser((userData) => (currentUser = userData[0].name));
   }
 
-  await setup();
-  console.log(currentUser);
+  await getUserInfo();
 
   // create user cards
   let adminUserCards = "";
   let standardUserCards = "";
 
-  for (const user of adminList) {
+  for (const user of adminUsersList) {
     let imageURL =
       "https://icons.iconarchive.com/icons/fa-team/fontawesome/512/FontAwesome-User-Gear-icon.png";
-    let name = user.Name;
-    let userType = user.UserType;
-    let card = createUserCard(imageURL, name, userType, currentUser);
+    const { id, name, is_admin } = user;
+
+    let card = createUserCard(id, imageURL, name, is_admin, currentUser);
     adminUserCards += card;
   }
 
-  for (const user of standardUserList) {
+  for (const user of standardUsersList) {
     let imageURL = "https://cdn-icons-png.flaticon.com/512/9131/9131478.png";
-    let name = user.Name;
-    let userType = user.UserType;
-    let card = createUserCard(imageURL, name, userType);
+    const { id, name, is_admin } = user;
+    let card = createUserCard(id, imageURL, name, is_admin, currentUser);
     standardUserCards += card;
   }
 

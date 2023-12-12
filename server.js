@@ -25,6 +25,8 @@ const {
   getFilteredPets,
   getPetInfo,
   getCurrentUser,
+  getFilteredUsers,
+  loginUser,
   updatePet,
   deletePet,
 } = require("./server/server_controller.js");
@@ -34,6 +36,8 @@ app.get("/api/getAllPets", getAllPets);
 app.get("/api/getFilteredPets", getFilteredPets);
 app.get("/api/getPetInfo", getPetInfo);
 app.get("/api/getCurrentUser", getCurrentUser);
+app.get("/api/getUserList", getFilteredUsers);
+app.put("/api/loginUser", loginUser);
 app.put("/api/updatePet", updatePet);
 app.post("/api/seedDatabase", seedDatabase);
 app.delete("/api/deletePet/:id", deletePet);

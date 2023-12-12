@@ -3,9 +3,8 @@
 function loginUser(card) {
   card.classList.add("selected");
 
-  const userName = card.querySelector(".user-name").textContent;
-  recordLoginToDatabase(userName);
-  location.reload();
+  const userID = card.dataset.userid;
+  recordLoginToDatabase(userID, () => location.reload());
 }
 
 function makeCardsClickable() {
@@ -21,5 +20,3 @@ function makeCardsClickable() {
 
 // Add Event Listener
 document.addEventListener("DOMContentLoaded", () => makeCardsClickable());
-
-// Label the Logged in User TODO

@@ -57,12 +57,6 @@ module.exports = {
             ('Domino', 'Rabbit: Dutch', 'Female', 1, 4, 'https://images.squarespace-cdn.com/content/v1/5f09fc56bb3d81154fbf8172/1648073604534-5VZNMXNJMJ713OQQ4EO1/image-asset.jpeg?format=1000w', false, false, null),
             ('Silver', 'Chinchilla', 'Female', 4, 1, 'https://thegabber.com/wp-content/uploads/2022/08/Cassie_Pet-Pal-Animal-Shelter_08182022-e1660234898535.jpeg', false, false, null);
 
-            
-            
-            
-            
-
-      
        CREATE TABLE
           Users (
             id bigint primary key generated always as identity,

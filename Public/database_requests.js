@@ -20,12 +20,10 @@ function getAllPets(callback) {
 
 function getFilteredPets(filter, callback) {
   const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;
-  console.log(requestURL);
 
   axios
     .get(requestURL)
     .then((res) => {
-      console.log(res.data);
       callback(res.data);
     })
     .catch((err) => {
@@ -145,37 +143,47 @@ function getAllUsers() {
   return usersList;
 }
 
-async function getAdminUsers() {
-  const adminUsers = usersList.filter((user) => user.UserType === "admin");
-  return adminUsers;
+async function getUserList(userType, callback) {
+  const requestURL = `${baseURL}/getUserList?userType=${userType}`;
+
+  try {
+    const response = await axios.get(requestURL);
+    callback(response.data);
+  } catch (err) {
+    const messageSection = document.querySelector(".selected-item");
+    messageSection.innerHTML = `Error Loading ${userType} User List`;
+    console.error(err);
+    throw err;
+  }
 }
 
-async function getStandardUsers() {
-  const standardUsers = usersList.filter(
-    (user) => user.UserType === "standard"
-  );
-  return standardUsers;
-}
+function recordLoginToDatabase(userID, callback) {
+  const requestURL = `${baseURL}/loginUser`;
 
-function recordLoginToDatabase(userName) {
-  currentUser = userName;
-  console.log(currentUser);
+  axios
+    .put(requestURL, { userID })
+    .then((res) => {
+      console.log(res.data);
+      callback();
+    })
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Logging in User";
+      console.log(err);
+    });
 }
 
 function isAdmin() {
   const thisUser = usersList.find((user) => user.Name === currentUser);
   const isAdmin = thisUser.UserType === "admin";
-  console.log(`is admin: ${isAdmin}`);
   return isAdmin;
 }
 
 async function getCurrentUser(callback) {
   const requestURL = `${baseURL}/getCurrentUser`;
-  console.log(requestURL);
 
   try {
     const response = await axios.get(requestURL);
-    console.log(response.data);
     callback(response.data);
   } catch (err) {
     const messageSection = document.querySelector(".selected-item");
