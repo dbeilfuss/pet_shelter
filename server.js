@@ -26,6 +26,7 @@ const {
   getPetInfo,
   getCurrentUser,
   getFilteredUsers,
+  getIsAdmin,
   loginUser,
   updatePet,
   deletePet,
@@ -37,6 +38,7 @@ app.get("/api/getFilteredPets", getFilteredPets);
 app.get("/api/getPetInfo", getPetInfo);
 app.get("/api/getCurrentUser", getCurrentUser);
 app.get("/api/getUserList", getFilteredUsers);
+app.get("/api/getIsAdmin", getIsAdmin);
 app.put("/api/loginUser", loginUser);
 app.put("/api/updatePet", updatePet);
 app.post("/api/seedDatabase", seedDatabase);

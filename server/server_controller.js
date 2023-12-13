@@ -57,6 +57,16 @@ function getCurrentUser(req, res) {
   getData(request, res);
 }
 
+function getIsAdmin(req, res) {
+  const request = `
+  SELECT u.is_admin
+  FROM Users u
+  INNER JOIN User_Login ul ON u.id = ul.user_id;
+  `;
+
+  getData(request, res);
+}
+
 function getFilteredUsers(req, res) {
   const filter = req.query.userType;
   console.log(`Getting Users Filtered by ${filter}`);
@@ -141,6 +151,7 @@ module.exports = {
   getPetInfo,
   getCurrentUser,
   getFilteredUsers,
+  getIsAdmin,
   loginUser,
   updatePet,
   deletePet,

@@ -104,45 +104,6 @@ function seedDatabase(callback) {
     });
 }
 
-let usersList = [
-  {
-    Name: "Nitin",
-    UserType: "admin",
-    FavoritePets: [""],
-  },
-  {
-    Name: "Dan",
-    UserType: "admin",
-    FavoritePets: [""],
-  },
-  {
-    Name: "Ginger",
-    UserType: "admin",
-    FavoritePets: [""],
-  },
-  {
-    Name: "Noah",
-    UserType: "standard",
-    FavoritePets: [""],
-  },
-  {
-    Name: "Micah",
-    UserType: "standard",
-    FavoritePets: [""],
-  },
-  {
-    Name: "Becca",
-    UserType: "standard",
-    FavoritePets: [""],
-  },
-];
-
-let currentUser = "Dan";
-
-function getAllUsers() {
-  return usersList;
-}
-
 async function getUserList(userType, callback) {
   const requestURL = `${baseURL}/getUserList?userType=${userType}`;
 
@@ -169,13 +130,22 @@ function recordLoginToDatabase(userID, callback) {
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Logging in User";
-      console.log(err);
+      console.error(err);
     });
 }
 
-function isAdmin() {
-  const thisUser = usersList.find((user) => user.Name === currentUser);
-  const isAdmin = thisUser.UserType === "admin";
+async function isAdmin(callback) {
+  const requestURL = `${baseURL}/getIsAdmin`;
+
+  try {
+    const response = await axios.get(requestURL);
+    const isAdmin = response.data[0].is_admin;
+    callback(isAdmin);
+  } catch (err) {
+    const messageSection = document.querySelector(".selected-item");
+    console.error(err);
+    throw err;
+  }
   return isAdmin;
 }
 

@@ -55,11 +55,11 @@ function getHeaderHTML(includeAdminLink) {
 }
 
 function displayHeader() {
-  let userIsAdmin = isAdmin();
-  let headerHTML = getHeaderHTML(userIsAdmin);
-
-  const headerSection = document.querySelector(".main-header");
-  headerSection.innerHTML = headerHTML;
+  isAdmin((isAdmin) => {
+    let headerHTML = getHeaderHTML(isAdmin);
+    const headerSection = document.querySelector(".main-header");
+    headerSection.innerHTML = headerHTML;
+  });
 }
 
 // Initial Load of Screen
