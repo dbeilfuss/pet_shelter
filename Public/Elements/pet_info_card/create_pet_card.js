@@ -7,7 +7,8 @@ function createPetCard(
   age,
   weight,
   human,
-  cardType
+  cardType,
+  isFavorite
 ) {
   let petCard = `
   <article class="pet-card" data-petid="${petID}">
@@ -16,9 +17,10 @@ function createPetCard(
       `;
 
   if (cardType === "basic" || cardType === "reservable") {
+    const favoritedClass = isFavorite ? " favorited" : "";
     petCard += `
       <button class="favorite-button" aria-label="Favorite ${name}">
-        <span class="heart"></span>
+        <span class="heart${favoritedClass}"></span>
       </button>
       `;
   }
@@ -111,7 +113,7 @@ function createPetCard(
 
     default:
       petCard = "<p>Error Loading Pets</p>";
-      console.log("error thrown here");
+      console.log("Card type not recognized");
   }
 
   return petCard;
@@ -225,7 +227,8 @@ function displayPetsCallback(petsList, isShortSection, filter) {
       pet.age,
       pet.weight,
       pet.adopted_by,
-      filter
+      filter,
+      pet.isFavorite
     );
     petCards += card;
   }

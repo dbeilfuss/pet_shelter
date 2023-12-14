@@ -18,6 +18,22 @@ function getAllPets(callback) {
     });
 }
 
+// async function getFavoritePets() {
+//   const requestURL = `${baseURL}/getFavoritePets`;
+//   console.log(requestURL);
+
+//   try {
+//     axios;
+//     const response = await axios.get(requestURL);
+//     return response.data;
+//   } catch (err) {
+//     const messageSection = document.querySelector(".selected-item");
+//     messageSection.innerHTML = `Error Loading Favorite Pets List`;
+//     console.error(err);
+//     throw err;
+//   }
+// }
+
 function getFilteredPets(filter, callback) {
   const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;
 

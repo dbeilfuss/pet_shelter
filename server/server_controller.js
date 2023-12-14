@@ -3,6 +3,7 @@ const axios = require("axios");
 const {
   dbSeedDatabase,
   getData,
+  getPartialData,
   upsertData,
   deleteData,
 } = require("./database_controller.js");
@@ -20,24 +21,47 @@ function getAllPets(req, res) {
 function getFilteredPets(req, res) {
   const filter = req.query.filter;
   console.log(`Getting Pets Filtered by ${filter}`);
-
-  let request = "";
+  let filterRequest = "";
 
   switch (filter) {
     case "Available":
-      request =
+      filterRequest =
         "SELECT * FROM Pets WHERE is_reserved = false AND is_adopted = false";
       break;
     case "Reserved":
-      request = "SELECT * FROM Pets WHERE is_reserved = true";
+      filterRequest = "SELECT * FROM Pets WHERE is_reserved = true";
       break;
     case "Adopted":
-      request = "SELECT * FROM Pets WHERE is_adopted = true";
+      filterRequest = "SELECT * FROM Pets WHERE is_adopted = true";
       break;
     default:
+      res.status(400).send("Invalid filter");
+      return;
   }
 
-  getData(request, res);
+  const favoriteRequest = `
+    SELECT upf.pet_id
+    FROM user_pets_favorites upf
+    INNER JOIN User_Login ul ON upf.user_id = ul.user_id;
+  `;
+
+  // Fetch both sets of data
+  Promise.all([getPartialData(filterRequest), getPartialData(favoriteRequest)])
+    .then(([filteredPets, favoritePets]) => {
+      // Combine the data
+      const combinedPets = filteredPets.map((pet) => {
+        const isFavorite = favoritePets.some(
+          (favorite) => favorite.pet_id === Number(pet.id)
+        );
+        return { ...pet, isFavorite };
+      });
+
+      res.send(combinedPets);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error fetching pet data");
+    });
 }
 
 function getPetInfo(req, res) {

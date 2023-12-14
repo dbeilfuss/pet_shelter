@@ -27,6 +27,19 @@ function getData(req, res) {
     });
 }
 
+function getPartialData(query) {
+  return new Promise((resolve, reject) => {
+    sequelize
+      .query(query)
+      .then((dbResponse) => {
+        resolve(dbResponse[0]); // Resolve with the actual data
+      })
+      .catch((err) => {
+        reject(err); // Reject the Promise if there's an error
+      });
+  });
+}
+
 function upsertData(query, replacements, res) {
   sequelize
     .query(query, { replacements, type: sequelize.QueryTypes.UPSERT })
@@ -75,6 +88,7 @@ module.exports = {
   sequelize,
   dbSeedDatabase,
   getData,
+  getPartialData,
   upsertData,
   deleteData,
 };

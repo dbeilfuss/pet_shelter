@@ -40,7 +40,7 @@ module.exports = {
             ('Scruffy', 'Terrier Mix', 'Female', 2, 21, 'https://www.shelteranimalscount.org/wp-content/uploads/2023/07/Screenshot-2023-07-05-at-12.36.10-PM-730x500.png', false, true, 'Sally Mitcheck'),
             ('Peanut Butter', 'German Shepherd Mix', 'Female', 0, 17, 'https://www.shutterstock.com/image-photo/dog-260nw-587562362.jpg', true, false, 'Noah'),
             ('Sandy', 'Guinea Pig', 'Female', 3, 2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7cGQhuFTm26HEPkPiXZblZ0Wzo--QAbmdI-l62xUaZ_ct84Pce4ORnNukwbMhHaHZHL4&usqp=CAU', false, false, null),
-            ('Simba', 'Pit Bull Mix', 'Male', 1, 35, 'https://scontent-fml20-1.xx.fbcdn.net/v/t39.30808-6/406332485_738733491614158_1783682185506546737_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3635dc&_nc_ohc=1-xMSDhLBEwAX9yPZKW&_nc_ht=scontent-fml20-1.xx&oh=00_AfDHUJfXcjNn3AWUiJXriZkibn0jz-z4OQ-w6-b0571acQ&oe=6572FB2A', false, true, 'Mufasa'),
+            ('Simba', 'Pit Bull Mix', 'Male', 1, 35, 'https://i.pinimg.com/736x/b0/77/d1/b077d115e9dbe3aff4eaea4c13a9c998.jpg', false, true, 'Mufasa'),
             ('Shadow', 'Husky Mix', 'Female', 2, 35, 'https://img1.wsimg.com/isteam/ip/568a5479-e09a-4ac2-bbaf-2c7cf3d2a7a4/fb_4216839308345566_1536x2048.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,cg:true', false, true, 'Siera Simmons'),
             ('Rusty', 'Corgi Mix', 'Female', 6, 30, 'https://sl-prod-v2-cdn.shelterluv.com/sites/default/files/animal_pics/12815/2023/10/20/09/20231020090100.png', false, false, null),
             ('Sadie', 'Beagle', 'Female', 3, 21, 'https://critter-sitters.com/wp-content/uploads/2016/08/bigstock-Dog-In-Cage-30655145.jpg', false, false, null),
