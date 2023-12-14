@@ -22,7 +22,6 @@ var rollbar = new Rollbar({
 const {
   seedDatabase,
   getAllPets,
-  // getFavoritePets,
   getFilteredPets,
   getPetInfo,
   getCurrentUser,
@@ -35,7 +34,6 @@ const {
 
 /// End Points ///
 app.get("/api/getAllPets", getAllPets);
-// app.get("/api/getFavoritePets", getFavoritePets);
 app.get("/api/getFilteredPets", getFilteredPets);
 app.get("/api/getPetInfo", getPetInfo);
 app.get("/api/getCurrentUser", getCurrentUser);

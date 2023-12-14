@@ -33,6 +33,22 @@ function sortByNumberProperty(arr, property) {
   displayPetsCallback(sortedPetCards, false, "reservable");
 }
 
+function sortByBooleanProperty(arr, property) {
+  const dbKey = {
+    Favorites: "isFavorite",
+    // Add more boolean properties here if needed
+  };
+  const dbProperty = dbKey[property];
+  console.log(`sorting by boolean: ${dbProperty}`);
+  const sortedPetCards = arr
+    .slice()
+    .sort((a, b) =>
+      a[dbProperty] === b[dbProperty] ? 0 : a[dbProperty] ? -1 : 1
+    );
+
+  displayPetsCallback(sortedPetCards, false, "reservable");
+}
+
 function sortPets(sortBy) {
   clearListOfPets();
 
@@ -43,6 +59,10 @@ function sortPets(sortBy) {
   } else if (sortBy === "Age" || sortBy === "Weight") {
     getFilteredPets("Available", (petsList) =>
       sortByNumberProperty(petsList, sortBy)
+    );
+  } else if (sortBy === "Favorites") {
+    getFilteredPets("Available", (petsList) =>
+      sortByBooleanProperty(petsList, sortBy)
     );
   }
 }
