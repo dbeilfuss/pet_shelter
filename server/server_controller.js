@@ -10,7 +10,7 @@ const {
 } = require("./database_controller.js");
 
 function seedDatabase(req, res) {
-  rollbar.log("server log: seeding database");
+  rollbar.info("server log: seeding database");
   dbSeedDatabase(req, res);
 }
 
@@ -114,7 +114,7 @@ function getFilteredUsers(req, res) {
 }
 
 function loginUser(req, res) {
-  rollbar.log("changing user login");
+  rollbar.info("changing user login");
 
   console.log(req.body);
   let { userID } = req.body;
@@ -163,7 +163,7 @@ function updatePet(req, res) {
 
 function deletePet(req, res) {
   const petId = parseInt(req.params.id, 10);
-  rollbar.log(`deleting pet: ${petID}`);
+  rollbar.info(`deleting pet: ${petID}`);
 
   const deleteFavoritePetsQuery =
     "DELETE FROM user_pets_favorites WHERE pet_id = :id";

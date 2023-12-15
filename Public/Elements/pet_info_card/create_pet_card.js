@@ -18,8 +18,9 @@ function createPetCard(
 
   if (cardType === "basic" || cardType === "reservable") {
     const favoritedClass = isFavorite ? " favorited" : "";
+
     petCard += `
-      <button class="favorite-button" aria-label="Favorite ${name}">
+      <button class="favorite-button${favoritedClass}" aria-label="Favorite ${name}">
         <span class="heart${favoritedClass}"></span>
       </button>
       `;
