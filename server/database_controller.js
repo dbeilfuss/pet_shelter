@@ -12,6 +12,7 @@ const sequelize = new Sequelize(SUPABASE_URI, {
 });
 
 const { seedData } = require("./seedData.js");
+const rollbar = require("../rollbar_config.js");
 
 function getData(req, res) {
   sequelize
@@ -23,6 +24,7 @@ function getData(req, res) {
     .catch((err) => {
       const errorMessage = `Error Getting Data - Request: ${req}, Error: ${err}`;
       console.log(errorMessage);
+
       res.status(500).send(errorMessage);
     });
 }
@@ -81,7 +83,11 @@ function dbSeedDatabase(req, res) {
       console.log("DB seeded!");
       res.sendStatus(200);
     })
-    .catch((err) => console.log("error seeding DB", err));
+    .catch((err) => {
+      const errorMessage = `Error seeding Data: ${err}`;
+      rollbar.error(errorMessage);
+      console.log(errorMessage);
+    });
 }
 
 module.exports = {

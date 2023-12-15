@@ -1,3 +1,5 @@
+// const rollbar = require("../rollbar_config.js");
+
 // Database Reset
 function confirmDatabaseReset() {
   var confirmMessage =
@@ -11,8 +13,9 @@ function confirmDatabaseReset() {
 
 function resetDatabase() {
   if (confirmDatabaseReset()) {
+    // rollbar.log("client log: seeding database");
     console.log("Resetting Database");
-    seedDatabase(() => location.reload());
+    seedDatabase(() => console.log("Database Seeded"));
   }
 }
 

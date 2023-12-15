@@ -2,9 +2,9 @@ module.exports = {
   seedData: () => {
     const seedData = `
         DROP TABLE IF EXISTS User_Pets_Favorites;
-         DROP TABLE IF EXISTS Users;
-         DROP TABLE IF EXISTS Pets;
-         DROP TABLE IF EXISTS User_Login;
+        DROP TABLE IF EXISTS User_Login;
+        DROP TABLE IF EXISTS Users;
+        DROP TABLE IF EXISTS Pets;
 
         CREATE TABLE
           Pets (

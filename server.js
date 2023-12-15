@@ -2,21 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const app = express();
+const rollbar = require("./rollbar_config.js");
+rollbar.log("Hello world!");
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static("Public"));
-
-// include and initialize the rollbar library with your access token
-var Rollbar = require("rollbar");
-var rollbar = new Rollbar({
-  accessToken: "8abf7cdc6a8740d5b076c52dc32c8bc7",
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-});
-
-// record a generic message and send it to Rollbar
-// rollbar.log("Hello world!");
 
 /// Imports ///
 const {

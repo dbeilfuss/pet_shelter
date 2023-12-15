@@ -1,4 +1,5 @@
 const axios = require("axios");
+const rollbar = require("../rollbar_config.js");
 
 const {
   dbSeedDatabase,
@@ -9,6 +10,7 @@ const {
 } = require("./database_controller.js");
 
 function seedDatabase(req, res) {
+  rollbar.log("server log: seeding database");
   dbSeedDatabase(req, res);
 }
 
@@ -112,6 +114,8 @@ function getFilteredUsers(req, res) {
 }
 
 function loginUser(req, res) {
+  rollbar.log("changing user login");
+
   console.log(req.body);
   let { userID } = req.body;
 
@@ -159,7 +163,7 @@ function updatePet(req, res) {
 
 function deletePet(req, res) {
   const petId = parseInt(req.params.id, 10);
-  console.log(petId);
+  rollbar.log(`deleting pet: ${petID}`);
 
   const deleteFavoritePetsQuery =
     "DELETE FROM user_pets_favorites WHERE pet_id = :id";
