@@ -1,15 +1,16 @@
 // import { createEditablePetCard, clearListOfPets } from "./create_pet_card.js";
 
-function makeHeartsClickable() {
-  const favoriteButtons = document.querySelectorAll(".favorite-button");
+// function makeHeartsClickable() {
+//   // TODO Depricate
+//   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
-  favoriteButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      this.classList.toggle("favorited");
-      this.querySelector(".heart").classList.toggle("favorited");
-    });
-  });
-}
+//   favoriteButtons.forEach((button) => {
+//     button.addEventListener("click", function () {
+//       this.classList.toggle("favorited");
+//       this.querySelector(".heart").classList.toggle("favorited");
+//     });
+//   });
+// }
 
 function editButtonClicked(event) {
   // Identify the PetID
@@ -35,8 +36,15 @@ function editButtonClicked(event) {
   });
 }
 
-function reserveButtonClicked() {
+function reserveButtonClicked(event) {
   console.log("Reserve button");
+  // identify the petID
+  const clickedButton = event.target;
+  const articleElement = clickedButton.closest(".pet-card");
+  let petID = articleElement.dataset.petid;
+  console.log(`PetID: ${petID}`);
+
+  heartClicked(petID);
 }
 
 function saveButtonClicked() {
@@ -98,15 +106,16 @@ function returnedToShelterButtonClicked() {
 }
 
 function makeButtonsClickable() {
+  // TODO Depricate
   const editButtons = document.querySelectorAll(".edit-button");
   editButtons.forEach((button) => {
     button.addEventListener("click", (event) => editButtonClicked(event));
   });
 
-  const reserveButtons = document.querySelectorAll(".reserve-button");
-  reserveButtons.forEach((button) => {
-    button.addEventListener("click", () => reserveButtonClicked());
-  });
+  // const reserveButtons = document.querySelectorAll(".reserve-button");
+  // reserveButtons.forEach((button) => {
+  //   // button.addEventListener("click", () => reserveButtonClicked());
+  // });
 
   const saveButtons = document.querySelectorAll(".save-button");
   saveButtons.forEach((button) => {
@@ -145,6 +154,6 @@ function makeButtonsClickable() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => makeHeartsClickable());
+// document.addEventListener("DOMContentLoaded", () => makeHeartsClickable());
 
 document.addEventListener("DOMContentLoaded", () => makeButtonsClickable());

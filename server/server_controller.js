@@ -48,7 +48,10 @@ function getFilteredPets(req, res) {
   `;
 
   // Fetch both sets of data
-  Promise.all([getPartialData(filterRequest), getPartialData(favoriteRequest)])
+  Promise.all([
+    getPartialData(filterRequest, {}),
+    getPartialData(favoriteRequest, {}),
+  ])
     .then(([filteredPets, favoritePets]) => {
       // Combine the data
       const combinedPets = filteredPets.map((pet) => {
@@ -71,6 +74,52 @@ function getPetInfo(req, res) {
   const request = `SELECT * FROM Pets WHERE id = ${petID}`;
 
   getData(request, res);
+}
+
+function toggleFavoritePet(petID, res) {
+  // Extract petID
+  petID = Number(petID.body.petID);
+
+  // Step 1: Determine the currently logged-in user
+  const currentUserQuery =
+    "SELECT user_id FROM User_Login ORDER BY id DESC LIMIT 1";
+
+  getPartialData(currentUserQuery)
+    .then((currentUserResult) => {
+      const currentUserID = currentUserResult[0].user_id;
+
+      // Step 2: Check if the pet is already a favorite
+      const checkFavoriteQuery =
+        "SELECT * FROM User_Pets_Favorites WHERE user_id = :userID AND pet_id = :petID";
+      const replacements = { userID: currentUserID, petID: petID };
+
+      console.log("Replacements:", replacements);
+
+      getPartialData(checkFavoriteQuery, replacements)
+        .then((favoriteResult) => {
+          // Pet is already a favorite, so remove it
+
+          if (favoriteResult.length > 0) {
+            const deleteFavoriteQuery =
+              "DELETE FROM User_Pets_Favorites WHERE user_id = :userID AND pet_id = :petID";
+            deleteData(deleteFavoriteQuery, null, replacements, res);
+          } else {
+            // Pet is not a favorite, so add it
+
+            const addFavoriteQuery =
+              "INSERT INTO User_Pets_Favorites (user_id, pet_id) VALUES (:userID, :petID)";
+            upsertData(addFavoriteQuery, replacements, res);
+          }
+        })
+        .catch((err) => {
+          console.error("Error in checking favorite pet status", err);
+          res.status(500).send("Error in checking favorite pet status");
+        });
+    })
+    .catch((err) => {
+      console.error("Error in determining current user", err);
+      res.status(500).send("Error in determining current user");
+    });
 }
 
 function getCurrentUser(req, res) {
@@ -177,6 +226,7 @@ module.exports = {
   getAllPets,
   getFilteredPets,
   getPetInfo,
+  toggleFavoritePet,
   getCurrentUser,
   getFilteredUsers,
   getIsAdmin,

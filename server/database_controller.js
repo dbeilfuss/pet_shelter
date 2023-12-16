@@ -29,10 +29,10 @@ function getData(req, res) {
     });
 }
 
-function getPartialData(query) {
+function getPartialData(query, replacements) {
   return new Promise((resolve, reject) => {
     sequelize
-      .query(query)
+      .query(query, { replacements: replacements })
       .then((dbResponse) => {
         resolve(dbResponse[0]); // Resolve with the actual data
       })
@@ -59,14 +59,22 @@ function deleteData(query1, query2, replacements, res) {
   sequelize
     .query(query1, { replacements, type: sequelize.QueryTypes.DELETE })
     .then(() => {
-      return sequelize.query(query2, {
-        replacements,
-        type: sequelize.QueryTypes.DELETE,
-      });
+      if (query2) {
+        return sequelize.query(query2, {
+          replacements,
+          type: sequelize.QueryTypes.DELETE,
+        });
+      } else {
+        console.log("Pet deleted successfully");
+        res.sendStatus(200);
+        return null;
+      }
     })
-    .then(() => {
-      console.log("Pet deleted successfully");
-      res.sendStatus(200);
+    .then((result) => {
+      if (result !== null) {
+        console.log("Pet deleted successfully");
+        res.sendStatus(200);
+      }
     })
     .catch((err) => {
       console.error("Error in deleting pet data", err);

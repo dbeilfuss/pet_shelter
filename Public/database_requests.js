@@ -18,21 +18,17 @@ function getAllPets(callback) {
     });
 }
 
-// async function getFavoritePets() {
-//   const requestURL = `${baseURL}/getFavoritePets`;
-//   console.log(requestURL);
+function favoritePet(petID) {
+  petID = Number(petID);
+  console.log("petID: ", petID);
+  const requestURL = `${baseURL}/favoritePet`;
 
-//   try {
-//     axios;
-//     const response = await axios.get(requestURL);
-//     return response.data;
-//   } catch (err) {
-//     const messageSection = document.querySelector(".selected-item");
-//     messageSection.innerHTML = `Error Loading Favorite Pets List`;
-//     console.error(err);
-//     throw err;
-//   }
-// }
+  axios.put(requestURL, { petID }).catch((err) => {
+    const messageSection = document.querySelector(".selected-item");
+    messageSection.innerHTML = "Error marking pet as favorite";
+    console.error(err);
+  });
+}
 
 function getFilteredPets(filter, callback) {
   const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;

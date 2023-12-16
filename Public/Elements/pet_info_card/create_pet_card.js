@@ -10,22 +10,26 @@ function createPetCard(
   cardType,
   isFavorite
 ) {
-  let petCard = `
+  let petCard =
+    // Card Header
+    `
   <article class="pet-card" data-petid="${petID}">
   <header class="pet-header">
       <h2 class="pet-name">${name}</h2>
       `;
 
+  // Hearts
   if (cardType === "basic" || cardType === "reservable") {
     const favoritedClass = isFavorite ? " favorited" : "";
 
     petCard += `
-      <button class="favorite-button${favoritedClass}" aria-label="Favorite ${name}">
-        <span class="heart${favoritedClass}"></span>
+    <button class="favorite-button${favoritedClass}" aria-label="Favorite ${name}">
+        <span class="heart${favoritedClass}" onclick="heartClicked(event)"></span>
       </button>
       `;
   }
 
+  // Pet Details
   petCard += `
   </header>
   <img
@@ -37,6 +41,7 @@ function createPetCard(
   <p class="pet-info">${age} Yrs · ${maleFemale} · ${weight} Lbs</p>
 `;
 
+  // Buttons - Differ based on card type
   switch (cardType) {
     case "basic":
       petCard += `</article>`;
@@ -49,6 +54,7 @@ function createPetCard(
               name="reserve"
               value="Reserve Pet"
               class="reserve-button"
+              onclick="reserveButtonClicked(event)"
               />
           </div>
         </article>`;
@@ -120,6 +126,7 @@ function createPetCard(
   return petCard;
 }
 
+// Specialized Card for Editing Pets or Adding New Pets
 function createEditablePetCard(petData) {
   const editablePetCard = `
 <form id="editPetForm" class="edit-pet-form">
@@ -198,10 +205,10 @@ function clearListOfPets() {
   }
 }
 
+// set the number of cards based on the width of the screen
 function availableSpace() {
-  // set the number of cards based on the width of the screen
   const screenWidth = window.innerWidth;
-  const cardWidth = 290;
+  const cardWidth = 290; // TODO Change card width for smaller screens
 
   let numberOfCards = Math.floor(screenWidth / cardWidth);
 
@@ -235,7 +242,7 @@ function displayPetsCallback(petsList, isShortSection, filter) {
   }
 
   listOfPetsSection.innerHTML = petCards;
-  makeHeartsClickable();
+  // makeHeartsClickable();
   makeButtonsClickable();
 }
 
