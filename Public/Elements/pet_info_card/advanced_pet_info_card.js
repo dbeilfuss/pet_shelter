@@ -97,6 +97,7 @@ function deleteButtonClicked(event) {
 
 function cancelButtonClicked() {
   console.log("Cancel button");
+  location.reload();
 }
 
 function confirmAdoptionButtonClicked(event) {
@@ -162,10 +163,10 @@ function makeButtonsClickable() {
     button.addEventListener("click", () => saveButtonClicked());
   });
 
-  const cancelButtons = document.querySelectorAll(".cancel-button");
-  cancelButtons.forEach((button) => {
-    button.addEventListener("click", () => cancelButtonClicked());
-  });
+  // const cancelButtons = document.querySelectorAll(".cancel-button");
+  // cancelButtons.forEach((button) => {
+  //   button.addEventListener("click", () => cancelButtonClicked());
+  // });
 
   // const deleteButtons = document.querySelectorAll(".delete-button");
   // deleteButtons.forEach((button) => {
