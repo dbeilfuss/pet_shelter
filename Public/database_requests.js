@@ -30,6 +30,38 @@ function favoritePet(petID) {
   });
 }
 
+function reservePet(petID, userName, onSuccess) {
+  petID = Number(petID);
+  const requestURL = `${baseURL}/reservePet`;
+
+  axios
+    .put(requestURL, { petID, userName })
+
+    .then(onSuccess)
+
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error reserving pet";
+      console.error(err);
+    });
+}
+
+function cancelReservation(petID, onSuccess) {
+  petID = Number(petID);
+  const requestURL = `${baseURL}/cancelReservation`;
+
+  axios
+    .put(requestURL, { petID })
+
+    .then(onSuccess)
+
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Canceling Reservation";
+      console.error(err);
+    });
+}
+
 function getFilteredPets(filter, callback) {
   const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;
 

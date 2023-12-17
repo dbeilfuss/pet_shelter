@@ -5,6 +5,7 @@ const {
   dbSeedDatabase,
   getData,
   getPartialData,
+  updateData,
   upsertData,
   deleteData,
 } = require("./database_controller.js");
@@ -93,8 +94,6 @@ function toggleFavoritePet(petID, res) {
         "SELECT * FROM User_Pets_Favorites WHERE user_id = :userID AND pet_id = :petID";
       const replacements = { userID: currentUserID, petID: petID };
 
-      console.log("Replacements:", replacements);
-
       getPartialData(checkFavoriteQuery, replacements)
         .then((favoriteResult) => {
           // Pet is already a favorite, so remove it
@@ -120,6 +119,53 @@ function toggleFavoritePet(petID, res) {
       console.error("Error in determining current user", err);
       res.status(500).send("Error in determining current user");
     });
+}
+
+function reservePet(req, res) {
+  let { petID, userName } = req.body;
+
+  if (userName === "") {
+    // Step 1. Get Current User Information
+    const currentUserQuery =
+      "SELECT user_id FROM User_Login ORDER BY id DESC LIMIT 1";
+    getPartialData(currentUserQuery)
+      .then((currentUserResult) => {
+        const currentUserID = currentUserResult[0].user_id;
+        const currentUserNameQuery =
+          "SELECT name FROM Users WHERE id = :userID";
+        const replacements = { userID: currentUserID };
+
+        return getPartialData(currentUserNameQuery, replacements);
+      })
+
+      // Step 2: Mark Pet as Reserved, and by Whom
+      .then((currentUserNameResult) => {
+        const currentUserName = currentUserNameResult[0].name;
+        const query =
+          "UPDATE Pets SET is_reserved = true, adopted_by = :userName WHERE id = :petID";
+        const replacements = { userName: currentUserName, petID: petID };
+
+        return updateData(query, replacements, res);
+      })
+      .catch((err) => {
+        console.error("Error in processing reservation", err);
+        res.status(500).send("Error in processing reservation");
+      });
+  } else {
+    const query =
+      "UPDATE Pets SET is_reserved = true, adopted_by = :userName WHERE id = :petID";
+    const replacements = { userName: userName, petID: petID };
+
+    return updateData(query, replacements, res);
+  }
+}
+
+function cancelReservation(req, res) {
+  let petID = req.body.petID;
+  const query =
+    "UPDATE Pets SET is_reserved = false, adopted_by = null WHERE id = :petID";
+  const replacements = { petID: petID };
+  return updateData(query, replacements, res);
 }
 
 function getCurrentUser(req, res) {
@@ -227,6 +273,8 @@ module.exports = {
   getFilteredPets,
   getPetInfo,
   toggleFavoritePet,
+  reservePet,
+  cancelReservation,
   getCurrentUser,
   getFilteredUsers,
   getIsAdmin,

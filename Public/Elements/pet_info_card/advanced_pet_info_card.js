@@ -17,9 +17,6 @@ function editButtonClicked(event) {
   const clickedButton = event.target;
   const articleElement = clickedButton.closest(".pet-card");
   let petID = articleElement.dataset.petid;
-  console.log(`PetID: ${petID}`);
-
-  clearListOfPets();
 
   getPetInfo(petID, (petInfo) => {
     const petData = {
@@ -32,19 +29,28 @@ function editButtonClicked(event) {
       weight: petInfo[0].weight,
     };
 
+    clearListOfPets();
     createEditablePetCard(petData);
   });
 }
 
 function reserveButtonClicked(event) {
-  console.log("Reserve button");
-  // identify the petID
+  // Identify the petID and the articleElement
   const clickedButton = event.target;
   const articleElement = clickedButton.closest(".pet-card");
   let petID = articleElement.dataset.petid;
-  console.log(`PetID: ${petID}`);
 
-  heartClicked(petID);
+  // Show prompt for admin to enter the name
+  const userName = prompt(
+    "Please enter the name of the person reserving the pet:"
+  );
+  if (userName) {
+    // Name entered, communicate with server
+    reservePet(petID, userName, () => {
+      // Remove the articleElement from the DOM on successful reservation
+      articleElement.remove();
+    });
+  }
 }
 
 function saveButtonClicked() {
@@ -97,8 +103,25 @@ function confirmAdoptionButtonClicked() {
   console.log("Confirm Adoption button");
 }
 
-function cancelReservationButtonClicked() {
-  console.log("Cancel Reservation button");
+function cancelReservationButtonClicked(event) {
+  // Identify the petID and the articleElement
+  const clickedButton = event.target;
+  const articleElement = clickedButton.closest(".pet-card");
+  let petID = articleElement.dataset.petid;
+
+  // Show confirmation dialog
+  const confirmMessage = "This pet is no longer reserved?";
+  const cancelConfirmation = confirm(confirmMessage);
+  if (cancelConfirmation) {
+    // Cancelation confirmed, communicate with server
+    cancelReservation(petID, () => {
+      // Remove the articleElement from the DOM on successful cancelation
+      articleElement.remove();
+    });
+  } else {
+    // User cancelled, do nothing
+    console.log("Reservation cancelled");
+  }
 }
 
 function returnedToShelterButtonClicked() {
@@ -139,13 +162,13 @@ function makeButtonsClickable() {
     button.addEventListener("click", () => confirmAdoptionButtonClicked());
   });
 
-  const cancelReservationButtons = document.querySelectorAll(
-    ".cancel-reservation-button"
-  );
+  // const cancelReservationButtons = document.querySelectorAll(
+  //   ".cancel-reservation-button"
+  // );
 
-  cancelReservationButtons.forEach((button) => {
-    button.addEventListener("click", () => cancelReservationButtonClicked());
-  });
+  // cancelReservationButtons.forEach((button) => {
+  //   button.addEventListener("click", () => cancelReservationButtonClicked());
+  // });
 
   const returnedToShelterButtons =
     document.querySelectorAll(".returned-button");

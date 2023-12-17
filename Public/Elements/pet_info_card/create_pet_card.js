@@ -73,6 +73,7 @@ function createPetCard(
             name="reserve"
             value="Reserve"
             class="reserve-button"
+            onclick="reserveButtonClicked(event)"
             />
           </div>
         </article>`;
@@ -91,6 +92,7 @@ function createPetCard(
             name="cancel"
             value="Cancel Reservation"
             class="cancel-reservation-button"
+            onclick="cancelReservationButtonClicked(event)"
             />
             <p class="pet-info">Reserved by ${human}</p>
           </div>
