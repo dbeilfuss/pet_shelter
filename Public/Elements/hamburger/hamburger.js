@@ -13,7 +13,7 @@ document.querySelectorAll(".dropdown-menu a").forEach((item) => {
     if (this.classList.contains("sort-pets")) {
       selectedItemText.textContent = `Sort by ${this.textContent}`;
     } else {
-      selectedItemText.textContent = `${this.textContent} Pets`;
+      selectedItemText.textContent = `${this.textContent} Pets: Admin Section`;
     }
 
     // Hide the dropdown menu after a selection
