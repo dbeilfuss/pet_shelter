@@ -18,6 +18,7 @@ const {
   toggleFavoritePet,
   reservePet,
   cancelReservation,
+  adoptPet,
   getCurrentUser,
   getFilteredUsers,
   getIsAdmin,
@@ -37,6 +38,7 @@ app.put("/api/updatePet", updatePet);
 app.put("/api/favoritePet", toggleFavoritePet);
 app.put("/api/reservePet", reservePet);
 app.put("/api/cancelReservation", cancelReservation);
+app.put("/api/adoptPet", adoptPet);
 app.put("/api/loginUser", loginUser);
 app.post("/api/seedDatabase", seedDatabase);
 app.delete("/api/deletePet/:id", deletePet);

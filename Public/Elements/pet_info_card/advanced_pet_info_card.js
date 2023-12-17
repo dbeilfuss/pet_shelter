@@ -99,8 +99,25 @@ function cancelButtonClicked() {
   console.log("Cancel button");
 }
 
-function confirmAdoptionButtonClicked() {
-  console.log("Confirm Adoption button");
+function confirmAdoptionButtonClicked(event) {
+  // Identify the petID and the articleElement
+  const clickedButton = event.target;
+  const articleElement = clickedButton.closest(".pet-card");
+  let petID = articleElement.dataset.petid;
+
+  // Show confirmation dialog
+  const confirmMessage = "This pet has been officially adopted?";
+  const adoptedConfirmation = confirm(confirmMessage);
+  if (adoptedConfirmation) {
+    // Cancelation confirmed, communicate with server
+    adoptPet(petID, () => {
+      // Remove the articleElement from the DOM on successful cancelation
+      articleElement.remove();
+    });
+  } else {
+    // User cancelled, do nothing
+    console.log("Reservation cancelled");
+  }
 }
 
 function cancelReservationButtonClicked(event) {
@@ -155,12 +172,12 @@ function makeButtonsClickable() {
   //   button.addEventListener("click", () => deleteButtonClicked());
   // });
 
-  const confirmAdoptionButtons = document.querySelectorAll(
-    ".confirm-adoption-button"
-  );
-  confirmAdoptionButtons.forEach((button) => {
-    button.addEventListener("click", () => confirmAdoptionButtonClicked());
-  });
+  // const confirmAdoptionButtons = document.querySelectorAll(
+  //   ".confirm-adoption-button"
+  // );
+  // confirmAdoptionButtons.forEach((button) => {
+  //   button.addEventListener("click", () => confirmAdoptionButtonClicked());
+  // });
 
   // const cancelReservationButtons = document.querySelectorAll(
   //   ".cancel-reservation-button"

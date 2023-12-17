@@ -62,6 +62,22 @@ function cancelReservation(petID, onSuccess) {
     });
 }
 
+function adoptPet(petID, onSuccess) {
+  petID = Number(petID);
+  const requestURL = `${baseURL}/adoptPet`;
+
+  axios
+    .put(requestURL, { petID })
+
+    .then(onSuccess)
+
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Marking Adopted";
+      console.error(err);
+    });
+}
+
 function getFilteredPets(filter, callback) {
   const requestURL = `${baseURL}/getFilteredPets?filter=${filter}`;
 

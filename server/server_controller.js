@@ -168,6 +168,14 @@ function cancelReservation(req, res) {
   return updateData(query, replacements, res);
 }
 
+function adoptPet(req, res) {
+  let petID = req.body.petID;
+  const query =
+    "UPDATE Pets SET is_reserved = false, is_adopted = true WHERE id = :petID";
+  const replacements = { petID: petID };
+  return updateData(query, replacements, res);
+}
+
 function getCurrentUser(req, res) {
   const request = `
   SELECT u.name
@@ -275,6 +283,7 @@ module.exports = {
   toggleFavoritePet,
   reservePet,
   cancelReservation,
+  adoptPet,
   getCurrentUser,
   getFilteredUsers,
   getIsAdmin,

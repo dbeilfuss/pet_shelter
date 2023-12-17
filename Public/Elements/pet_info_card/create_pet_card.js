@@ -86,6 +86,7 @@ function createPetCard(
             name="confirm"
             value="Confirm Adoption"
             class="confirm-adoption-button"
+            onclick="confirmAdoptionButtonClicked(event)"
             />
             <input
             type="button"
