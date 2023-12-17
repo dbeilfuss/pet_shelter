@@ -158,10 +158,10 @@ function makeButtonsClickable() {
   //   // button.addEventListener("click", () => reserveButtonClicked());
   // });
 
-  const saveButtons = document.querySelectorAll(".save-button");
-  saveButtons.forEach((button) => {
-    button.addEventListener("click", () => saveButtonClicked());
-  });
+  // const saveButtons = document.querySelectorAll(".save-button");
+  // saveButtons.forEach((button) => {
+  //   button.addEventListener("click", () => saveButtonClicked());
+  // });
 
   // const cancelButtons = document.querySelectorAll(".cancel-button");
   // cancelButtons.forEach((button) => {

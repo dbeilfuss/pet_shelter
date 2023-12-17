@@ -15,7 +15,14 @@ function resetDatabase() {
   if (confirmDatabaseReset()) {
     // rollbar.log("client log: seeding database");
     console.log("Resetting Database");
-    seedDatabase(() => console.log("Database Seeded"));
+    seedDatabase(() => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Database Reset Successfully!";
+      clearListOfPets();
+      setTimeout(function () {
+        window.location.href = "./index.html";
+      }, 2000); // 1000 milliseconds = 1 second
+    });
   }
 }
 

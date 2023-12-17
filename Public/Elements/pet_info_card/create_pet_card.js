@@ -187,7 +187,9 @@ function createEditablePetCard(petData) {
       />
     </div>
     <div class="card-button-section">
-      <input type="submit" name="save" value="Save" class="save-button" />
+      <input type="submit" name="save" value="Save" class="save-button" 
+      onclick="saveButtonClicked(event)"
+      />
       <input type="button" name="cancel" value="Cancel" class="cancel-button" 
       onclick="cancelButtonClicked(event)"
       />

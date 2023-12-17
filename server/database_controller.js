@@ -120,9 +120,10 @@ function dbSeedDatabase(req, res) {
     })
 
     .catch((err) => {
-      const errorMessage = `Error seeding Data: ${err}`;
+      const errorMessage = `Error seeding Database: ${err}`;
       rollbar.error(errorMessage);
       console.log(errorMessage);
+      res.status(500).send(errorMessage);
     });
 }
 

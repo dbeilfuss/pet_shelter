@@ -17,7 +17,7 @@ function seedDatabase(req, res) {
 
 function getAllPets(req, res) {
   console.log("Getting all Pets");
-  const request = "SELECT * FROM Pets";
+  const request = "SELECT * FROM Pets ORDER BY id DESC";
   getData(request, res);
 }
 
@@ -29,13 +29,15 @@ function getFilteredPets(req, res) {
   switch (filter) {
     case "Available":
       filterRequest =
-        "SELECT * FROM Pets WHERE is_reserved = false AND is_adopted = false";
+        "SELECT * FROM Pets WHERE is_reserved = false AND is_adopted = false ORDER BY id DESC";
       break;
     case "Reserved":
-      filterRequest = "SELECT * FROM Pets WHERE is_reserved = true";
+      filterRequest =
+        "SELECT * FROM Pets WHERE is_reserved = true ORDER BY id DESC";
       break;
     case "Adopted":
-      filterRequest = "SELECT * FROM Pets WHERE is_adopted = true";
+      filterRequest =
+        "SELECT * FROM Pets WHERE is_adopted = true ORDER BY id DESC";
       break;
     default:
       res.status(400).send("Invalid filter");
@@ -266,7 +268,7 @@ function updatePet(req, res) {
 
 function deletePet(req, res) {
   const petId = parseInt(req.params.id, 10);
-  rollbar.info(`deleting pet: ${petID}`);
+  rollbar.info(`deleting pet: ${petId}`);
 
   const deleteFavoritePetsQuery =
     "DELETE FROM user_pets_favorites WHERE pet_id = :id";

@@ -156,7 +156,7 @@ function seedDatabase(callback) {
 
   axios
     .post(requestURL)
-    .then(callback())
+    .then(callback)
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Ressetting Database";
