@@ -116,7 +116,10 @@
 } */
 
 /****** Buttons ******/
-input {
+input,
+select {
+  -webkit-appearance: none; /* Removes default styling provided by the browser */
+  -moz-appearance: none;
   text-align: center;
   font-size: 15px;
   padding: 5px;
@@ -128,7 +131,14 @@ input {
 }
 
 /* Style the input when it receives focus */
-input:focus {
+input:focus,
+select:focus {
+  border-color: #6ca6cd;
+  box-shadow: 0 0 5px rgba(108, 166, 205, 0.5);
+}
+
+/* Style the select when it receives focus */
+select:focus {
   border-color: #6ca6cd;
   box-shadow: 0 0 5px rgba(108, 166, 205, 0.5);
 }

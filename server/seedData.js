@@ -69,7 +69,7 @@ module.exports = {
           VALUES 
             ('Nitin', true),
             ('Dan', true),
-            ('Ginger', true),
+            ('Ginger', false),
             ('Noah', false),
             ('Micah', false),
             ('Becca', false);

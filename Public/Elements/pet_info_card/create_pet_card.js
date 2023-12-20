@@ -142,6 +142,8 @@ function createEditablePetCard(petData) {
         value="${petData.name}"
         placeholder="Pet Name"
         class="pet-name-input"
+        required
+        maxlength="30"
       />
     </header>
     <img
@@ -163,27 +165,38 @@ function createEditablePetCard(petData) {
         value="${petData.breed}"
         placeholder="Breed: i.e. German Shepher Mix"
         class="pet-breed-input"
+        required
+        maxlength="30"
       />
       <input
-        type="text"
+        type="number"
         name="age"
         value="${petData.age}"
         placeholder="Age in Years"
         class="pet-age-input"
+        min="0"
+        max="99"
+        required
       />
+      <select name="sex" class="pet-sex-input" required>
+        <option value="Male" ${
+          petData.maleFemale === "Male" ? "selected" : ""
+        }>Male
+        </option>
+        <option value="Female" ${
+          petData.maleFemale === "Female" ? "selected" : ""
+        }>Female
+        </option>
+      </select>
       <input
-        type="text"
-        name="sex"
-        value="${petData.maleFemale}"
-        placeholder="Male / Female"
-        class="pet-sex-input"
-      />
-      <input
-        type="text"
+        type="number"
         name="weight"
         value="${petData.weight}"
         placeholder="Weight in Lbs"
         class="pet-weight-input"
+        min="0"
+        max="500"
+        required
       />
     </div>
     <div class="card-button-section">

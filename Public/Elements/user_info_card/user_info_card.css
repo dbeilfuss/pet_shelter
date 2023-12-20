@@ -22,9 +22,11 @@
 .user-name {
   color: var(--primary-color);
   font-family: var(--user-name-font);
-  font-size: 1.4em;
+  font-size: 1.2em;
   margin: 0;
   text-align: center;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .user-photo {

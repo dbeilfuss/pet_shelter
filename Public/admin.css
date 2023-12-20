@@ -1,5 +1,6 @@
 /* Override pet cards to make them a bit more business-like */
-input {
+input,
+select {
   border-radius: 0px;
   background-color: #ccc;
 }
