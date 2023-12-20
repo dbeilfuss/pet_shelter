@@ -46,6 +46,15 @@ async function displayUsers() {
     adminUserCards += card;
   }
 
+  const newUserCard = createUserCard(
+    null,
+    "https://cdn-icons-png.flaticon.com/512/1828/1828817.png",
+    "+ User",
+    false,
+    false
+  );
+  standardUserCards += newUserCard;
+
   for (const user of standardUsersList) {
     let imageURL = "https://cdn-icons-png.flaticon.com/512/9131/9131478.png";
     const { id, name, is_admin } = user;

@@ -22,6 +22,7 @@ const {
   adoptPet,
   getCurrentUser,
   getFilteredUsers,
+  newUser,
   getIsAdmin,
   loginUser,
   updatePet,
@@ -41,6 +42,7 @@ app.put("/api/reservePet", reservePet);
 app.put("/api/cancelReservation", cancelReservation);
 app.put("/api/adoptPet", adoptPet);
 app.put("/api/loginUser", loginUser);
+app.post("/api/newUser", newUser);
 app.post("/api/seedDatabase", seedDatabase);
 app.delete("/api/deletePet/:id", deletePet);
 

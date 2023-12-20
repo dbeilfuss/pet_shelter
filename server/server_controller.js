@@ -1,5 +1,6 @@
 const axios = require("axios");
 const rollbar = require("../rollbar_config.js");
+const { seedData } = require("./seedData.js");
 
 const {
   dbSeedDatabase,
@@ -7,12 +8,13 @@ const {
   getPartialData,
   updateData,
   upsertData,
+  insertData,
   deleteData,
 } = require("./database_controller.js");
 
 function seedDatabase(req, res) {
   rollbar.info("server log: seeding database");
-  dbSeedDatabase(req, res);
+  dbSeedDatabase(seedData(), res);
 }
 
 function getAllPets(req, res) {
@@ -233,6 +235,36 @@ function loginUser(req, res) {
   upsertData(upsertQuery, { userID: userID }, res);
 }
 
+function newUser(req, res) {
+  console.log(req.body);
+  let { userName } = req.body;
+
+  const insertQuery = `
+    INSERT INTO Users (name) VALUES (:name);
+  `;
+
+  insertData(insertQuery, { name: userName })
+    .then(() => {
+      const getQuery = `
+        SELECT * FROM Users WHERE name = :name;
+      `;
+      return getPartialData(getQuery, { name: userName });
+    })
+    .then((userData) => {
+      if (!userData || userData.length === 0) {
+        throw new Error("User not found after insertion");
+      }
+
+      const userID = userData[0].id;
+      const userDataForLogin = { body: { userID: userID } };
+      loginUser(userDataForLogin, res);
+    })
+    .catch((err) => {
+      console.error("Error in newUser function:", err);
+      res.status(500).send("Error processing new user");
+    });
+}
+
 function updatePet(req, res) {
   console.log(req.body);
   let { id, name, imageURL, breed, age, sex, weight } = req.body;
@@ -288,6 +320,7 @@ module.exports = {
   adoptPet,
   getCurrentUser,
   getFilteredUsers,
+  newUser,
   getIsAdmin,
   loginUser,
   updatePet,

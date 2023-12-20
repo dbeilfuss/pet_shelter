@@ -1,17 +1,3 @@
-// import { createEditablePetCard, clearListOfPets } from "./create_pet_card.js";
-
-// function makeHeartsClickable() {
-//   // TODO Depricate
-//   const favoriteButtons = document.querySelectorAll(".favorite-button");
-
-//   favoriteButtons.forEach((button) => {
-//     button.addEventListener("click", function () {
-//       this.classList.toggle("favorited");
-//       this.querySelector(".heart").classList.toggle("favorited");
-//     });
-//   });
-// }
-
 function editButtonClicked(event) {
   // Identify the PetID
   const clickedButton = event.target;

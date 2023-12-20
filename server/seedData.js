@@ -62,7 +62,7 @@ module.exports = {
           Users (
             id bigint primary key generated always as identity,
             name text,
-            is_admin boolean
+            is_admin boolean DEFAULT false
           );
 
         INSERT INTO Users (name, is_admin)

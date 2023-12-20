@@ -1,6 +1,5 @@
 require("dotenv").config();
 const { SUPABASE_URI } = process.env;
-const { seedData } = require("./seedData.js");
 const rollbar = require("../rollbar_config.js");
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(SUPABASE_URI, {
@@ -30,6 +29,7 @@ function getData(req, res) {
 }
 
 function getPartialData(query, replacements) {
+  // used when you don't want a 'res'
   return new Promise((resolve, reject) => {
     sequelize
 
@@ -66,14 +66,29 @@ function upsertData(query, replacements, res) {
     .query(query, { replacements, type: sequelize.QueryTypes.UPSERT })
 
     .then(() => {
-      console.log("Pet data saved successfully");
+      console.log("Data saved successfully");
       res.sendStatus(200);
     })
 
     .catch((err) => {
-      console.error("Error in upserting pet data", err);
-      res.status(500).send("Error saving pet data");
+      console.error("Error in upserting data", err);
+      res.status(500).send("Error saving data");
     });
+}
+
+function insertData(query, replacements) {
+  return new Promise((resolve, reject) => {
+    sequelize
+      .query(query, { replacements, type: sequelize.QueryTypes.INSERT })
+      .then((result) => {
+        console.log("Data inserted successfully");
+        resolve(result);
+      })
+      .catch((err) => {
+        console.error("Error in inserting data", err);
+        reject(err);
+      });
+  });
 }
 
 function deleteData(query1, query2, replacements, res) {
@@ -112,7 +127,7 @@ function dbSeedDatabase(req, res) {
 
   sequelize
 
-    .query(seedData())
+    .query(req)
 
     .then(() => {
       console.log("DB seeded!");
@@ -134,5 +149,6 @@ module.exports = {
   getPartialData,
   updateData,
   upsertData,
+  insertData,
   deleteData,
 };

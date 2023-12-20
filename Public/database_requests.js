@@ -222,3 +222,18 @@ async function getCurrentUser(callback) {
     throw err;
   }
 }
+
+async function postNewUser(userName, callback) {
+  const requestURL = `${baseURL}/newUser`;
+  const userData = { userName: userName };
+
+  try {
+    const response = await axios.post(requestURL, userData);
+    callback(response.data);
+  } catch (err) {
+    const messageSection = document.querySelector(".selected-item");
+    messageSection.innerHTML = "Error Adding User";
+    console.error(err);
+    throw err;
+  }
+}
