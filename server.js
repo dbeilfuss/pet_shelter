@@ -15,6 +15,7 @@ const {
   getAllPets,
   getFilteredPets,
   getPetInfo,
+  getAdoptedCount,
   toggleFavoritePet,
   reservePet,
   cancelReservation,
@@ -33,6 +34,7 @@ const {
 app.get("/api/getAllPets", getAllPets);
 app.get("/api/getFilteredPets", getFilteredPets);
 app.get("/api/getPetInfo", getPetInfo);
+app.get("/api/getAdoptedCount", getAdoptedCount);
 app.get("/api/getCurrentUser", getCurrentUser);
 app.get("/api/getUserList", getFilteredUsers);
 app.get("/api/getIsAdmin", getIsAdmin);

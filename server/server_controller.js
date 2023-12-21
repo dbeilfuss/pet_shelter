@@ -82,6 +82,12 @@ function getPetInfo(req, res) {
   getData(requestQuery, replacements, res);
 }
 
+function getAdoptedCount(req, res) {
+  const requestQuery = "SELECT COUNT(*) FROM Pets WHERE is_adopted = true";
+
+  getData(requestQuery, null, res);
+}
+
 function toggleFavoritePet(petID, res) {
   // Extract petID
   petID = Number(petID.body.petID);
@@ -323,6 +329,7 @@ module.exports = {
   getAllPets,
   getFilteredPets,
   getPetInfo,
+  getAdoptedCount,
   toggleFavoritePet,
   reservePet,
   cancelReservation,

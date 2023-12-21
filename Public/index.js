@@ -53,3 +53,11 @@ function changeMessage() {
 // Change content every few seconds
 setInterval(changeImage, 8000);
 setInterval(changeMessage, 12000);
+
+document.addEventListener("DOMContentLoaded", function () {
+  var adoptionCounter = document.getElementById("adoption-counter");
+
+  getAdoptedCount((count) => {
+    adoptionCounter.innerText = `${count[0].count} adoptions and counting!`;
+  });
+});

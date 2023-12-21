@@ -111,17 +111,30 @@ function getFilteredPets(filter, callback) {
 
 function getPetInfo(petID, callback) {
   const requestURL = `${baseURL}/getPetInfo?petID=${petID}`;
-  console.log(requestURL);
 
   axios
     .get(requestURL)
     .then((res) => {
-      console.log(res.data);
       callback(res.data);
     })
     .catch((err) => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Error Loading Pet";
+      console.log(err);
+    });
+}
+
+function getAdoptedCount(callback) {
+  const requestURL = `${baseURL}/getAdoptedCount`;
+
+  axios
+    .get(requestURL)
+    .then((res) => {
+      callback(res.data);
+    })
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Getting Count of Adopted Pets";
       console.log(err);
     });
 }
