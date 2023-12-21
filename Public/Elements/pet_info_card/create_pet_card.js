@@ -215,8 +215,6 @@ function createEditablePetCard(petData) {
 
   const petsSection = document.getElementById("list-of-pets");
   petsSection.innerHTML = editablePetCard;
-
-  makeButtonsClickable();
 }
 
 function clearListOfPets() {
@@ -229,7 +227,7 @@ function clearListOfPets() {
 // set the number of cards based on the width of the screen
 function availableSpace() {
   const screenWidth = window.innerWidth;
-  const cardWidth = 290; // TODO Change card width for smaller screens
+  const cardWidth = 280;
 
   let numberOfCards = Math.floor(screenWidth / cardWidth);
 
@@ -263,8 +261,6 @@ function displayPetsCallback(petsList, isShortSection, filter) {
   }
 
   listOfPetsSection.innerHTML = petCards;
-  // makeHeartsClickable();
-  makeButtonsClickable();
 }
 
 function displayPets(filter) {
@@ -276,7 +272,9 @@ function displayPets(filter) {
   // adjust variables for a short section
   if (isShortSection) {
     const numberOfCards = availableSpace();
-    getSamplePets(numberOfCards);
+    getSamplePets(numberOfCards, (petsList) => {
+      displayPetsCallback(petsList, false, filter);
+    });
   } else {
     getFilteredPets("Available", (petsList) => {
       displayPetsCallback(petsList, false, filter);

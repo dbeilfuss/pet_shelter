@@ -174,9 +174,13 @@ function deletePet(petID, callback) {
     });
 }
 
-function getSamplePets(numberOfPets) {
-  const shuffledPets = petsList.sort(() => 0.5 - Math.random());
-  return shuffledPets.slice(0, numberOfPets);
+function getSamplePets(numberOfPets, callback) {
+  getFilteredPets("Available", (availablePets) => {
+    const shuffledPets = availablePets.sort(() => 0.5 - Math.random());
+    const samplePets = shuffledPets.slice(0, numberOfPets);
+    console.log(samplePets);
+    callback(samplePets);
+  });
 }
 
 function seedDatabase(callback) {

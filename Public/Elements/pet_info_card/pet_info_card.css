@@ -107,25 +107,16 @@
   background: red;
 }
 
-/* .heart {
-  color: gray;
-}
-
-.heart.favorited {
-  color: red;
-} */
-
 /****** Buttons ******/
 input,
 select {
-  -webkit-appearance: none; /* Removes default styling provided by the browser */
-  -moz-appearance: none;
   text-align: center;
   font-size: 15px;
-  padding: 5px;
+  padding: 5px 15px;
   margin: 5px;
   border-radius: var(--border-radius);
   background-color: var(--primary-color);
+  color: white;
   border: 1px solid #ccc;
   outline: none;
 }

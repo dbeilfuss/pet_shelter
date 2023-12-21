@@ -5,19 +5,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.reserve-button {
-  cursor: pointer;
-}
-
-input {
-  text-align: center;
-  font-size: 15px;
-  padding: 5px 15px;
-  margin: 5px;
-  border-radius: var(--border-radius);
-  background-color: var(--primary-color);
-  color: white;
-  border: 1px solid #ccc;
-  outline: none;
-}

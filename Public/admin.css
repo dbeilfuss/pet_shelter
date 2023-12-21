@@ -3,6 +3,7 @@ input,
 select {
   border-radius: 0px;
   background-color: #ccc;
+  color: #454545;
 }
 
 .pet-name {
