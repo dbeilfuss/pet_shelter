@@ -107,6 +107,7 @@ function createPetCard(
             name="returned"
             value="Returned to Shelter"
             class="returned-button"
+            onclick="returnedToShelterButtonClicked(event)"
             />
             <input
             type="button"

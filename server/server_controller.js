@@ -76,9 +76,10 @@ function getFilteredPets(req, res) {
 
 function getPetInfo(req, res) {
   const petID = req.query.petID;
-  const request = `SELECT * FROM Pets WHERE id = ${petID}`;
+  const requestQuery = "SELECT * FROM Pets WHERE id = :petID";
+  const replacements = { petID: petID };
 
-  getData(request, res);
+  getData(requestQuery, replacements, res);
 }
 
 function toggleFavoritePet(petID, res) {
@@ -172,6 +173,14 @@ function cancelReservation(req, res) {
   return updateData(query, replacements, res);
 }
 
+function returnToShelter(req, res) {
+  let petID = req.body.petID;
+  const query =
+    "UPDATE Pets SET is_adopted = false, adopted_by = null WHERE id = :petID";
+  const replacements = { petID: petID };
+  return updateData(query, replacements, res);
+}
+
 function adoptPet(req, res) {
   let petID = req.body.petID;
   const query =
@@ -187,7 +196,7 @@ function getCurrentUser(req, res) {
   INNER JOIN User_Login ul ON u.id = ul.user_id;
   `;
 
-  getData(request, res);
+  getData(request, null, res);
 }
 
 function getIsAdmin(req, res) {
@@ -197,7 +206,7 @@ function getIsAdmin(req, res) {
   INNER JOIN User_Login ul ON u.id = ul.user_id;
   `;
 
-  getData(request, res);
+  getData(request, null, res);
 }
 
 function getFilteredUsers(req, res) {
@@ -217,7 +226,7 @@ function getFilteredUsers(req, res) {
       res.status(400).send("user type not recognized");
   }
 
-  getData(request, res);
+  getData(request, null, res);
 }
 
 function loginUser(req, res) {
@@ -317,6 +326,7 @@ module.exports = {
   toggleFavoritePet,
   reservePet,
   cancelReservation,
+  returnToShelter,
   adoptPet,
   getCurrentUser,
   getFilteredUsers,

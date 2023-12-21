@@ -128,59 +128,76 @@ function cancelReservationButtonClicked(event) {
   }
 }
 
-function returnedToShelterButtonClicked() {
-  console.log("Returned to Shelter button");
+function returnedToShelterButtonClicked(event) {
+  // Identify the petID and the articleElement
+  const clickedButton = event.target;
+  const articleElement = clickedButton.closest(".pet-card");
+  let petID = articleElement.dataset.petid;
+
+  // Show confirmation dialog
+  const confirmMessage = "This pet has been returned?";
+  const returnConfirmation = confirm(confirmMessage);
+  if (returnConfirmation) {
+    // Cancelation confirmed, communicate with server
+    returnToShelter(petID, () => {
+      // Remove the articleElement from the DOM on successful cancelation
+      articleElement.remove();
+    });
+  } else {
+    // User cancelled, do nothing
+    console.log("Return cancelled");
+  }
 }
 
-function makeButtonsClickable() {
-  // TODO Depricate
-  const editButtons = document.querySelectorAll(".edit-button");
-  editButtons.forEach((button) => {
-    button.addEventListener("click", (event) => editButtonClicked(event));
-  });
+// function makeButtonsClickable() {
+//   // TODO Depricate
+//   const editButtons = document.querySelectorAll(".edit-button");
+//   editButtons.forEach((button) => {
+//     button.addEventListener("click", (event) => editButtonClicked(event));
+//   });
 
-  // const reserveButtons = document.querySelectorAll(".reserve-button");
-  // reserveButtons.forEach((button) => {
-  //   // button.addEventListener("click", () => reserveButtonClicked());
-  // });
+// const reserveButtons = document.querySelectorAll(".reserve-button");
+// reserveButtons.forEach((button) => {
+//   // button.addEventListener("click", () => reserveButtonClicked());
+// });
 
-  // const saveButtons = document.querySelectorAll(".save-button");
-  // saveButtons.forEach((button) => {
-  //   button.addEventListener("click", () => saveButtonClicked());
-  // });
+// const saveButtons = document.querySelectorAll(".save-button");
+// saveButtons.forEach((button) => {
+//   button.addEventListener("click", () => saveButtonClicked());
+// });
 
-  // const cancelButtons = document.querySelectorAll(".cancel-button");
-  // cancelButtons.forEach((button) => {
-  //   button.addEventListener("click", () => cancelButtonClicked());
-  // });
+// const cancelButtons = document.querySelectorAll(".cancel-button");
+// cancelButtons.forEach((button) => {
+//   button.addEventListener("click", () => cancelButtonClicked());
+// });
 
-  // const deleteButtons = document.querySelectorAll(".delete-button");
-  // deleteButtons.forEach((button) => {
-  //   button.addEventListener("click", () => deleteButtonClicked());
-  // });
+// const deleteButtons = document.querySelectorAll(".delete-button");
+// deleteButtons.forEach((button) => {
+//   button.addEventListener("click", () => deleteButtonClicked());
+// });
 
-  // const confirmAdoptionButtons = document.querySelectorAll(
-  //   ".confirm-adoption-button"
-  // );
-  // confirmAdoptionButtons.forEach((button) => {
-  //   button.addEventListener("click", () => confirmAdoptionButtonClicked());
-  // });
+// const confirmAdoptionButtons = document.querySelectorAll(
+//   ".confirm-adoption-button"
+// );
+// confirmAdoptionButtons.forEach((button) => {
+//   button.addEventListener("click", () => confirmAdoptionButtonClicked());
+// });
 
-  // const cancelReservationButtons = document.querySelectorAll(
-  //   ".cancel-reservation-button"
-  // );
+// const cancelReservationButtons = document.querySelectorAll(
+//   ".cancel-reservation-button"
+// );
 
-  // cancelReservationButtons.forEach((button) => {
-  //   button.addEventListener("click", () => cancelReservationButtonClicked());
-  // });
+// cancelReservationButtons.forEach((button) => {
+//   button.addEventListener("click", () => cancelReservationButtonClicked());
+// });
 
-  const returnedToShelterButtons =
-    document.querySelectorAll(".returned-button");
-  returnedToShelterButtons.forEach((button) => {
-    button.addEventListener("click", () => returnedToShelterButtonClicked());
-  });
-}
+// const returnedToShelterButtons =
+//   document.querySelectorAll(".returned-button");
+// returnedToShelterButtons.forEach((button) => {
+//   button.addEventListener("click", () => returnedToShelterButtonClicked());
+// });
+// }
 
 // document.addEventListener("DOMContentLoaded", () => makeHeartsClickable());
 
-document.addEventListener("DOMContentLoaded", () => makeButtonsClickable());
+// document.addEventListener("DOMContentLoaded", () => makeButtonsClickable());

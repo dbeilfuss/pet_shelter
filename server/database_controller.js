@@ -11,19 +11,23 @@ const sequelize = new Sequelize(SUPABASE_URI, {
   },
 });
 
-function getData(req, res) {
+function getData(query, replacements, res) {
+  const options = {
+    type: sequelize.QueryTypes.SELECT,
+  };
+
+  if (replacements) {
+    options.replacements = replacements;
+  }
+
   sequelize
-
-    .query(req)
-
+    .query(query, options)
     .then((dbResponse) => {
-      res.status(200).send(dbResponse[0]);
+      res.status(200).send(dbResponse);
     })
-
     .catch((err) => {
-      const errorMessage = `Error Getting Data - Request: ${req}, Error: ${err}`;
+      const errorMessage = `Error Getting Data - Query: ${query}, Error: ${err}`;
       console.log(errorMessage);
-
       res.status(500).send(errorMessage);
     });
 }

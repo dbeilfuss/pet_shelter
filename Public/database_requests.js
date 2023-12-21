@@ -62,6 +62,22 @@ function cancelReservation(petID, onSuccess) {
     });
 }
 
+function returnToShelter(petID, onSuccess) {
+  petID = Number(petID);
+  const requestURL = `${baseURL}/returnToShelter`;
+
+  axios
+    .put(requestURL, { petID })
+
+    .then(onSuccess)
+
+    .catch((err) => {
+      const messageSection = document.querySelector(".selected-item");
+      messageSection.innerHTML = "Error Returning Pet";
+      console.error(err);
+    });
+}
+
 function adoptPet(petID, onSuccess) {
   petID = Number(petID);
   const requestURL = `${baseURL}/adoptPet`;
