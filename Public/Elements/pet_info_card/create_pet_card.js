@@ -273,7 +273,7 @@ function displayPets(filter) {
   if (isShortSection) {
     const numberOfCards = availableSpace();
     getSamplePets(numberOfCards, (petsList) => {
-      displayPetsCallback(petsList, false, filter);
+      displayPetsCallback(petsList, true, filter);
     });
   } else {
     getFilteredPets("Available", (petsList) => {
