@@ -8,7 +8,8 @@ function createPetCard(
   weight,
   human,
   cardType,
-  isFavorite
+  isFavorite,
+  isReserved
 ) {
   let petCard =
     // Card Header
@@ -48,36 +49,46 @@ function createPetCard(
       break;
 
     case "reservable":
+      const buttonDetails = {
+        value: isReserved ? "Reserved" : "Reserve Pet",
+        class: isReserved ? "is-reserved" : "",
+        action: isReserved ? "" : "reserveButtonClicked(event)",
+      };
+
       petCard += `<div class="card-button-section">
-              <input
-              type="button"
-              name="reserve"
-              value="Reserve Pet"
-              class="reserve-button"
-              onclick="reserveButtonClicked(event)"
-              />
+          <input
+            type="button"
+            name="reserve"
+            value="${buttonDetails.value}"
+            class="reserve-button ${buttonDetails.class}"
+            onclick="${buttonDetails.action}"
+            />
           </div>
         </article>`;
       break;
 
     case "Available":
-      petCard += `<div class="card-button-section">
+      if (!isReserved) {
+        petCard += `<div class="card-button-section">
             <input
-            type="button"
-            name="edit"
-            value="Edit"
-            class="edit-button"
-            onclick="editButtonClicked(event)"
+              type="button"
+              name="edit"
+              value="Edit"
+              class="edit-button"
+              onclick="editButtonClicked(event)"
             />
             <input
-            type="button"
-            name="reserve"
-            value="Reserve"
-            class="reserve-button"
-            onclick="reserveButtonClicked(event)"
-            />
+              type="button"
+              name="reserve"
+              value="Reserve"
+              class="reserve-button"
+              onclick="reserveButtonClicked(event)"
+              />
           </div>
         </article>`;
+      } else {
+        petCard = "";
+      }
       break;
 
     case "Reserved":
@@ -256,7 +267,8 @@ function displayPetsCallback(petsList, isShortSection, filter) {
       pet.weight,
       pet.adopted_by,
       filter,
-      pet.isFavorite
+      pet.isFavorite,
+      pet.is_reserved
     );
     petCards += card;
   }

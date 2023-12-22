@@ -31,7 +31,7 @@ function getFilteredPets(req, res) {
   switch (filter) {
     case "Available":
       filterRequest =
-        "SELECT * FROM Pets WHERE is_reserved = false AND is_adopted = false ORDER BY id DESC";
+        "SELECT * FROM Pets WHERE is_adopted = false ORDER BY id DESC";
       break;
     case "Reserved":
       filterRequest =

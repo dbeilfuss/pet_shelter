@@ -160,6 +160,11 @@ select:focus {
   cursor: pointer;
 }
 
+.is-reserved {
+  background-color: #ccc;
+  cursor: auto;
+}
+
 /****** List of Pets Section on Web Page ******/
 
 #list-of-pets {

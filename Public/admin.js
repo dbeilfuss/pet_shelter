@@ -51,6 +51,15 @@ document.querySelector(".dropdown-menu").addEventListener("click", (event) => {
         };
 
         createEditablePetCard(petData);
+
+        // make the browser back-button refresh the current page.
+        window.onpopstate = function (event) {
+          // Refresh the current page.
+          window.location.reload();
+        };
+
+        // Push the current state into the history
+        history.pushState({}, "");
       } else if (selectedText === "! Reset Database") {
         resetDatabase();
       }
