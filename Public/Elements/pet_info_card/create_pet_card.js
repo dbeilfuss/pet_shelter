@@ -266,7 +266,7 @@ function clearListOfPets() {
 // set the number of cards based on the width of the screen
 function availableSpace() {
   const screenWidth = window.innerWidth;
-  const cardWidth = 280;
+  const cardWidth = 285;
 
   let numberOfCards = Math.floor(screenWidth / cardWidth);
 
