@@ -16,17 +16,21 @@ function heartClicked(event) {
 function reserveButtonClicked(event) {
   console.log("Reserve button");
 
-  // Identify the petID and the articleElement
+  // Identify the articleElement, petID, and petName
   const clickedButton = event.target;
   const articleElement = clickedButton.closest(".pet-card");
   let petID = articleElement.dataset.petid;
-  console.log(`PetID: ${petID}`);
+  let headerElement = articleElement.querySelector(".pet-name");
+  let petName = headerElement.textContent;
+  console.log(`PetID: ${petID}; petName: ${petName}`);
 
   // Show confirmation dialog
   const confirmMessage =
-    "Your new pet is about to be reserved! Please stop by in the next 24 hours to pick them up.\n\n" +
-    "Remember: Bring $50 to cover the cost of vaccinations.\n\n" +
-    "Are you sure you’d like to reserve this Pet?";
+    `We will let ${petName} know that you are coming!  They will be very excited to meet you!\n\n` +
+    "Please stop by our shelter by 5pm tomorrow pick them up.\n\n" +
+    "If you change your mind, please call us and let us know.\n\n" +
+    `Please understand, if we do not hear from you by 5pm tomorrow, ${petName} will be made available to be offered to another home.\n\n` +
+    `Are you sure you’d like to reserve ${petName}?`;
   const confirmReservation = confirm(confirmMessage);
   if (confirmReservation) {
     // User confirmed, communicate with server
