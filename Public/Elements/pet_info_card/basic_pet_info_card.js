@@ -35,8 +35,10 @@ function reserveButtonClicked(event) {
   if (confirmReservation) {
     // User confirmed, communicate with server
     reservePet(petID, "", () => {
-      // Remove the articleElement from the DOM on successful reservation
-      articleElement.remove();
+      // Restyle the reserve button
+      clickedButton.value = "Reserved";
+      clickedButton.className = "reserve-button is-reserved";
+      clickedButton.onclick = null;
     });
   } else {
     // User cancelled, do nothing

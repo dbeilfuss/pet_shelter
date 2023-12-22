@@ -34,9 +34,9 @@ function createPetCard(
   petCard += `
   </header>
   <img
-  src="${imageURL}"
-  alt="Photo of ${name}"
-  class="pet-photo"
+    src="${imageURL}"
+    alt="Photo of ${name}"
+    class="pet-photo"
   />
   <p class="pet-breed">${breed}</p>
   <p class="pet-info">${age} Yrs · ${maleFemale} · ${weight} Lbs</p>
@@ -229,6 +229,33 @@ function createEditablePetCard(petData) {
   petsSection.innerHTML = editablePetCard;
 }
 
+function makePhotosClickable() {
+  // Get the modal elements
+  var modal = document.getElementById("photoModal");
+  var modalImg = document.getElementById("enlargedPhoto");
+  var closeModal = document.getElementById("closeModal");
+
+  // Add click event to each pet photo
+  document.querySelectorAll(".pet-photo").forEach((img) => {
+    img.addEventListener("click", function () {
+      modalImg.src = this.src;
+      modal.style.display = "block";
+    });
+  });
+
+  // Close the modal when the close button is clicked
+  closeModal.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // Optional: Close the modal if clicked outside the image
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
+
 function clearListOfPets() {
   const listOfPets = document.getElementById("list-of-pets");
   if (listOfPets) {
@@ -274,6 +301,8 @@ function displayPetsCallback(petsList, isShortSection, filter) {
   }
 
   listOfPetsSection.innerHTML = petCards;
+
+  makePhotosClickable();
 }
 
 function displayPets(filter) {
