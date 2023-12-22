@@ -241,6 +241,13 @@ function makePhotosClickable() {
       modalImg.src = this.src;
       modal.style.display = "block";
     });
+
+    // Additionally listen for touch events
+    modal.addEventListener("touchstart", function (event) {
+      if (event.target == modal) {
+        closeModalFunction();
+      }
+    });
   });
 
   // Close the modal when the close button is clicked
