@@ -67,6 +67,7 @@ function createPetCard(
             name="edit"
             value="Edit"
             class="edit-button"
+            onclick="editButtonClicked(event)"
             />
             <input
             type="button"
