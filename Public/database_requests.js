@@ -178,7 +178,6 @@ function getSamplePets(numberOfPets, callback) {
   getFilteredPets("Available", (availablePets) => {
     const shuffledPets = availablePets.sort(() => 0.5 - Math.random());
     const samplePets = shuffledPets.slice(0, numberOfPets);
-    console.log(samplePets);
     callback(samplePets);
   });
 }

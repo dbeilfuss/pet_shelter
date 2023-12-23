@@ -14,15 +14,12 @@ function heartClicked(event) {
 }
 
 function reserveButtonClicked(event) {
-  console.log("Reserve button");
-
   // Identify the articleElement, petID, and petName
   const clickedButton = event.target;
   const articleElement = clickedButton.closest(".pet-card");
   let petID = articleElement.dataset.petid;
   let headerElement = articleElement.querySelector(".pet-name");
   let petName = headerElement.textContent;
-  console.log(`PetID: ${petID}; petName: ${petName}`);
 
   // Show confirmation dialog
   const confirmMessage =

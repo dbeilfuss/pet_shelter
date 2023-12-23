@@ -235,6 +235,11 @@ function makePhotosClickable() {
   var modalImg = document.getElementById("enlargedPhoto");
   var closeModal = document.getElementById("closeModal");
 
+  // Function to close the modal
+  function closeModalFunction() {
+    modal.style.display = "none";
+  }
+
   // Add click event to each pet photo
   document.querySelectorAll(".pet-photo").forEach((img) => {
     img.addEventListener("click", function () {
@@ -252,15 +257,22 @@ function makePhotosClickable() {
 
   // Close the modal when the close button is clicked
   closeModal.onclick = function () {
-    modal.style.display = "none";
+    closeModalFunction();
   };
 
-  // Optional: Close the modal if clicked outside the image
-  window.onclick = function (event) {
+  // Close the modal if clicked or tapped outside the image
+  modal.addEventListener("click", function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      closeModalFunction();
     }
-  };
+  });
+
+  // Additionally listen for touch events
+  modal.addEventListener("touchstart", function (event) {
+    if (event.target == modal) {
+      closeModalFunction();
+    }
+  });
 }
 
 function clearListOfPets() {
