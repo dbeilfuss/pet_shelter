@@ -68,6 +68,8 @@ function deleteButtonClicked(event) {
 
   if (confirm(confirmMessage)) {
     let petID;
+    let clickedButton;
+    let articleElement;
 
     // Check if the editPetForm exists
     const form = document.getElementById("editPetForm");
@@ -75,17 +77,15 @@ function deleteButtonClicked(event) {
       petID = form.querySelector("input[name='id']").value;
     } else {
       // If the form doesn't exist, use the closest pet-card element
-      const clickedButton = event.target;
-      const articleElement = clickedButton.closest(".pet-card");
+      clickedButton = event.target;
+      articleElement = clickedButton.closest(".pet-card");
       petID = articleElement.dataset.petid;
     }
-
-    console.log("Delete button clicked for pet id:", petID);
 
     deletePet(petID, () => {
       const messageSection = document.querySelector(".selected-item");
       messageSection.innerHTML = "Pet deleted successfully";
-      clearListOfPets();
+      articleElement ? articleElement.remove() : clearListOfPets();
     });
   }
 }

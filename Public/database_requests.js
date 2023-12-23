@@ -3,12 +3,10 @@ const baseURL = `./api`;
 
 function getAllPets(callback) {
   const requestURL = `${baseURL}/getAllPets`;
-  console.log(requestURL);
 
   axios
     .get(requestURL)
     .then((res) => {
-      console.log(res.data);
       callback(res.data);
     })
     .catch((err) => {
@@ -142,12 +140,10 @@ function getAdoptedCount(callback) {
 function updatePet(petData, callback) {
   const { id, name, imageURL, breed, age, sex, weight } = petData;
   const requestURL = `${baseURL}/updatePet`;
-  console.log(requestURL);
 
   axios
     .put(requestURL, { id, name, imageURL, breed, age, sex, weight })
     .then((res) => {
-      console.log(res.data);
       callback(res.data);
     })
     .catch((err) => {
@@ -159,12 +155,10 @@ function updatePet(petData, callback) {
 
 function deletePet(petID, callback) {
   const requestURL = `${baseURL}/deletePet/${petID}`;
-  console.log(requestURL);
 
   axios
     .delete(requestURL)
     .then((res) => {
-      console.log(res.data);
       callback(res.data);
     })
     .catch((err) => {
@@ -183,7 +177,6 @@ function getSamplePets(numberOfPets, callback) {
 }
 
 function seedDatabase(callback) {
-  console.log("seeding database");
   const requestURL = `${baseURL}/seedDatabase`;
 
   axios
@@ -216,7 +209,6 @@ function recordLoginToDatabase(userID, callback) {
   axios
     .put(requestURL, { userID })
     .then((res) => {
-      console.log(res.data);
       callback();
     })
     .catch((err) => {
