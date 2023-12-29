@@ -1,6 +1,6 @@
 # Keenesburg Animal Shelter
 
-This is a very database management system and website.
+This is a very simple database management system and website.
 
 It is designed for an admin user to manage a list of pets, and for standard users to be able to browse, favorite, and ultimately reserve a pet of their choice.
 
